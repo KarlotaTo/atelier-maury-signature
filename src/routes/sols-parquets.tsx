@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import img from "@/assets/parquet.jpg";
 import { Section, Eyebrow, SectionTitle, Lead, PageHero, PrestationList, FinalCta } from "@/components/site/ui";
 
-export const Route = createFileRoute("/sols-revetements")({
+export const Route = createFileRoute("/sols-parquets")({
   head: () => ({
     meta: [
       { title: "Parquet, sols et revêtements à Bouloc — Maury Laurent" },
@@ -18,10 +18,10 @@ export const Route = createFileRoute("/sols-revetements")({
           "Parquet massif, rénovation de parquet, revêtements de sols et carrelage par une entreprise familiale d'artisans.",
       },
       { property: "og:type", content: "article" },
-      { property: "og:url", content: "/sols-revetements" },
+      { property: "og:url", content: "/sols-parquets" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/sols-revetements" }],
+    links: [{ rel: "canonical", href: "/sols-parquets" }],
   }),
   component: Page,
 });

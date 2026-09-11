@@ -22,9 +22,11 @@ export const telHref = () => `tel:${site.phone.replace(/\s/g, "")}`;
 
 export const nav = [
   { to: "/peinture-decoration", label: "Peinture & décoration" },
+  { to: "/sols-parquets", label: "Sols & parquets" },
+  { to: "/murs-revetements", label: "Murs & revêtements" },
   { to: "/renovation-interieure", label: "Rénovation intérieure" },
-  { to: "/sols-revetements", label: "Sols & revêtements" },
   { to: "/facades-exterieur", label: "Façades & extérieur" },
+  { to: "/entretien-bati", label: "Entretien & bâti" },
   { to: "/realisations", label: "Réalisations" },
   { to: "/entreprise", label: "L'entreprise" },
   { to: "/zones-intervention", label: "Zones d'intervention" },
@@ -34,27 +36,44 @@ export const communes = [
   {
     slug: "bouloc",
     name: "Bouloc",
-    text: "Siège de l'entreprise. Interventions quotidiennes sur la commune et les hameaux alentour, avec des délais de déplacement très courts.",
+    main: true,
+    text: "Secteur principal. Siège de l'entreprise : interventions quotidiennes sur la commune et les hameaux alentour, avec des délais de déplacement très courts.",
   },
   {
     slug: "fronton",
     name: "Fronton",
+    main: false,
     text: "Maisons de vignoble, bâtis anciens et constructions récentes : peinture intérieure, rénovation et ravalement.",
+  },
+  {
+    slug: "castelginest",
+    name: "Castelginest",
+    main: false,
+    text: "Pavillons et maisons familiales : peinture intérieure, sols et reprises de finition avant emménagement.",
   },
   {
     slug: "aucamville",
     name: "Aucamville",
+    main: false,
     text: "Appartements et maisons de ville : rafraîchissement complet, préparation soignée des supports, chantiers habités.",
   },
   {
-    slug: "blagnac",
-    name: "Blagnac",
-    text: "Rénovation intérieure, peinture décorative et home staging avant mise en vente ou en location.",
+    slug: "l-union",
+    name: "L'Union",
+    main: false,
+    text: "Peinture et rénovation intérieure sur des logements récents comme anciens, avec des interventions planifiées sans délai de déplacement.",
   },
   {
     slug: "grenade",
     name: "Grenade",
+    main: false,
     text: "Rénovation de bâtis anciens, enduits à la chaux, parquets et façades.",
+  },
+  {
+    slug: "blagnac",
+    name: "Blagnac",
+    main: false,
+    text: "Rénovation intérieure, peinture décorative et home staging avant mise en vente ou en location.",
   },
 ];
 
