@@ -400,7 +400,7 @@ function Home() {
               {communes.map((c) => (
                 <li
                   key={c.slug}
-                  className="group flex items-center gap-4 bg-background p-5 transition-colors hover:bg-sand"
+                  className="group flex items-center gap-4 bg-background p-5 transition-colors last:sm:col-span-2 hover:bg-sand"
                 >
                   <span className="flex size-10 shrink-0 items-center justify-center border border-line text-accent transition-colors group-hover:border-accent group-hover:bg-accent group-hover:text-primary-foreground">
                     <MapPin className="size-4" strokeWidth={1.5} />
