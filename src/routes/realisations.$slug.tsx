@@ -69,7 +69,7 @@ function Page() {
         <p className="eyebrow mt-10">{r.type}</p>
         <h1 className="mt-5 max-w-3xl text-4xl leading-[1.06] lg:text-6xl">{r.title}</h1>
         <p className="mt-4 text-sm uppercase tracking-[0.18em] text-muted-foreground">
-          {r.city} · {r.year ?? "Année à compléter"}
+          {r.city}
         </p>
         <p className="mt-8 max-w-2xl text-[17px] leading-relaxed text-muted-foreground">
           {r.description}
@@ -110,11 +110,6 @@ function Page() {
                 </li>
               ))}
             </ul>
-            {r.isPlaceholder && (
-              <p className="mt-6 text-sm text-muted-foreground">
-                Fiche modèle en attente des éléments réels du chantier.
-              </p>
-            )}
           </div>
         </div>
       </Section>
