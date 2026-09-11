@@ -46,28 +46,18 @@ function Page() {
               params={{ slug: r.slug }}
               className="group bg-background p-8 transition-colors hover:bg-sand lg:p-10"
             >
-              {r.images.length > 0 ? (
-                <img
-                  src={r.images[0]!.src}
-                  alt={r.images[0]!.alt}
-                  loading="lazy"
-                  className="aspect-[4/3] w-full object-cover"
-                />
-              ) : (
-                <div className="flex aspect-[4/3] items-center justify-center border border-dashed border-line text-center text-xs uppercase tracking-[0.18em] text-muted-foreground">
-                  Photos à ajouter
-                </div>
-              )}
+              <img
+                src={r.images[0]!.src}
+                alt={r.images[0]!.alt}
+                loading="lazy"
+                className="aspect-[4/3] w-full object-cover"
+              />
               <p className="mt-6 text-xs uppercase tracking-[0.18em] text-accent">{r.type}</p>
               <h2 className="mt-3 text-2xl leading-snug">{r.title}</h2>
               <p className="mt-2 text-sm text-muted-foreground">{r.city}</p>
             </Link>
           ))}
         </div>
-        <p className="mt-6 max-w-2xl text-sm text-muted-foreground">
-          Fiches modèles : aucune réalisation fictive n'est présentée. Les chantiers réels, photos
-          et descriptifs seront publiés dès transmission par l'entreprise.
-        </p>
       </Section>
 
       <FinalCta
