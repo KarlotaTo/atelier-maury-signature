@@ -41,6 +41,46 @@ export const communes = [
   { slug: "blagnac", name: "Blagnac", main: false },
 ];
 
+/** Avis clients authentiques, issus de la fiche Google de l'entreprise. */
+export const avis = [
+  {
+    author: "Serge Wacker",
+    rating: 5,
+    date: "il y a 3 mois",
+    text: "Travaux de rénovation des sous-toits et des lucarnes de toit d'une maison réalisés avec soin. Intervention rapide, chantier impeccable, travail professionnel, belle finition.",
+  },
+  {
+    author: "Patricia Dupre",
+    rating: 5,
+    date: "il y a 5 mois",
+    text: "Travaux soignés et réalisés très rapidement. Je recommande vivement M. Maury.",
+  },
+  {
+    author: "Michel Lacaze",
+    rating: 5,
+    date: "il y a 10 mois",
+    text: "Personne très sérieuse et un travail excellent, de très bons conseils. Nous le conseillons à tout le monde.",
+  },
+  {
+    author: "Martine Decuq",
+    rating: 5,
+    date: "il y a un an",
+    text: "Travail de peinture parfaitement réalisé, artisan sérieux et compétent. Je ferai de nouveau appel à lui si j'ai d'autres travaux à faire.",
+  },
+  {
+    author: "Francis Cha",
+    rating: 5,
+    date: "il y a un an",
+    text: "M. Maury a travaillé très sérieusement : rapide et efficace dans la proposition des devis, puis travaux réalisés aux dates qui nous arrangeaient. Il fallait refaire une chambre et le résultat est très satisfaisant.",
+  },
+  {
+    author: "Marie-Christine Sabatier",
+    rating: 5,
+    date: "il y a un an",
+    text: "Très professionnel, M. Maury a effectué un super travail sur une porte de garage en très mauvais état et dans les délais qu'il nous avait annoncés. Je recommande cet artisan pour son efficacité et sa ponctualité.",
+  },
+];
+
 export const engagements = [
   {
     title: "Un interlocuteur unique",
