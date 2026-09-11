@@ -6,7 +6,7 @@ import { site, communes, hasPhone, telHref } from "@/data/site";
 
 export const Route = createFileRoute("/contact")({
   validateSearch: (search: Record<string, unknown>): { intent?: string } =>
-    typeof search.intent === "string" ? { intent: search.intent } : {},
+    typeof search["intent"] === "string" ? { intent: search["intent"] } : {},
   head: () => ({
     meta: [
       { title: "Contact et devis gratuit à Bouloc — Maury Laurent" },
