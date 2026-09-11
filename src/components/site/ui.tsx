@@ -61,7 +61,7 @@ export function CtaPair({ tone = "light" }: { tone?: "light" | "dark" }) {
         className={`inline-flex border px-7 py-4 text-[11px] uppercase tracking-[0.2em] transition-colors ${
           tone === "dark"
             ? "border-white/30 text-primary-foreground hover:bg-white/10"
-            : "border-ink/25 text-ink hover:bg-ink hover:text-primary-foreground"
+            : "border-primary bg-primary text-primary-foreground hover:bg-ink"
         }`}
       >
         Parler de votre projet
