@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Star } from "lucide-react";
 import heroImg from "@/assets/hero-interieur.jpg";
 import peintureImg from "@/assets/peinture-decorative.jpg";
 import renovationImg from "@/assets/renovation.jpg";
@@ -9,7 +9,7 @@ import mursImg from "@/assets/murs-enduits.jpg";
 import facadeImg from "@/assets/facade.jpg";
 import entretienImg from "@/assets/entretien-bati.jpg";
 import { Section, Eyebrow, SectionTitle, Lead, CtaPair, FinalCta } from "@/components/site/ui";
-import { site, communes, engagements, hasPhone, telHref } from "@/data/site";
+import { site, communes, engagements, avis, hasPhone, telHref } from "@/data/site";
 import { realisations } from "@/data/realisations";
 
 export const Route = createFileRoute("/")({
@@ -342,23 +342,42 @@ function Home() {
 
       {/* AVIS */}
       <Section tone="sand">
-        <div className="grid gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-5">
+        <div className="flex flex-wrap items-end justify-between gap-6">
+          <div>
             <Eyebrow>Avis clients</Eyebrow>
             <SectionTitle>La parole de nos clients</SectionTitle>
           </div>
-          <div className="lg:col-span-6 lg:col-start-7">
-            <div className="border border-dashed border-line bg-background p-10">
-              <p className="text-sm uppercase tracking-[0.18em] text-muted-foreground">
-                Emplacement réservé
-              </p>
-              <p className="mt-4 text-[17px] leading-relaxed text-muted-foreground">
-                Aucun avis n'est affiché tant que des témoignages authentiques n'ont pas été
-                transmis ou reliés à une source vérifiable (fiche Google, plateforme d'avis).
-                L'emplacement est prêt à les accueillir.
-              </p>
-            </div>
-          </div>
+          <p className="text-sm uppercase tracking-[0.18em] text-muted-foreground">
+            Avis Google · 5/5
+          </p>
+        </div>
+        <div className="mt-14 grid gap-px border border-line bg-line md:grid-cols-2 lg:grid-cols-3">
+          {avis.map((a) => (
+            <figure key={a.author} className="flex flex-col bg-background p-8 lg:p-10">
+              <div
+                className="flex items-center gap-1 text-accent"
+                aria-label={`${a.rating} étoiles sur 5`}
+              >
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star
+                    key={i}
+                    className="size-4"
+                    fill={i < a.rating ? "currentColor" : "none"}
+                    strokeWidth={1.5}
+                  />
+                ))}
+              </div>
+              <blockquote className="mt-5 flex-1 text-[15px] leading-relaxed text-muted-foreground">
+                «&nbsp;{a.text}&nbsp;»
+              </blockquote>
+              <figcaption className="mt-6 border-t border-line pt-4">
+                <p className="font-display text-lg">{a.author}</p>
+                <p className="mt-1 text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                  Avis Google · {a.date}
+                </p>
+              </figcaption>
+            </figure>
+          ))}
         </div>
       </Section>
 
