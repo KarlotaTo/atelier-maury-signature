@@ -47,11 +47,14 @@ export function Header() {
           {hasPhone() && (
             <a
               href={telHref()}
-              className="hidden items-center gap-2 text-sm text-ink lg:flex"
-              aria-label={`Appeler ${site.name}`}
+              className="group relative hidden h-10 w-10 items-center justify-center overflow-hidden border border-line text-ink transition-all duration-300 hover:w-auto lg:flex"
+              aria-label={`Appeler ${site.name} au ${site.phone}`}
+              title={site.phone}
             >
-              <Phone className="h-4 w-4 text-accent" aria-hidden="true" />
-              {site.phone}
+              <Phone className="h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
+              <span className="max-w-0 overflow-hidden whitespace-nowrap px-0 text-sm opacity-0 transition-all duration-300 group-hover:max-w-[12rem] group-hover:px-2 group-hover:opacity-100">
+                {site.phone}
+              </span>
             </a>
           )}
           <Link
