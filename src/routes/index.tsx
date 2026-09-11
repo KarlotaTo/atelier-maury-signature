@@ -207,14 +207,6 @@ function Home() {
             </Link>
           ))}
         </div>
-        <div className="mt-12">
-          <Link
-            to="/facades-exterieur"
-            className="link-underline text-sm uppercase tracking-[0.18em] text-ink"
-          >
-            Voir aussi : façades & extérieur
-          </Link>
-        </div>
       </Section>
 
       {/* A à Z */}
