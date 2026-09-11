@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
-import { Menu, X, Phone } from "lucide-react";
-import { nav, site, hasPhone, telHref } from "@/data/site";
+import { useEffect, useRef, useState } from "react";
+import { Menu, X, Phone, ChevronDown } from "lucide-react";
+import { nav, expertises, site, hasPhone, telHref } from "@/data/site";
 
 export function Header() {
   const [open, setOpen] = useState(false);
