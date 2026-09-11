@@ -284,8 +284,13 @@ function Home() {
               params={{ slug: r.slug }}
               className="group bg-background p-8 transition-colors hover:bg-sand lg:p-10"
             >
-              <div className="flex aspect-[4/3] items-center justify-center border border-dashed border-line text-center text-xs uppercase tracking-[0.18em] text-muted-foreground">
-                Photos à ajouter
+              <div className="overflow-hidden">
+                <img
+                  src={r.images[0]!.src}
+                  alt={r.images[0]!.alt}
+                  loading="lazy"
+                  className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                />
               </div>
               <p className="mt-6 text-xs uppercase tracking-[0.18em] text-accent">{r.type}</p>
               <h3 className="mt-3 text-2xl leading-snug">{r.title}</h3>
@@ -293,10 +298,6 @@ function Home() {
             </Link>
           ))}
         </div>
-        <p className="mt-6 text-sm text-muted-foreground">
-          Fiches modèles : les réalisations réelles, photos et descriptifs seront ajoutés dès
-          transmission par l'entreprise.
-        </p>
       </Section>
 
       {/* HISTOIRE */}
