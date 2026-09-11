@@ -49,7 +49,6 @@ function Page() {
                   </span>
                 )}
               </h3>
-              <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">{c.text}</p>
             </article>
           ))}
         </div>
