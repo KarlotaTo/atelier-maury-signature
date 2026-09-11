@@ -7,6 +7,7 @@ export function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [dropOpen, setDropOpen] = useState(false);
+  const [mobileDrop, setMobileDrop] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const openDrop = () => {
@@ -107,7 +108,7 @@ export function Header() {
             aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
-            className="inline-flex h-10 w-10 items-center justify-center border border-line text-ink xl:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center border border-line text-ink lg:hidden"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -115,7 +116,7 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="border-t border-line bg-background xl:hidden">
+        <div className="border-t border-line bg-background lg:hidden">
           <nav className="mx-auto flex max-w-[1400px] flex-col px-5 py-2 lg:px-10">
             <Link
               to="/"
@@ -124,6 +125,29 @@ export function Header() {
             >
               Accueil
             </Link>
+            <button
+              type="button"
+              aria-expanded={mobileDrop}
+              onClick={() => setMobileDrop((v) => !v)}
+              className="flex items-center justify-between border-b border-line py-4 text-sm text-ink-soft"
+            >
+              Expertises
+              <ChevronDown
+                className={`h-4 w-4 transition-transform duration-300 ${mobileDrop ? "rotate-180" : ""}`}
+                aria-hidden="true"
+              />
+            </button>
+            {mobileDrop &&
+              expertises.map((item) => (
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  onClick={() => setOpen(false)}
+                  className="border-b border-line py-3.5 pl-4 text-sm text-muted-foreground"
+                >
+                  {item.label}
+                </Link>
+              ))}
             {nav.map((item) => (
               <Link
                 key={item.to}
