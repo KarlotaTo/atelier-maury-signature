@@ -1,6 +1,5 @@
 /**
  * Informations de l'entreprise.
- * Les valeurs marquées TODO sont des placeholders à compléter par le client.
  * Ne pas inventer de coordonnées, chiffres, labels ou avis.
  */
 
@@ -9,11 +8,8 @@ export const site = {
   baseline: "Peinture, décoration et rénovation",
   city: "Bouloc",
   since: 1994,
-  // TODO client : renseigner le numéro de téléphone réel
-  phone: "",
-  // TODO client : renseigner l'adresse email réelle
-  email: "",
-  // TODO client : renseigner l'adresse postale réelle
+  phone: "06 03 06 87 50",
+  email: "maury.laurent60@gmail.com",
   address: "Bouloc, Haute-Garonne (31)",
 };
 
@@ -33,48 +29,13 @@ export const nav = [
 ] as const;
 
 export const communes = [
-  {
-    slug: "bouloc",
-    name: "Bouloc",
-    main: true,
-    text: "Secteur principal. Siège de l'entreprise : interventions quotidiennes sur la commune et les hameaux alentour, avec des délais de déplacement très courts.",
-  },
-  {
-    slug: "fronton",
-    name: "Fronton",
-    main: false,
-    text: "Maisons de vignoble, bâtis anciens et constructions récentes : peinture intérieure, rénovation et ravalement.",
-  },
-  {
-    slug: "castelginest",
-    name: "Castelginest",
-    main: false,
-    text: "Pavillons et maisons familiales : peinture intérieure, sols et reprises de finition avant emménagement.",
-  },
-  {
-    slug: "aucamville",
-    name: "Aucamville",
-    main: false,
-    text: "Appartements et maisons de ville : rafraîchissement complet, préparation soignée des supports, chantiers habités.",
-  },
-  {
-    slug: "l-union",
-    name: "L'Union",
-    main: false,
-    text: "Peinture et rénovation intérieure sur des logements récents comme anciens, avec des interventions planifiées sans délai de déplacement.",
-  },
-  {
-    slug: "grenade",
-    name: "Grenade",
-    main: false,
-    text: "Rénovation de bâtis anciens, enduits à la chaux, parquets et façades.",
-  },
-  {
-    slug: "blagnac",
-    name: "Blagnac",
-    main: false,
-    text: "Rénovation intérieure, peinture décorative et home staging avant mise en vente ou en location.",
-  },
+  { slug: "bouloc", name: "Bouloc", main: true },
+  { slug: "fronton", name: "Fronton", main: false },
+  { slug: "castelginest", name: "Castelginest", main: false },
+  { slug: "aucamville", name: "Aucamville", main: false },
+  { slug: "l-union", name: "L'Union", main: false },
+  { slug: "grenade", name: "Grenade", main: false },
+  { slug: "blagnac", name: "Blagnac", main: false },
 ];
 
 export const engagements = [
