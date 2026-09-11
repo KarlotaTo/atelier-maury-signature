@@ -187,8 +187,8 @@ function Home() {
       {/* EXPERTISES */}
       <Section tone="sand">
         <Eyebrow>Savoir-faire</Eyebrow>
-        <SectionTitle>Trois expertises, un même niveau d'exigence</SectionTitle>
-        <div className="mt-14 grid gap-10 md:grid-cols-3">
+        <SectionTitle>Six expertises, un même niveau d'exigence</SectionTitle>
+        <div className="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
           {expertises.map((e) => (
             <Link key={e.to} to={e.to} className="group block">
               <div className="overflow-hidden">
