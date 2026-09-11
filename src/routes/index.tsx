@@ -380,7 +380,6 @@ function Home() {
               {communes.map((c) => (
                 <li key={c.slug} className="py-5">
                   <p className="font-display text-2xl">{c.name}</p>
-                  <p className="mt-1 text-[15px] leading-relaxed text-muted-foreground">{c.text}</p>
                 </li>
               ))}
             </ul>

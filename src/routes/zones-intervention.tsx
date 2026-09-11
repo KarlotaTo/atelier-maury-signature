@@ -40,7 +40,10 @@ function Page() {
         <SectionTitle>Où nous travaillons</SectionTitle>
         <div className="mt-14 grid gap-px border border-line bg-line md:grid-cols-2">
           {communes.map((c) => (
-            <article key={c.slug} className="bg-background p-8 lg:p-10">
+            <article
+              key={c.slug}
+              className="bg-background p-8 last:md:col-span-2 lg:p-10"
+            >
               <h3 className="flex items-baseline gap-3 text-2xl">
                 {c.name}
                 {c.main && (
@@ -49,7 +52,6 @@ function Page() {
                   </span>
                 )}
               </h3>
-              <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">{c.text}</p>
             </article>
           ))}
         </div>
