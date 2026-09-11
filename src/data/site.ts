@@ -22,9 +22,11 @@ export const telHref = () => `tel:${site.phone.replace(/\s/g, "")}`;
 
 export const nav = [
   { to: "/peinture-decoration", label: "Peinture & décoration" },
+  { to: "/sols-parquets", label: "Sols & parquets" },
+  { to: "/murs-revetements", label: "Murs & revêtements" },
   { to: "/renovation-interieure", label: "Rénovation intérieure" },
-  { to: "/sols-revetements", label: "Sols & revêtements" },
   { to: "/facades-exterieur", label: "Façades & extérieur" },
+  { to: "/entretien-bati", label: "Entretien & bâti" },
   { to: "/realisations", label: "Réalisations" },
   { to: "/entreprise", label: "L'entreprise" },
   { to: "/zones-intervention", label: "Zones d'intervention" },
