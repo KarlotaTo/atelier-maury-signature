@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowUpRight, Star } from "lucide-react";
+import { ArrowUpRight, MapPin, Star } from "lucide-react";
 import heroImg from "@/assets/hero-interieur.jpg";
 import peintureImg from "@/assets/peinture-decorative.jpg";
 import renovationImg from "@/assets/renovation.jpg";
@@ -396,10 +396,21 @@ function Home() {
             </Link>
           </div>
           <div className="lg:col-span-6 lg:col-start-7">
-            <ul className="divide-y divide-line border-y border-line">
+            <ul className="grid gap-px border border-line bg-line sm:grid-cols-2">
               {communes.map((c) => (
-                <li key={c.slug} className="py-5">
+                <li
+                  key={c.slug}
+                  className="group flex items-center gap-4 bg-background p-5 transition-colors hover:bg-sand"
+                >
+                  <span className="flex size-10 shrink-0 items-center justify-center border border-line text-accent transition-colors group-hover:border-accent group-hover:bg-accent group-hover:text-primary-foreground">
+                    <MapPin className="size-4" strokeWidth={1.5} />
+                  </span>
                   <p className="font-display text-2xl">{c.name}</p>
+                  {c.main && (
+                    <span className="ml-auto text-[11px] uppercase tracking-[0.18em] text-accent">
+                      Secteur principal
+                    </span>
+                  )}
                 </li>
               ))}
             </ul>
