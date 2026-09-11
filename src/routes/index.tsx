@@ -5,6 +5,9 @@ import peintureImg from "@/assets/peinture-decorative.jpg";
 import renovationImg from "@/assets/renovation.jpg";
 import parquetImg from "@/assets/parquet.jpg";
 import atelierImg from "@/assets/atelier.jpg";
+import mursImg from "@/assets/murs-enduits.jpg";
+import facadeImg from "@/assets/facade.jpg";
+import entretienImg from "@/assets/entretien-bati.jpg";
 import { Section, Eyebrow, SectionTitle, Lead, CtaPair, FinalCta } from "@/components/site/ui";
 import { site, communes, engagements, hasPhone, telHref } from "@/data/site";
 import { realisations } from "@/data/realisations";
@@ -70,23 +73,44 @@ const expertises = [
   {
     to: "/peinture-decoration",
     label: "Peinture & décoration",
-    text: "Peinture intérieure, effets décoratifs, enduits à la chaux, conseil couleurs et home staging.",
+    text: "Peinture, effets, textures, chaux, teintes.",
     img: peintureImg,
     alt: "Application d'un enduit à la chaux au spalter sur un mur intérieur",
   },
   {
+    to: "/sols-parquets",
+    label: "Sols & parquets",
+    text: "Parquet, revêtements de sols, carrelage.",
+    img: parquetImg,
+    alt: "Parquet en chêne massif rénové posé en point de Hongrie",
+  },
+  {
+    to: "/murs-revetements",
+    label: "Murs & revêtements",
+    text: "Enduits, murs, placo, isolation.",
+    img: mursImg,
+    alt: "Mur intérieur enduit et poncé avant mise en peinture",
+  },
+  {
     to: "/renovation-interieure",
     label: "Rénovation intérieure",
-    text: "Rénovation globale, cloisons, isolation, aménagement, cuisine et salle de bains.",
+    text: "Aménagement, cuisines, salles de bains, faïence.",
     img: renovationImg,
     alt: "Chantier de rénovation intérieure avec sols protégés et cloisons neuves",
   },
   {
-    to: "/sols-revetements",
-    label: "Sols & revêtements",
-    text: "Parquet massif, pose et rénovation de parquets, revêtements de sols et carrelage.",
-    img: parquetImg,
-    alt: "Parquet en chêne massif rénové posé en point de Hongrie",
+    to: "/facades-exterieur",
+    label: "Façades & extérieur",
+    text: "Ravalement, fissures, peinture extérieure.",
+    img: facadeImg,
+    alt: "Façade de maison en cours de ravalement",
+  },
+  {
+    to: "/entretien-bati",
+    label: "Entretien & bâti",
+    text: "Toiture, démoussage, clôtures.",
+    img: entretienImg,
+    alt: "Entretien extérieur d'une maison : toiture et clôture",
   },
 ] as const;
 
@@ -163,8 +187,8 @@ function Home() {
       {/* EXPERTISES */}
       <Section tone="sand">
         <Eyebrow>Savoir-faire</Eyebrow>
-        <SectionTitle>Trois expertises, un même niveau d'exigence</SectionTitle>
-        <div className="mt-14 grid gap-10 md:grid-cols-3">
+        <SectionTitle>Six expertises, un même niveau d'exigence</SectionTitle>
+        <div className="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
           {expertises.map((e) => (
             <Link key={e.to} to={e.to} className="group block">
               <div className="overflow-hidden">
@@ -182,14 +206,6 @@ function Home() {
               <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">{e.text}</p>
             </Link>
           ))}
-        </div>
-        <div className="mt-12">
-          <Link
-            to="/facades-exterieur"
-            className="link-underline text-sm uppercase tracking-[0.18em] text-ink"
-          >
-            Voir aussi : façades & extérieur
-          </Link>
         </div>
       </Section>
 

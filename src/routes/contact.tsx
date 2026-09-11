@@ -5,9 +5,8 @@ import { Section, Eyebrow, SectionTitle, Lead, PageHero } from "@/components/sit
 import { site, communes, hasPhone, telHref } from "@/data/site";
 
 export const Route = createFileRoute("/contact")({
-  validateSearch: (search: Record<string, unknown>) => ({
-    intent: typeof search.intent === "string" ? search.intent : undefined,
-  }),
+  validateSearch: (search: Record<string, unknown>): { intent?: string } =>
+    typeof search["intent"] === "string" ? { intent: search["intent"] } : {},
   head: () => ({
     meta: [
       { title: "Contact et devis gratuit à Bouloc — Maury Laurent" },

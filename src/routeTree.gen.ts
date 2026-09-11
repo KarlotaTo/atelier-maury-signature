@@ -18,6 +18,7 @@ import { Route as MursRevetementsRouteImport } from './routes/murs-revetements'
 import { Route as PeintureDecorationRouteImport } from './routes/peinture-decoration'
 import { Route as RealisationsRouteImport } from './routes/realisations'
 import { Route as RenovationInterieureRouteImport } from './routes/renovation-interieure'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SolsParquetsRouteImport } from './routes/sols-parquets'
 import { Route as ZonesInterventionRouteImport } from './routes/zones-intervention'
 import { Route as RealisationsSlugRouteImport } from './routes/realisations.$slug'
@@ -67,6 +68,11 @@ const RenovationInterieureRoute = RenovationInterieureRouteImport.update({
   path: '/renovation-interieure',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SolsParquetsRoute = SolsParquetsRouteImport.update({
   id: '/sols-parquets',
   path: '/sols-parquets',
@@ -93,6 +99,7 @@ export interface FileRoutesByFullPath {
   '/peinture-decoration': typeof PeintureDecorationRoute
   '/realisations': typeof RealisationsRouteWithChildren
   '/renovation-interieure': typeof RenovationInterieureRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sols-parquets': typeof SolsParquetsRoute
   '/zones-intervention': typeof ZonesInterventionRoute
   '/realisations/$slug': typeof RealisationsSlugRoute
@@ -107,6 +114,7 @@ export interface FileRoutesByTo {
   '/peinture-decoration': typeof PeintureDecorationRoute
   '/realisations': typeof RealisationsRouteWithChildren
   '/renovation-interieure': typeof RenovationInterieureRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sols-parquets': typeof SolsParquetsRoute
   '/zones-intervention': typeof ZonesInterventionRoute
   '/realisations/$slug': typeof RealisationsSlugRoute
@@ -122,6 +130,7 @@ export interface FileRoutesById {
   '/peinture-decoration': typeof PeintureDecorationRoute
   '/realisations': typeof RealisationsRouteWithChildren
   '/renovation-interieure': typeof RenovationInterieureRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sols-parquets': typeof SolsParquetsRoute
   '/zones-intervention': typeof ZonesInterventionRoute
   '/realisations/$slug': typeof RealisationsSlugRoute
@@ -138,6 +147,7 @@ export interface FileRouteTypes {
     | '/peinture-decoration'
     | '/realisations'
     | '/renovation-interieure'
+    | '/sitemap.xml'
     | '/sols-parquets'
     | '/zones-intervention'
     | '/realisations/$slug'
@@ -152,6 +162,7 @@ export interface FileRouteTypes {
     | '/peinture-decoration'
     | '/realisations'
     | '/renovation-interieure'
+    | '/sitemap.xml'
     | '/sols-parquets'
     | '/zones-intervention'
     | '/realisations/$slug'
@@ -166,6 +177,7 @@ export interface FileRouteTypes {
     | '/peinture-decoration'
     | '/realisations'
     | '/renovation-interieure'
+    | '/sitemap.xml'
     | '/sols-parquets'
     | '/zones-intervention'
     | '/realisations/$slug'
@@ -181,6 +193,7 @@ export interface RootRouteChildren {
   PeintureDecorationRoute: typeof PeintureDecorationRoute
   RealisationsRoute: typeof RealisationsRouteWithChildren
   RenovationInterieureRoute: typeof RenovationInterieureRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SolsParquetsRoute: typeof SolsParquetsRoute
   ZonesInterventionRoute: typeof ZonesInterventionRoute
 }
@@ -250,6 +263,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RenovationInterieureRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sols-parquets': {
       id: '/sols-parquets'
       path: '/sols-parquets'
@@ -296,6 +316,7 @@ const rootRouteChildren: RootRouteChildren = {
   PeintureDecorationRoute: PeintureDecorationRoute,
   RealisationsRoute: RealisationsRouteWithChildren,
   RenovationInterieureRoute: RenovationInterieureRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   SolsParquetsRoute: SolsParquetsRoute,
   ZonesInterventionRoute: ZonesInterventionRoute,
 }
