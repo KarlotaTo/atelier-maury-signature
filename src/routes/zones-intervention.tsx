@@ -10,7 +10,7 @@ export const Route = createFileRoute("/zones-intervention")({
       {
         name: "description",
         content:
-          "Maury Laurent intervient à Bouloc (secteur principal), Fronton, Castelginest, Aucamville, L'Union, Grenade et Blagnac pour vos travaux de peinture et rénovation.",
+          "Maury Laurent intervient à Bouloc (siège de l'entreprise), Fronton, Castelginest, Aucamville, L'Union, Grenade et Blagnac pour vos travaux de peinture et rénovation.",
       },
       { property: "og:title", content: "Zones d'intervention — Maury Laurent" },
       {
@@ -51,7 +51,7 @@ function Page() {
               <h3 className="text-2xl">{c.name}</h3>
               {c.main && (
                 <span className="ml-auto text-[11px] uppercase tracking-[0.18em] text-accent">
-                  Secteur principal
+                  Siège de l'entreprise
                 </span>
               )}
             </article>

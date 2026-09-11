@@ -408,7 +408,7 @@ function Home() {
                   <p className="font-display text-2xl">{c.name}</p>
                   {c.main && (
                     <span className="ml-auto text-[11px] uppercase tracking-[0.18em] text-accent">
-                      Secteur principal
+                      Siège de l'entreprise
                     </span>
                   )}
                 </li>
