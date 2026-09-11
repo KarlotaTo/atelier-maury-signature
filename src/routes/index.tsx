@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowUpRight, Star } from "lucide-react";
+import { ArrowUpRight, MapPin, Star } from "lucide-react";
 import heroImg from "@/assets/hero-interieur.jpg";
 import peintureImg from "@/assets/peinture-decorative.jpg";
 import renovationImg from "@/assets/renovation.jpg";
@@ -284,8 +284,13 @@ function Home() {
               params={{ slug: r.slug }}
               className="group bg-background p-8 transition-colors hover:bg-sand lg:p-10"
             >
-              <div className="flex aspect-[4/3] items-center justify-center border border-dashed border-line text-center text-xs uppercase tracking-[0.18em] text-muted-foreground">
-                Photos à ajouter
+              <div className="overflow-hidden">
+                <img
+                  src={r.images[0]!.src}
+                  alt={r.images[0]!.alt}
+                  loading="lazy"
+                  className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                />
               </div>
               <p className="mt-6 text-xs uppercase tracking-[0.18em] text-accent">{r.type}</p>
               <h3 className="mt-3 text-2xl leading-snug">{r.title}</h3>
@@ -293,10 +298,6 @@ function Home() {
             </Link>
           ))}
         </div>
-        <p className="mt-6 text-sm text-muted-foreground">
-          Fiches modèles : les réalisations réelles, photos et descriptifs seront ajoutés dès
-          transmission par l'entreprise.
-        </p>
       </Section>
 
       {/* HISTOIRE */}
@@ -395,10 +396,21 @@ function Home() {
             </Link>
           </div>
           <div className="lg:col-span-6 lg:col-start-7">
-            <ul className="divide-y divide-line border-y border-line">
+            <ul className="grid gap-px border border-line bg-line sm:grid-cols-2">
               {communes.map((c) => (
-                <li key={c.slug} className="py-5">
+                <li
+                  key={c.slug}
+                  className="group flex items-center gap-4 bg-background p-5 transition-colors last:sm:col-span-2 hover:bg-sand"
+                >
+                  <span className="flex size-10 shrink-0 items-center justify-center border border-line text-accent transition-colors group-hover:border-accent group-hover:bg-accent group-hover:text-primary-foreground">
+                    <MapPin className="size-4" strokeWidth={1.5} />
+                  </span>
                   <p className="font-display text-2xl">{c.name}</p>
+                  {c.main && (
+                    <span className="ml-auto text-[11px] uppercase tracking-[0.18em] text-accent">
+                      Secteur principal
+                    </span>
+                  )}
                 </li>
               ))}
             </ul>

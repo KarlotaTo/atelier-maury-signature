@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { MapPin } from "lucide-react";
 import { Section, Eyebrow, SectionTitle, Lead, PageHero, FinalCta } from "@/components/site/ui";
 import { communes, site } from "@/data/site";
 
@@ -38,20 +39,21 @@ function Page() {
       <Section>
         <Eyebrow>Communes</Eyebrow>
         <SectionTitle>Où nous travaillons</SectionTitle>
-        <div className="mt-14 grid gap-px border border-line bg-line md:grid-cols-2">
+        <div className="mt-14 grid gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
           {communes.map((c) => (
             <article
               key={c.slug}
-              className="bg-background p-8 last:md:col-span-2 lg:p-10"
+              className="group flex items-center gap-5 bg-background p-7 transition-colors hover:bg-sand lg:last:col-span-3"
             >
-              <h3 className="flex items-baseline gap-3 text-2xl">
-                {c.name}
-                {c.main && (
-                  <span className="text-[11px] uppercase tracking-[0.18em] text-accent">
-                    Secteur principal
-                  </span>
-                )}
-              </h3>
+              <span className="flex size-12 shrink-0 items-center justify-center border border-line text-accent transition-colors group-hover:border-accent group-hover:bg-accent group-hover:text-primary-foreground">
+                <MapPin className="size-5" strokeWidth={1.5} />
+              </span>
+              <h3 className="text-2xl">{c.name}</h3>
+              {c.main && (
+                <span className="ml-auto text-[11px] uppercase tracking-[0.18em] text-accent">
+                  Secteur principal
+                </span>
+              )}
             </article>
           ))}
         </div>
