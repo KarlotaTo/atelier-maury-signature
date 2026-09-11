@@ -81,7 +81,7 @@ export function Footer() {
             © {new Date().getFullYear()} {site.name} — Peinture, décoration et rénovation à{" "}
             {site.city}.
           </p>
-          <p>Mentions légales à compléter</p>
+          <p>Mentions légales</p>
         </div>
       </div>
     </footer>
