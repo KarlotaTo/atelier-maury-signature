@@ -1,7 +1,30 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { Menu, X, Phone, ChevronDown } from "lucide-react";
-import { nav, expertises, site, hasPhone, telHref } from "@/data/site";
+import { Menu, X, Phone, ChevronDown, Clock } from "lucide-react";
+import { nav, expertises, site, hasPhone, telHref, isOpen } from "@/data/site";
+
+function OpenBadge({ className = "" }: { className?: string }) {
+  const [open, setOpen] = useState<boolean | null>(null);
+  useEffect(() => {
+    setOpen(isOpen());
+    const id = setInterval(() => setOpen(isOpen()), 60000);
+    return () => clearInterval(id);
+  }, []);
+  if (open === null) return null;
+  return (
+    <span
+      className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[11px] tracking-wide ${
+        open
+          ? "border-emerald-200 bg-emerald-50 text-emerald-700"
+          : "border-slate-200 bg-slate-100 text-slate-600"
+      } ${className}`}
+    >
+      <span className={`h-1.5 w-1.5 rounded-full ${open ? "bg-emerald-500" : "bg-slate-400"}`} />
+      {open ? "Ouvert" : "Fermé"}
+      <span className="text-muted-foreground">· {site.hours.range}</span>
+    </span>
+  );
+}
 
 export function Header() {
   const [open, setOpen] = useState(false);
