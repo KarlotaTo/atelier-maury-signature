@@ -66,6 +66,10 @@ export function Footer() {
                 <span className="text-primary-foreground/50">[Email à compléter]</span>
               )}
             </li>
+            <li className="flex items-center gap-2 pt-1">
+              <Clock className="h-3.5 w-3.5 text-primary-foreground/50" aria-hidden="true" />
+              <span>{site.hours.days} · {site.hours.range}</span>
+            </li>
           </ul>
           <Link
             to="/contact"
