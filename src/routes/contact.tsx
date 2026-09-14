@@ -1,8 +1,31 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState, type FormEvent } from "react";
-import { Check } from "lucide-react";
+import { useState, useEffect, type FormEvent } from "react";
+import { Check, Clock } from "lucide-react";
 import { Section, Eyebrow, SectionTitle, Lead, PageHero } from "@/components/site/ui";
-import { site, communes, hasPhone, telHref } from "@/data/site";
+import { site, communes, hasPhone, telHref, isOpen } from "@/data/site";
+
+function OpenBadge({ className = "" }: { className?: string }) {
+  const [open, setOpen] = useState<boolean | null>(null);
+  useEffect(() => {
+    setOpen(isOpen());
+    const id = setInterval(() => setOpen(isOpen()), 60000);
+    return () => clearInterval(id);
+  }, []);
+  if (open === null) return null;
+  return (
+    <span
+      className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[11px] tracking-wide ${
+        open
+          ? "border-emerald-200 bg-emerald-50 text-emerald-700"
+          : "border-slate-200 bg-slate-100 text-slate-600"
+      } ${className}`}
+    >
+      <span className={`h-1.5 w-1.5 rounded-full ${open ? "bg-emerald-500" : "bg-slate-400"}`} />
+      {open ? "Ouvert" : "Fermé"}
+      <span className="text-muted-foreground">· {site.hours.range}</span>
+    </span>
+  );
+}
 
 export const Route = createFileRoute("/contact")({
   validateSearch: (search: Record<string, unknown>): { intent?: string } =>
@@ -168,6 +191,25 @@ function Page() {
                   )}
                 </li>
               </ul>
+            </div>
+            <div className="mt-6 border border-line bg-sand p-8">
+              <div className="flex items-center justify-between">
+                <p className="text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+                  Horaires
+                </p>
+                <OpenBadge />
+              </div>
+              <div className="mt-4 flex items-start gap-3 text-[15px] text-muted-foreground">
+                <Clock className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
+                <p>
+                  {site.hours.days}
+                  <br />
+                  <span className="text-ink">{site.hours.range}</span>
+                </p>
+              </div>
+              <p className="mt-4 text-[13px] leading-relaxed text-muted-foreground">
+                Vous pouvez nous contacter par email à toute heure ; nous vous rappelons pendant les heures d'ouverture.
+              </p>
             </div>
             <div className="mt-6 border border-line p-8">
               <p className="text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
