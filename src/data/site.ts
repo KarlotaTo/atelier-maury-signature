@@ -11,10 +11,25 @@ export const site = {
   phone: "06 03 06 87 50",
   email: "maury.laurent60@gmail.com",
   address: "Bouloc, Haute-Garonne (31)",
+  hours: {
+    days: "Du lundi au vendredi",
+    range: "9h – 18h",
+    /** Jours ouvrés : 1 = lundi, 5 = vendredi */
+    openWeekdays: [1, 2, 3, 4, 5] as number[],
+    openHour: 9,
+    closeHour: 18,
+  },
 };
 
 export const hasPhone = () => site.phone.trim().length > 0;
 export const telHref = () => `tel:${site.phone.replace(/\s/g, "")}`;
+
+/** Indique si l'entreprise est ouverte à la date donnée (heure locale du client). */
+export function isOpen(date = new Date()): boolean {
+  const day = date.getDay();
+  const hour = date.getHours();
+  return site.hours.openWeekdays.includes(day) && hour >= site.hours.openHour && hour < site.hours.closeHour;
+}
 
 export const expertises = [
   { to: "/peinture-decoration", label: "Peinture & décoration" },
