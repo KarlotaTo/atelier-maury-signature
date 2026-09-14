@@ -192,6 +192,25 @@ function Page() {
                 </li>
               </ul>
             </div>
+            <div className="mt-6 border border-line bg-sand p-8">
+              <div className="flex items-center justify-between">
+                <p className="text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+                  Horaires
+                </p>
+                <OpenBadge />
+              </div>
+              <div className="mt-4 flex items-start gap-3 text-[15px] text-muted-foreground">
+                <Clock className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
+                <p>
+                  {site.hours.days}
+                  <br />
+                  <span className="text-ink">{site.hours.range}</span>
+                </p>
+              </div>
+              <p className="mt-4 text-[13px] leading-relaxed text-muted-foreground">
+                Vous pouvez nous contacter par email à toute heure ; nous vous rappelons pendant les heures d'ouverture.
+              </p>
+            </div>
             <div className="mt-6 border border-line p-8">
               <p className="text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
                 Bon à savoir
