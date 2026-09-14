@@ -1,5 +1,8 @@
 import { Link } from "@tanstack/react-router";
-import type { ReactNode } from "react";
+import { ClipboardCheck, Sparkles, UserRoundCheck } from "lucide-react";
+import { useState, type FormEvent, type ReactNode } from "react";
+import { Button } from "@/components/ui/button";
+import { site } from "@/data/site";
 
 export function Section({
   children,
@@ -34,7 +37,9 @@ export function SectionTitle({
   className?: string;
 }) {
   return (
-    <h2 className={`mt-5 max-w-3xl text-4xl leading-[1.08] lg:text-5xl ${className}`}>{children}</h2>
+    <h2 className={`mt-5 max-w-3xl text-4xl leading-[1.08] lg:text-5xl ${className}`}>
+      {children}
+    </h2>
   );
 }
 
@@ -109,11 +114,7 @@ export function PageHero({
   );
 }
 
-export function PrestationList({
-  items,
-}: {
-  items: { title: string; text: string }[];
-}) {
+export function PrestationList({ items }: { items: { title: string; text: string }[] }) {
   return (
     <div className="grid gap-px border border-line bg-line sm:grid-cols-2">
       {items.map((item) => (
@@ -133,20 +134,129 @@ export function FinalCta({
   title?: string;
   text?: string;
 }) {
+  const [sent, setSent] = useState(false);
+
+  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    const name = String(data.get("name") ?? "")
+      .trim()
+      .slice(0, 100);
+    const email = String(data.get("email") ?? "")
+      .trim()
+      .slice(0, 255);
+    const message = String(data.get("message") ?? "")
+      .trim()
+      .slice(0, 1200);
+
+    if (!name || !email || !message || !form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    const subject = encodeURIComponent(`Demande de devis — ${name}`);
+    const body = encodeURIComponent(`Nom : ${name}\nEmail : ${email}\n\nProjet :\n${message}`);
+    window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
+    setSent(true);
+  };
+
+  const reassurances = [
+    { icon: UserRoundCheck, label: "Interlocuteur unique" },
+    { icon: Sparkles, label: "Chantier soigné" },
+    { icon: ClipboardCheck, label: "Devis détaillé" },
+  ];
+
   return (
-    <Section tone="dark">
-      <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
-        <div className="lg:col-span-7">
-          <p className="eyebrow text-primary-foreground/60">Contact</p>
-          <h2 className="mt-5 text-4xl leading-[1.08] lg:text-6xl">{title}</h2>
-          <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-primary-foreground/70">
-            {text}
-          </p>
-        </div>
-        <div className="lg:col-span-5 lg:justify-self-end">
-          <CtaPair tone="dark" />
+    <section aria-labelledby="contact-heading">
+      <div className="bg-primary text-primary-foreground">
+        <div className="mx-auto grid max-w-[1400px] gap-6 px-5 py-8 sm:grid-cols-3 lg:px-10">
+          {reassurances.map(({ icon: Icon, label }) => (
+            <div key={label} className="group flex items-center gap-4 sm:justify-center">
+              <span className="flex size-11 shrink-0 items-center justify-center border border-primary-foreground/20 transition-colors group-hover:border-primary-foreground/45 group-hover:bg-primary-foreground/10">
+                <Icon className="size-5" strokeWidth={1.5} aria-hidden="true" />
+              </span>
+              <span className="text-[12px] uppercase tracking-[0.16em] text-primary-foreground/90">
+                {label}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
-    </Section>
+
+      <div className="bg-sand text-ink">
+        <div className="mx-auto grid max-w-[1400px] gap-14 px-5 py-20 lg:grid-cols-12 lg:items-center lg:px-10 lg:py-24">
+          <div className="lg:col-span-5">
+            <p className="eyebrow">Contact</p>
+            <h2 id="contact-heading" className="mt-5 text-4xl leading-[1.08] lg:text-6xl">
+              {title}
+            </h2>
+            <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-muted-foreground">
+              {text}
+            </p>
+          </div>
+
+          <form
+            onSubmit={onSubmit}
+            className="grid gap-4 lg:col-span-6 lg:col-start-7 sm:grid-cols-2"
+          >
+            <label className="sr-only" htmlFor="final-contact-name">
+              Nom complet
+            </label>
+            <input
+              id="final-contact-name"
+              name="name"
+              type="text"
+              required
+              maxLength={100}
+              autoComplete="name"
+              placeholder="Nom complet"
+              className="min-h-12 w-full border border-line bg-background px-4 text-[15px] text-ink placeholder:text-muted-foreground/70 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
+            />
+
+            <label className="sr-only" htmlFor="final-contact-email">
+              Adresse email
+            </label>
+            <input
+              id="final-contact-email"
+              name="email"
+              type="email"
+              required
+              maxLength={255}
+              autoComplete="email"
+              placeholder="Adresse email"
+              className="min-h-12 w-full border border-line bg-background px-4 text-[15px] text-ink placeholder:text-muted-foreground/70 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
+            />
+
+            <label className="sr-only" htmlFor="final-contact-message">
+              Votre projet
+            </label>
+            <textarea
+              id="final-contact-message"
+              name="message"
+              required
+              maxLength={1200}
+              rows={4}
+              placeholder="Décrivez brièvement votre projet…"
+              className="w-full resize-none border border-line bg-background px-4 py-3 text-[15px] text-ink placeholder:text-muted-foreground/70 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent sm:col-span-2"
+            />
+
+            <div className="sm:col-span-2">
+              <Button
+                type="submit"
+                className="h-auto w-full rounded-none bg-accent px-8 py-4 text-[11px] uppercase tracking-[0.2em] text-accent-foreground shadow-none hover:bg-accent/90"
+              >
+                Envoyer ma demande
+              </Button>
+              {sent && (
+                <p className="mt-3 text-sm text-muted-foreground" role="status">
+                  Votre messagerie s'est ouverte avec la demande préparée.
+                </p>
+              )}
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
   );
 }
