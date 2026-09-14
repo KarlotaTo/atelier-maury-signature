@@ -37,7 +37,9 @@ export function SectionTitle({
   className?: string;
 }) {
   return (
-    <h2 className={`mt-5 max-w-3xl text-4xl leading-[1.08] lg:text-5xl ${className}`}>{children}</h2>
+    <h2 className={`mt-5 max-w-3xl text-4xl leading-[1.08] lg:text-5xl ${className}`}>
+      {children}
+    </h2>
   );
 }
 
@@ -112,11 +114,7 @@ export function PageHero({
   );
 }
 
-export function PrestationList({
-  items,
-}: {
-  items: { title: string; text: string }[];
-}) {
+export function PrestationList({ items }: { items: { title: string; text: string }[] }) {
   return (
     <div className="grid gap-px border border-line bg-line sm:grid-cols-2">
       {items.map((item) => (
@@ -142,9 +140,15 @@ export function FinalCta({
     event.preventDefault();
     const form = event.currentTarget;
     const data = new FormData(form);
-    const name = String(data.get("name") ?? "").trim().slice(0, 100);
-    const email = String(data.get("email") ?? "").trim().slice(0, 255);
-    const message = String(data.get("message") ?? "").trim().slice(0, 1200);
+    const name = String(data.get("name") ?? "")
+      .trim()
+      .slice(0, 100);
+    const email = String(data.get("email") ?? "")
+      .trim()
+      .slice(0, 255);
+    const message = String(data.get("message") ?? "")
+      .trim()
+      .slice(0, 1200);
 
     if (!name || !email || !message || !form.checkValidity()) {
       form.reportValidity();
