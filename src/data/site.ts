@@ -13,11 +13,11 @@ export const site = {
   address: "Bouloc, Haute-Garonne (31)",
   hours: {
     days: "Du lundi au vendredi",
-    range: "9h – 18h",
+    range: "9h – 17h",
     /** Jours ouvrés : 1 = lundi, 5 = vendredi */
     openWeekdays: [1, 2, 3, 4, 5] as number[],
     openHour: 9,
-    closeHour: 18,
+    closeHour: 17,
   },
 };
 
