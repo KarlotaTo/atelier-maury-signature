@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { Clock } from "lucide-react";
 import { nav, site, communes, hasPhone, telHref } from "@/data/site";
 
 export function Footer() {
