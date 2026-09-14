@@ -1,15 +1,27 @@
 import { Link } from "@tanstack/react-router";
 import { Clock } from "lucide-react";
 import { nav, site, communes, hasPhone, telHref } from "@/data/site";
+import logoMark from "@/assets/maury-laurent-mark.png";
 
 export function Footer() {
   return (
     <footer className="mt-24 bg-primary text-primary-foreground">
       <div className="mx-auto grid max-w-[1400px] gap-12 px-5 py-20 lg:grid-cols-12 lg:px-10">
         <div className="lg:col-span-4">
-          <p className="font-display text-3xl leading-none">
-            Maury <span className="text-[oklch(0.72_0.12_25)]">Laurent</span>
-          </p>
+          <div className="flex items-center gap-3">
+            <img
+              src={logoMark}
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+              width={594}
+              height={559}
+              className="h-12 w-12 object-contain"
+            />
+            <p className="font-display text-3xl leading-none">
+              Maury <span className="text-[oklch(0.72_0.12_25)]">Laurent</span>
+            </p>
+          </div>
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-primary-foreground/70">
             Entreprise familiale de peinture, décoration et rénovation installée à {site.city}{" "}
             depuis {site.since}. Quatre générations d'artisans.

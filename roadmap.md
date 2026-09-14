@@ -6,3 +6,4 @@
 - [x] Monter Header/Footer/MobileCta dans __root.tsx + polices + métadonnées
 - [x] sitemap.xml + robots.txt
 - [x] Remplacer le bandeau Contact final par une transition bleu nuit et un formulaire clair
+- [x] Ajouter un logo pictural haut de gamme et son favicon
