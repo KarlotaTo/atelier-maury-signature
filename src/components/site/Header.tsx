@@ -195,6 +195,13 @@ export function Header() {
                 {item.label}
               </Link>
             ))}
+            <div className="flex items-center justify-between border-b border-line py-4 text-sm text-ink-soft">
+              <span className="flex items-center gap-2">
+                <Clock className="h-4 w-4 text-muted-foreground" aria-hidden="true" />
+                Horaires
+              </span>
+              <OpenBadge />
+            </div>
             <Link
               to="/contact"
               onClick={() => setOpen(false)}
