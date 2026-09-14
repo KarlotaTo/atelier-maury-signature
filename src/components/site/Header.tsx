@@ -117,6 +117,7 @@ export function Header() {
               {item.label}
             </Link>
           ))}
+          <OpenBadge className="hidden xl:inline-flex" />
         </nav>
 
         <div className="flex items-center gap-3">
