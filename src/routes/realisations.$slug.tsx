@@ -1,5 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
+import { BeforeAfterSlider } from "@/components/site/BeforeAfterSlider";
 import { Section, Eyebrow, FinalCta } from "@/components/site/ui";
 import { getRealisation } from "@/data/realisations";
 
@@ -55,6 +56,7 @@ function NotFound() {
 
 function Page() {
   const r = Route.useLoaderData();
+  const beforeAfterItems = r.beforeAfter?.filter((item) => item.beforeImage && item.afterImage) ?? [];
 
   return (
     <>
@@ -74,6 +76,28 @@ function Page() {
         <p className="mt-8 max-w-2xl text-[17px] leading-relaxed text-muted-foreground">
           {r.description}
         </p>
+
+        {beforeAfterItems.length > 0 && (
+          <div className="mt-16">
+            <Eyebrow>Avant / Après</Eyebrow>
+            <h2 className="mt-5 max-w-2xl text-3xl leading-tight lg:text-4xl">
+              Découvrez la transformation du projet.
+            </h2>
+            <div className="mt-8 grid gap-8">
+              {beforeAfterItems.map((item, index) => (
+                <BeforeAfterSlider
+                  key={`${item.beforeImage}-${item.afterImage}-${index}`}
+                  beforeImage={item.beforeImage}
+                  afterImage={item.afterImage}
+                  beforeLabel={item.beforeLabel ?? "Avant"}
+                  afterLabel={item.afterLabel ?? "Après"}
+                  beforeAlt={item.beforeAlt}
+                  afterAlt={item.afterAlt}
+                />
+              ))}
+            </div>
+          </div>
+        )}
 
         <div className="mt-14 grid gap-px border border-line bg-line sm:grid-cols-2">
           {r.images.length > 0 ? (

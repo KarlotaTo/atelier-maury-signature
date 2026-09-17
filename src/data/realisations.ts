@@ -9,6 +9,15 @@ import realRenovation from "@/assets/real-renovation.jpg";
 import realChaux from "@/assets/real-chaux.jpg";
 import realFacade from "@/assets/real-facade.jpg";
 
+export type RealisationBeforeAfter = {
+  beforeImage: string;
+  afterImage: string;
+  beforeLabel?: string;
+  afterLabel?: string;
+  beforeAlt?: string;
+  afterAlt?: string;
+};
+
 export type Realisation = {
   slug: string;
   title: string;
@@ -19,7 +28,8 @@ export type Realisation = {
   description: string;
   prestations: string[];
   images: { src: string; alt: string }[];
-  beforeAfter?: { before: string; after: string; alt: string };
+  /** Renseigner un ou plusieurs duos uniquement lorsque les deux photos du même cadrage existent. */
+  beforeAfter?: RealisationBeforeAfter[];
 };
 
 export const realisations: Realisation[] = [
