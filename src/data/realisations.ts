@@ -8,6 +8,10 @@
 import realRenovation from "@/assets/real-renovation.jpg";
 import realChaux from "@/assets/real-chaux.jpg";
 import realFacade from "@/assets/real-facade.jpg";
+import beforeSalon from "@/assets/before-salon.jpg";
+import afterSalon from "@/assets/after-salon.jpg";
+import beforeFacade from "@/assets/before-facade.jpg";
+import afterFacade from "@/assets/after-facade.jpg";
 
 export type RealisationBeforeAfter = {
   beforeImage: string;
