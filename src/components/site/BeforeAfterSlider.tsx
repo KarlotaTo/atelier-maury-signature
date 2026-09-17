@@ -9,9 +9,9 @@ export type BeforeAfterSliderProps = {
   afterImage: string;
   beforeLabel?: string;
   afterLabel?: string;
-  beforeAlt?: string;
-  afterAlt?: string;
-  className?: string;
+  beforeAlt?: string | undefined;
+  afterAlt?: string | undefined;
+  className?: string | undefined;
 };
 
 export function BeforeAfterSlider({
