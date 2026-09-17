@@ -8,6 +8,10 @@
 import realRenovation from "@/assets/real-renovation.jpg";
 import realChaux from "@/assets/real-chaux.jpg";
 import realFacade from "@/assets/real-facade.jpg";
+import beforeSalon from "@/assets/before-salon.jpg";
+import afterSalon from "@/assets/after-salon.jpg";
+import beforeFacade from "@/assets/before-facade.jpg";
+import afterFacade from "@/assets/after-facade.jpg";
 
 export type RealisationBeforeAfter = {
   beforeImage: string;
@@ -48,6 +52,14 @@ export const realisations: Realisation[] = [
       "Peinture intérieure",
       "Revêtements de sols",
     ],
+    beforeAfter: [
+      {
+        beforeImage: beforeSalon,
+        afterImage: afterSalon,
+        beforeAlt: "Séjour avant rénovation, murs abîmés et parquet usé",
+        afterAlt: "Séjour rénové avec mur bleu profond, poutres blanchies et parquet clair",
+      },
+    ],
     images: [
       {
         src: realRenovation,
@@ -86,6 +98,14 @@ export const realisations: Realisation[] = [
       "Traitement des fissures",
       "Nettoyage",
       "Peinture extérieure",
+    ],
+    beforeAfter: [
+      {
+        beforeImage: beforeFacade,
+        afterImage: afterFacade,
+        beforeAlt: "Façade de maison avant ravalement, enduit fissuré et volets vieillis",
+        afterAlt: "Façade de maison après ravalement, enduit crème et volets neufs",
+      },
     ],
     images: [
       {
