@@ -21,6 +21,7 @@ import { Route as RenovationInterieureRouteImport } from './routes/renovation-in
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SolsParquetsRouteImport } from './routes/sols-parquets'
 import { Route as ZonesInterventionRouteImport } from './routes/zones-intervention'
+import { Route as RealisationsIndexRouteImport } from './routes/realisations/index'
 import { Route as RealisationsSlugRouteImport } from './routes/realisations.$slug'
 
 const IndexRoute = IndexRouteImport.update({
@@ -83,6 +84,11 @@ const ZonesInterventionRoute = ZonesInterventionRouteImport.update({
   path: '/zones-intervention',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RealisationsIndexRoute = RealisationsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => RealisationsRoute,
+} as any)
 const RealisationsSlugRoute = RealisationsSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
@@ -103,6 +109,7 @@ export interface FileRoutesByFullPath {
   '/sols-parquets': typeof SolsParquetsRoute
   '/zones-intervention': typeof ZonesInterventionRoute
   '/realisations/$slug': typeof RealisationsSlugRoute
+  '/realisations/': typeof RealisationsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -112,12 +119,12 @@ export interface FileRoutesByTo {
   '/facades-exterieur': typeof FacadesExterieurRoute
   '/murs-revetements': typeof MursRevetementsRoute
   '/peinture-decoration': typeof PeintureDecorationRoute
-  '/realisations': typeof RealisationsRouteWithChildren
   '/renovation-interieure': typeof RenovationInterieureRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sols-parquets': typeof SolsParquetsRoute
   '/zones-intervention': typeof ZonesInterventionRoute
   '/realisations/$slug': typeof RealisationsSlugRoute
+  '/realisations': typeof RealisationsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -134,6 +141,7 @@ export interface FileRoutesById {
   '/sols-parquets': typeof SolsParquetsRoute
   '/zones-intervention': typeof ZonesInterventionRoute
   '/realisations/$slug': typeof RealisationsSlugRoute
+  '/realisations/': typeof RealisationsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -151,6 +159,7 @@ export interface FileRouteTypes {
     | '/sols-parquets'
     | '/zones-intervention'
     | '/realisations/$slug'
+    | '/realisations/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -160,12 +169,12 @@ export interface FileRouteTypes {
     | '/facades-exterieur'
     | '/murs-revetements'
     | '/peinture-decoration'
-    | '/realisations'
     | '/renovation-interieure'
     | '/sitemap.xml'
     | '/sols-parquets'
     | '/zones-intervention'
     | '/realisations/$slug'
+    | '/realisations'
   id:
     | '__root__'
     | '/'
@@ -181,6 +190,7 @@ export interface FileRouteTypes {
     | '/sols-parquets'
     | '/zones-intervention'
     | '/realisations/$slug'
+    | '/realisations/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -284,6 +294,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ZonesInterventionRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/realisations/': {
+      id: '/realisations/'
+      path: '/'
+      fullPath: '/realisations/'
+      preLoaderRoute: typeof RealisationsIndexRouteImport
+      parentRoute: typeof RealisationsRoute
+    }
     '/realisations/$slug': {
       id: '/realisations/$slug'
       path: '/$slug'
@@ -296,10 +313,12 @@ declare module '@tanstack/react-router' {
 
 interface RealisationsRouteChildren {
   RealisationsSlugRoute: typeof RealisationsSlugRoute
+  RealisationsIndexRoute: typeof RealisationsIndexRoute
 }
 
 const RealisationsRouteChildren: RealisationsRouteChildren = {
   RealisationsSlugRoute: RealisationsSlugRoute,
+  RealisationsIndexRoute: RealisationsIndexRoute,
 }
 
 const RealisationsRouteWithChildren = RealisationsRoute._addFileChildren(
