@@ -2,7 +2,6 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { Menu, X, Phone, ChevronDown, Clock } from "lucide-react";
 import { nav, expertises, site, hasPhone, telHref, isOpen } from "@/data/site";
-import logoMark from "@/assets/maury-laurent-mark.png";
 
 function OpenBadge({ className = "" }: { className?: string }) {
   const [open, setOpen] = useState<boolean | null>(null);
@@ -58,14 +57,6 @@ export function Header() {
     >
       <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-6 px-5 py-4 lg:px-10">
         <Link to="/" className="flex items-center gap-2.5" onClick={() => setOpen(false)}>
-          <img
-            src={logoMark}
-            alt=""
-            aria-hidden="true"
-            width={594}
-            height={559}
-            className="h-10 w-10 shrink-0 object-contain"
-          />
           <span className="flex items-baseline gap-3">
             <span className="font-display text-2xl leading-none tracking-tight text-ink">
               Maury <span className="text-accent">Laurent</span>
