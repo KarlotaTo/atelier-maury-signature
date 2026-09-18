@@ -1,27 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
 import img from "@/assets/parquet.jpg";
 import { Section, Eyebrow, SectionTitle, Lead, PageHero, PrestationList, FinalCta } from "@/components/site/ui";
+import { buildSeoHead, serviceSchema } from "@/lib/seo";
 
 export const Route = createFileRoute("/sols-parquets")({
-  head: () => ({
-    meta: [
-      { title: "Parquet, sols et revêtements à Bouloc — Maury Laurent" },
-      {
-        name: "description",
-        content:
-          "Pose de parquet massif, rénovation et ponçage de parquets anciens, revêtements de sols souples et carrelage autour de Bouloc et Fronton.",
-      },
-      { property: "og:title", content: "Sols & revêtements — Maury Laurent" },
-      {
-        property: "og:description",
-        content:
-          "Parquet massif, rénovation de parquet, revêtements de sols et carrelage par une entreprise familiale d'artisans.",
-      },
-      { property: "og:type", content: "article" },
-      { property: "og:url", content: "/sols-parquets" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [{ rel: "canonical", href: "/sols-parquets" }],
+  head: () => buildSeoHead({
+    title: "Pose et rénovation de parquet à Bouloc | Maury Laurent",
+    description: "Pose de parquet, rénovation de parquet ancien, revêtements de sols et carrelage à Bouloc, Fronton et au nord de Toulouse.",
+    path: "/sols-parquets",
+    ogType: "article",
+    breadcrumbLabel: "Sols et parquets",
+    schema: serviceSchema("Pose et rénovation de sols et parquets", "Pose de parquet, rénovation de parquet ancien, revêtements de sols et carrelage à Bouloc, Fronton et au nord de Toulouse.", "/sols-parquets"),
   }),
   component: Page,
 });

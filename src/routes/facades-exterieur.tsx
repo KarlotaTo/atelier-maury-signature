@@ -1,27 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
 import img from "@/assets/facade.jpg";
 import { Section, Eyebrow, SectionTitle, Lead, PageHero, PrestationList, FinalCta } from "@/components/site/ui";
+import { buildSeoHead, serviceSchema } from "@/lib/seo";
 
 export const Route = createFileRoute("/facades-exterieur")({
-  head: () => ({
-    meta: [
-      { title: "Ravalement de façade et peinture extérieure — Maury Laurent, Bouloc" },
-      {
-        name: "description",
-        content:
-          "Ravalement, rénovation des murs extérieurs, traitement des fissures et peinture extérieure autour de Bouloc, Fronton et Grenade.",
-      },
-      { property: "og:title", content: "Façades & extérieur — Maury Laurent" },
-      {
-        property: "og:description",
-        content:
-          "Ravalement de façade, réparation des fissures et peinture extérieure par une entreprise familiale d'artisans depuis 1994.",
-      },
-      { property: "og:type", content: "article" },
-      { property: "og:url", content: "/facades-exterieur" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [{ rel: "canonical", href: "/facades-exterieur" }],
+  head: () => buildSeoHead({
+    title: "Ravalement de façade à Bouloc | Maury Laurent",
+    description: "Ravalement de façade, traitement des fissures et peinture extérieure à Bouloc, Fronton, Grenade et au nord de Toulouse.",
+    path: "/facades-exterieur",
+    ogType: "article",
+    breadcrumbLabel: "Façades et extérieur",
+    schema: serviceSchema("Ravalement de façade et peinture extérieure", "Ravalement de façade, traitement des fissures et peinture extérieure à Bouloc, Fronton, Grenade et au nord de Toulouse.", "/facades-exterieur"),
   }),
   component: Page,
 });

@@ -2,27 +2,22 @@ import { createFileRoute } from "@tanstack/react-router";
 import atelierImg from "@/assets/atelier.jpg";
 import { Section, Eyebrow, SectionTitle, Lead, PageHero, FinalCta } from "@/components/site/ui";
 import { engagements, site } from "@/data/site";
+import { buildSeoHead, BUSINESS_ID } from "@/lib/seo";
 
 export const Route = createFileRoute("/entreprise")({
-  head: () => ({
-    meta: [
-      { title: "L'entreprise familiale Maury Laurent à Bouloc depuis 1994" },
-      {
-        name: "description",
-        content:
-          "Quatre générations d'artisans à Bouloc : l'histoire, les valeurs et la méthode de l'entreprise Maury Laurent, peinture, décoration et rénovation.",
-      },
-      { property: "og:title", content: "L'entreprise — Maury Laurent" },
-      {
-        property: "og:description",
-        content:
-          "Une entreprise familiale de peinture et rénovation installée à Bouloc depuis 1994, quatre générations d'artisans.",
-      },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: "/entreprise" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [{ rel: "canonical", href: "/entreprise" }],
+  head: () => buildSeoHead({
+    title: "Entreprise familiale de rénovation à Bouloc | Maury Laurent",
+    description: "Découvrez Maury Laurent, entreprise familiale de peinture, décoration et rénovation installée à Bouloc depuis 1994.",
+    path: "/entreprise",
+    breadcrumbLabel: "L’entreprise",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      name: "L’entreprise",
+      description: "Découvrez Maury Laurent, entreprise familiale de peinture, décoration et rénovation installée à Bouloc depuis 1994.",
+      url: "https://maury-laurent.lnkio.fr/entreprise",
+      about: { "@id": BUSINESS_ID },
+    },
   }),
   component: Page,
 });

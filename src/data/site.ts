@@ -10,6 +10,7 @@ export const site = {
   since: 1994,
   phone: "06 03 06 87 50",
   email: "maury.laurent60@gmail.com",
+  url: "https://maury-laurent.lnkio.fr",
   address: "Bouloc, Haute-Garonne (31)",
   hours: {
     days: "Du lundi au vendredi",

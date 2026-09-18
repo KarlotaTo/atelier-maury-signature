@@ -1,27 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
 import img from "@/assets/murs-enduits.jpg";
 import { Section, Eyebrow, SectionTitle, Lead, PageHero, PrestationList, FinalCta } from "@/components/site/ui";
+import { buildSeoHead, serviceSchema } from "@/lib/seo";
 
 export const Route = createFileRoute("/murs-revetements")({
-  head: () => ({
-    meta: [
-      { title: "Murs & revêtements : enduits, placo, isolation à Bouloc — Maury Laurent" },
-      {
-        name: "description",
-        content:
-          "Enduits, réparation et création de murs, placo et isolation autour de Bouloc, Fronton et L'Union. Supports sains avant toute finition.",
-      },
-      { property: "og:title", content: "Murs & revêtements — Maury Laurent" },
-      {
-        property: "og:description",
-        content:
-          "Enduits, placo et isolation : la base invisible d'une finition durable, par une entreprise familiale depuis 1994.",
-      },
-      { property: "og:type", content: "article" },
-      { property: "og:url", content: "/murs-revetements" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [{ rel: "canonical", href: "/murs-revetements" }],
+  head: () => buildSeoHead({
+    title: "Enduits, placo et isolation à Bouloc | Maury Laurent",
+    description: "Enduits, reprise de murs, pose de placo et isolation intérieure à Bouloc, Fronton, Castelginest et au nord de Toulouse.",
+    path: "/murs-revetements",
+    ogType: "article",
+    breadcrumbLabel: "Murs et revêtements",
+    schema: serviceSchema("Enduits, placo et isolation", "Enduits, reprise de murs, pose de placo et isolation intérieure à Bouloc, Fronton, Castelginest et au nord de Toulouse.", "/murs-revetements"),
   }),
   component: Page,
 });

@@ -3,6 +3,7 @@ import { useState, useEffect, type FormEvent } from "react";
 import { Check, Clock } from "lucide-react";
 import { Section, Eyebrow, SectionTitle, Lead, PageHero } from "@/components/site/ui";
 import { site, communes, hasPhone, telHref, isOpen } from "@/data/site";
+import { buildSeoHead, BUSINESS_ID } from "@/lib/seo";
 
 function OpenBadge({ className = "" }: { className?: string }) {
   const [open, setOpen] = useState<boolean | null>(null);
@@ -30,25 +31,19 @@ function OpenBadge({ className = "" }: { className?: string }) {
 export const Route = createFileRoute("/contact")({
   validateSearch: (search: Record<string, unknown>): { intent?: string } =>
     typeof search["intent"] === "string" ? { intent: search["intent"] } : {},
-  head: () => ({
-    meta: [
-      { title: "Contact et devis gratuit à Bouloc — Maury Laurent" },
-      {
-        name: "description",
-        content:
-          "Demandez un devis détaillé pour vos travaux de peinture, décoration ou rénovation à Bouloc et au nord de Toulouse. Visite sur place, interlocuteur unique.",
-      },
-      { property: "og:title", content: "Contact — Maury Laurent" },
-      {
-        property: "og:description",
-        content:
-          "Décrivez votre projet : visite sur place et devis détaillé poste par poste.",
-      },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: "/contact" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [{ rel: "canonical", href: "/contact" }],
+  head: () => buildSeoHead({
+    title: "Contact et devis peinture à Bouloc | Maury Laurent",
+    description: "Contactez Maury Laurent pour un devis détaillé en peinture, décoration ou rénovation à Bouloc et au nord de Toulouse. Du lundi au vendredi, 9h–17h.",
+    path: "/contact",
+    breadcrumbLabel: "Contact et devis",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      name: "Contact et devis",
+      description: "Contactez Maury Laurent pour un devis détaillé en peinture, décoration ou rénovation à Bouloc et au nord de Toulouse. Du lundi au vendredi, 9h–17h.",
+      url: "https://maury-laurent.lnkio.fr/contact",
+      about: { "@id": BUSINESS_ID },
+    },
   }),
   component: Page,
 });

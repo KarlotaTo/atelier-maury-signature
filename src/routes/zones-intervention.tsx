@@ -2,27 +2,22 @@ import { createFileRoute } from "@tanstack/react-router";
 import { MapPin } from "lucide-react";
 import { Section, Eyebrow, SectionTitle, Lead, PageHero, FinalCta } from "@/components/site/ui";
 import { communes, site } from "@/data/site";
+import { buildSeoHead, BUSINESS_ID } from "@/lib/seo";
 
 export const Route = createFileRoute("/zones-intervention")({
-  head: () => ({
-    meta: [
-      { title: "Zones d'intervention : Bouloc, Fronton, Aucamville, Blagnac — Maury Laurent" },
-      {
-        name: "description",
-        content:
-          "Maury Laurent intervient à Bouloc (siège de l'entreprise), Fronton, Castelginest, Aucamville, L'Union, Grenade et Blagnac pour vos travaux de peinture et rénovation.",
-      },
-      { property: "og:title", content: "Zones d'intervention — Maury Laurent" },
-      {
-        property: "og:description",
-        content:
-          "Peinture et rénovation au nord de Toulouse : Bouloc, Fronton, Castelginest, Aucamville, L'Union, Grenade, Blagnac.",
-      },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: "/zones-intervention" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [{ rel: "canonical", href: "/zones-intervention" }],
+  head: () => buildSeoHead({
+    title: "Peintre à Bouloc et au nord de Toulouse | Maury Laurent",
+    description: "Peinture et rénovation à Bouloc, Fronton, Castelginest, Aucamville, L’Union, Grenade et Blagnac. Découvrez nos zones d’intervention.",
+    path: "/zones-intervention",
+    breadcrumbLabel: "Zones d’intervention",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      name: "Zones d’intervention",
+      description: "Peinture et rénovation à Bouloc, Fronton, Castelginest, Aucamville, L’Union, Grenade et Blagnac. Découvrez nos zones d’intervention.",
+      url: "https://maury-laurent.lnkio.fr/zones-intervention",
+      about: { "@id": BUSINESS_ID },
+    },
   }),
   component: Page,
 });

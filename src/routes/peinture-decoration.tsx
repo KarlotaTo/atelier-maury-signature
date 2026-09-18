@@ -1,27 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
 import img from "@/assets/peinture-decorative.jpg";
 import { Section, Eyebrow, SectionTitle, Lead, PageHero, PrestationList, FinalCta } from "@/components/site/ui";
+import { buildSeoHead, serviceSchema } from "@/lib/seo";
 
 export const Route = createFileRoute("/peinture-decoration")({
-  head: () => ({
-    meta: [
-      { title: "Peinture intérieure et décorative à Bouloc — Maury Laurent" },
-      {
-        name: "description",
-        content:
-          "Peinture intérieure, effets et textures, enduits à la chaux, conseil couleurs et home staging autour de Bouloc, Fronton et Blagnac.",
-      },
-      { property: "og:title", content: "Peinture & décoration — Maury Laurent" },
-      {
-        property: "og:description",
-        content:
-          "Finitions soignées, préparation des supports, peinture décorative et conseil couleurs par une entreprise familiale depuis 1994.",
-      },
-      { property: "og:type", content: "article" },
-      { property: "og:url", content: "/peinture-decoration" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [{ rel: "canonical", href: "/peinture-decoration" }],
+  head: () => buildSeoHead({
+    title: "Peinture intérieure et décoration à Bouloc | Maury Laurent",
+    description: "Peinture intérieure, effets décoratifs, textures, chaux et conseil couleurs à Bouloc, Fronton et au nord de Toulouse. Demandez un devis détaillé.",
+    path: "/peinture-decoration",
+    ogType: "article",
+    breadcrumbLabel: "Peinture intérieure et décoration",
+    schema: serviceSchema("Peinture intérieure et décoration", "Peinture intérieure, effets décoratifs, textures, chaux et conseil couleurs à Bouloc, Fronton et au nord de Toulouse. Demandez un devis détaillé.", "/peinture-decoration"),
   }),
   component: Page,
 });
