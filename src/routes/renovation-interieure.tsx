@@ -1,27 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
 import img from "@/assets/renovation.jpg";
 import { Section, Eyebrow, SectionTitle, Lead, PageHero, PrestationList, FinalCta } from "@/components/site/ui";
+import { buildSeoHead, serviceSchema } from "@/lib/seo";
 
 export const Route = createFileRoute("/renovation-interieure")({
-  head: () => ({
-    meta: [
-      { title: "Rénovation intérieure à Bouloc et alentours — Maury Laurent" },
-      {
-        name: "description",
-        content:
-          "Rénovation globale, placo, isolation, aménagement, cuisine, salle de bains et carrelage. Un seul interlocuteur pour votre projet, de l'étude à la réception.",
-      },
-      { property: "og:title", content: "Rénovation intérieure — Maury Laurent" },
-      {
-        property: "og:description",
-        content:
-          "Un seul interlocuteur pour votre projet de rénovation intérieure autour de Bouloc, Fronton, Aucamville, Blagnac et Grenade.",
-      },
-      { property: "og:type", content: "article" },
-      { property: "og:url", content: "/renovation-interieure" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [{ rel: "canonical", href: "/renovation-interieure" }],
+  head: () => buildSeoHead({
+    title: "Rénovation intérieure à Bouloc | Maury Laurent",
+    description: "Rénovation intérieure, aménagement, cuisine, salle de bains, faïence, placo et isolation à Bouloc et au nord de Toulouse.",
+    path: "/renovation-interieure",
+    ogType: "article",
+    breadcrumbLabel: "Rénovation intérieure",
+    schema: serviceSchema("Rénovation intérieure", "Rénovation intérieure, aménagement, cuisine, salle de bains, faïence, placo et isolation à Bouloc et au nord de Toulouse.", "/renovation-interieure"),
   }),
   component: Page,
 });

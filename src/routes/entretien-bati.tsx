@@ -1,27 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
 import img from "@/assets/entretien-bati.jpg";
 import { Section, Eyebrow, SectionTitle, Lead, PageHero, PrestationList, FinalCta } from "@/components/site/ui";
+import { buildSeoHead, serviceSchema } from "@/lib/seo";
 
 export const Route = createFileRoute("/entretien-bati")({
-  head: () => ({
-    meta: [
-      { title: "Entretien & bâti : toiture, démoussage, clôtures à Bouloc — Maury Laurent" },
-      {
-        name: "description",
-        content:
-          "Entretien du bâti autour de Bouloc et Fronton : toiture, démoussage, clôtures et petits travaux extérieurs pour préserver votre maison.",
-      },
-      { property: "og:title", content: "Entretien & bâti — Maury Laurent" },
-      {
-        property: "og:description",
-        content:
-          "Toiture, démoussage, clôtures : l'entretien régulier qui protège durablement votre maison.",
-      },
-      { property: "og:type", content: "article" },
-      { property: "og:url", content: "/entretien-bati" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [{ rel: "canonical", href: "/entretien-bati" }],
+  head: () => buildSeoHead({
+    title: "Démoussage et entretien du bâti à Bouloc | Maury Laurent",
+    description: "Entretien du bâti, démoussage de toiture, clôtures et petits travaux extérieurs à Bouloc, Fronton et au nord de Toulouse.",
+    path: "/entretien-bati",
+    ogType: "article",
+    breadcrumbLabel: "Entretien et bâti",
+    schema: serviceSchema("Entretien du bâti", "Entretien du bâti, démoussage de toiture, clôtures et petits travaux extérieurs à Bouloc, Fronton et au nord de Toulouse.", "/entretien-bati"),
   }),
   component: Page,
 });
