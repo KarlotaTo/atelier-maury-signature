@@ -8,4 +8,6 @@
 - [x] Remplacer le bandeau Contact final par une transition bleu nuit et un formulaire clair
 - [x] Ajouter un logo pictural haut de gamme et son favicon
 - [x] Ajouter un composant réutilisable Avant / Après pour les pages Réalisations
-- [ ] Renforcer le SEO local, les données structurées et l’indexation de toutes les pages
+- [x] Renforcer le SEO local, les données structurées et l’indexation de toutes les pages
+
+- [x] Supprimer toutes les mentions de carrelage et faïence (prestation non réalisée)

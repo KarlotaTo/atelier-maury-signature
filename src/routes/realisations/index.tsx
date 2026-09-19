@@ -1,30 +1,36 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Section, Eyebrow, SectionTitle, PageHero, FinalCta } from "@/components/site/ui";
 import { realisations } from "@/data/realisations";
+import { buildSeoHead, absoluteUrl, BUSINESS_ID } from "@/lib/seo";
 
 export const Route = createFileRoute("/realisations/")({
-  head: () => ({
-    meta: [
-      { title: "Réalisations en peinture et rénovation autour de Bouloc — Maury Laurent" },
-      {
-        name: "description",
-        content:
-          "Chantiers de peinture, décoration et rénovation menés autour de Bouloc, Fronton et Grenade par une entreprise familiale depuis 1994.",
+  head: () =>
+    buildSeoHead({
+      title: "Réalisations de peinture et rénovation à Bouloc | Maury Laurent",
+      description:
+        "Chantiers de peinture, décoration et rénovation menés à Bouloc, Fronton et Grenade : contexte, prestations réalisées et résultat obtenu.",
+      path: "/realisations",
+      breadcrumbLabel: "Réalisations",
+      schema: {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        name: "Réalisations",
+        url: absoluteUrl("/realisations"),
+        about: { "@id": BUSINESS_ID },
+        mainEntity: {
+          "@type": "ItemList",
+          itemListElement: realisations.map((r, index) => ({
+            "@type": "ListItem",
+            position: index + 1,
+            name: r.title,
+            url: absoluteUrl(`/realisations/${r.slug}`),
+          })),
+        },
       },
-      { property: "og:title", content: "Réalisations — Maury Laurent" },
-      {
-        property: "og:description",
-        content:
-          "Chantiers sélectionnés : rénovation complète, peinture décorative, ravalement de façade autour de Bouloc.",
-      },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: "/realisations" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [{ rel: "canonical", href: "/realisations" }],
-  }),
+    }),
   component: Page,
 });
+
 
 function Page() {
   return (

@@ -11,63 +11,31 @@ import entretienImg from "@/assets/entretien-bati.jpg";
 import { Section, Eyebrow, SectionTitle, Lead, CtaPair, FinalCta } from "@/components/site/ui";
 import { site, communes, engagements, avis, hasPhone, telHref } from "@/data/site";
 import { realisations } from "@/data/realisations";
+import { buildSeoHead, localBusinessSchema, BUSINESS_ID, SITE_URL } from "@/lib/seo";
+
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      {
-        title: "Maury Laurent — Peinture, décoration et rénovation à Bouloc (31)",
-      },
-      {
-        name: "description",
-        content:
-          "Entreprise familiale depuis 1994 à Bouloc : peinture intérieure et décorative, rénovation intérieure, parquets et ravalement. Devis détaillé, interlocuteur unique.",
-      },
-      {
-        property: "og:title",
-        content: "Maury Laurent — Peinture, décoration et rénovation à Bouloc",
-      },
-      {
-        property: "og:description",
-        content:
-          "Quatre générations d'artisans. Peinture, décoration et rénovation intérieure autour de Bouloc, Fronton, Aucamville, Blagnac et Grenade.",
-      },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: "/" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [{ rel: "canonical", href: "/" }],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
+  head: () =>
+    buildSeoHead({
+      title: "Peintre et rénovation à Bouloc (31) | Maury Laurent",
+      description:
+        "Entreprise familiale de peinture, décoration et rénovation à Bouloc depuis 1994 : intérieur, sols, murs, façades et entretien du bâti. Devis détaillé.",
+      path: "/",
+      schema: [
+        localBusinessSchema,
+        {
           "@context": "https://schema.org",
-          "@type": "HomeAndConstructionBusiness",
-          name: "Maury Laurent",
-          description:
-            "Entreprise familiale de peinture, décoration et rénovation à Bouloc depuis 1994.",
-          foundingDate: "1994",
-          address: {
-            "@type": "PostalAddress",
-            addressLocality: "Bouloc",
-            addressRegion: "Occitanie",
-            postalCode: "31620",
-            addressCountry: "FR",
-          },
-          areaServed: ["Bouloc", "Fronton", "Aucamville", "Blagnac", "Grenade"],
-          knowsAbout: [
-            "Peinture intérieure",
-            "Peinture décorative",
-            "Rénovation intérieure",
-            "Parquet",
-            "Ravalement de façade",
-          ],
-        }),
-      },
-    ],
-  }),
+          "@type": "WebSite",
+          name: site.name,
+          url: SITE_URL,
+          inLanguage: "fr-FR",
+          publisher: { "@id": BUSINESS_ID },
+        },
+      ],
+    }),
   component: Home,
 });
+
 
 const expertises = [
   {
@@ -80,7 +48,7 @@ const expertises = [
   {
     to: "/sols-parquets",
     label: "Sols & parquets",
-    text: "Parquet, revêtements de sols, carrelage.",
+    text: "Parquet, parquet massif, revêtements de sols.",
     img: parquetImg,
     alt: "Parquet en chêne massif rénové posé en point de Hongrie",
   },
@@ -94,7 +62,7 @@ const expertises = [
   {
     to: "/renovation-interieure",
     label: "Rénovation intérieure",
-    text: "Aménagement, cuisines, salles de bains, faïence.",
+    text: "Aménagement, cuisines, salles de bains, cloisons.",
     img: renovationImg,
     alt: "Chantier de rénovation intérieure avec sols protégés et cloisons neuves",
   },
@@ -220,7 +188,7 @@ function Home() {
               un seul interlocuteur
             </h2>
             <p className="mt-7 max-w-xl text-[17px] leading-relaxed text-primary-foreground/70">
-              Peinture, cloisons, sols, faïence, coordination des corps de métier complémentaires :
+              Peinture, cloisons, sols, coordination des corps de métier complémentaires :
               votre projet avance sans que vous ayez à multiplier les contacts, ni à arbitrer entre
               des intervenants qui ne se parlent pas.
             </p>
