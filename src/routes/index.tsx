@@ -13,61 +13,27 @@ import { site, communes, engagements, avis, hasPhone, telHref } from "@/data/sit
 import { realisations } from "@/data/realisations";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      {
-        title: "Maury Laurent — Peinture, décoration et rénovation à Bouloc (31)",
-      },
-      {
-        name: "description",
-        content:
-          "Entreprise familiale depuis 1994 à Bouloc : peinture intérieure et décorative, rénovation intérieure, parquets et ravalement. Devis détaillé, interlocuteur unique.",
-      },
-      {
-        property: "og:title",
-        content: "Maury Laurent — Peinture, décoration et rénovation à Bouloc",
-      },
-      {
-        property: "og:description",
-        content:
-          "Quatre générations d'artisans. Peinture, décoration et rénovation intérieure autour de Bouloc, Fronton, Aucamville, Blagnac et Grenade.",
-      },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: "/" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [{ rel: "canonical", href: "/" }],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
+  head: () =>
+    buildSeoHead({
+      title: "Peintre et rénovation à Bouloc (31) | Maury Laurent",
+      description:
+        "Entreprise familiale de peinture, décoration et rénovation à Bouloc depuis 1994 : intérieur, sols, murs, façades et entretien du bâti. Devis détaillé.",
+      path: "/",
+      schema: [
+        localBusinessSchema,
+        {
           "@context": "https://schema.org",
-          "@type": "HomeAndConstructionBusiness",
-          name: "Maury Laurent",
-          description:
-            "Entreprise familiale de peinture, décoration et rénovation à Bouloc depuis 1994.",
-          foundingDate: "1994",
-          address: {
-            "@type": "PostalAddress",
-            addressLocality: "Bouloc",
-            addressRegion: "Occitanie",
-            postalCode: "31620",
-            addressCountry: "FR",
-          },
-          areaServed: ["Bouloc", "Fronton", "Aucamville", "Blagnac", "Grenade"],
-          knowsAbout: [
-            "Peinture intérieure",
-            "Peinture décorative",
-            "Rénovation intérieure",
-            "Parquet",
-            "Ravalement de façade",
-          ],
-        }),
-      },
-    ],
-  }),
+          "@type": "WebSite",
+          name: site.name,
+          url: SITE_URL,
+          inLanguage: "fr-FR",
+          publisher: { "@id": BUSINESS_ID },
+        },
+      ],
+    }),
   component: Home,
 });
+
 
 const expertises = [
   {
