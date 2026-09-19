@@ -11,6 +11,8 @@ import entretienImg from "@/assets/entretien-bati.jpg";
 import { Section, Eyebrow, SectionTitle, Lead, CtaPair, FinalCta } from "@/components/site/ui";
 import { site, communes, engagements, avis, hasPhone, telHref } from "@/data/site";
 import { realisations } from "@/data/realisations";
+import { buildSeoHead, localBusinessSchema, BUSINESS_ID, SITE_URL } from "@/lib/seo";
+
 
 export const Route = createFileRoute("/")({
   head: () =>
