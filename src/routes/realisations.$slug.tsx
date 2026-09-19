@@ -3,6 +3,7 @@ import { ArrowLeft } from "lucide-react";
 import { BeforeAfterSlider } from "@/components/site/BeforeAfterSlider";
 import { Section, Eyebrow, FinalCta } from "@/components/site/ui";
 import { getRealisation } from "@/data/realisations";
+import { buildSeoHead, absoluteUrl, BUSINESS_ID } from "@/lib/seo";
 
 export const Route = createFileRoute("/realisations/$slug")({
   loader: ({ params }) => {
@@ -19,20 +20,37 @@ export const Route = createFileRoute("/realisations/$slug")({
         ],
       };
     }
-    return {
-      meta: [
-        { title: `${loaderData.title} à ${loaderData.city} — Maury Laurent` },
-        { name: "description", content: loaderData.summary },
-        { property: "og:title", content: `${loaderData.title} — Maury Laurent` },
-        { property: "og:description", content: loaderData.summary },
-        { property: "og:type", content: "article" },
-        { name: "twitter:card", content: "summary_large_image" },
-      ],
-    };
+    const path = `/realisations/${loaderData.slug}`;
+    return buildSeoHead({
+      title: `${loaderData.title} à ${loaderData.city} | Maury Laurent`,
+      description: loaderData.summary,
+      path,
+      ogType: "article",
+      breadcrumbLabel: loaderData.title,
+      schema: {
+        "@context": "https://schema.org",
+        "@type": "CreativeWork",
+        name: loaderData.title,
+        description: loaderData.description,
+        url: absoluteUrl(path),
+        genre: loaderData.type,
+        creator: { "@id": BUSINESS_ID },
+        contentLocation: {
+          "@type": "Place",
+          name: loaderData.city,
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: loaderData.city,
+            addressCountry: "FR",
+          },
+        },
+      },
+    });
   },
   notFoundComponent: NotFound,
   component: Page,
 });
+
 
 function NotFound() {
   return (
