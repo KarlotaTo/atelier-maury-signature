@@ -80,7 +80,7 @@ const expertises = [
   {
     to: "/sols-parquets",
     label: "Sols & parquets",
-    text: "Parquet, revêtements de sols, carrelage.",
+    text: "Parquet, parquet massif, revêtements de sols.",
     img: parquetImg,
     alt: "Parquet en chêne massif rénové posé en point de Hongrie",
   },
@@ -94,7 +94,7 @@ const expertises = [
   {
     to: "/renovation-interieure",
     label: "Rénovation intérieure",
-    text: "Aménagement, cuisines, salles de bains, faïence.",
+    text: "Aménagement, cuisines, salles de bains, cloisons.",
     img: renovationImg,
     alt: "Chantier de rénovation intérieure avec sols protégés et cloisons neuves",
   },
@@ -220,7 +220,7 @@ function Home() {
               un seul interlocuteur
             </h2>
             <p className="mt-7 max-w-xl text-[17px] leading-relaxed text-primary-foreground/70">
-              Peinture, cloisons, sols, faïence, coordination des corps de métier complémentaires :
+              Peinture, cloisons, sols, coordination des corps de métier complémentaires :
               votre projet avance sans que vous ayez à multiplier les contacts, ni à arbitrer entre
               des intervenants qui ne se parlent pas.
             </p>

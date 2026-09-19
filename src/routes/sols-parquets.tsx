@@ -6,11 +6,11 @@ import { buildSeoHead, serviceSchema } from "@/lib/seo";
 export const Route = createFileRoute("/sols-parquets")({
   head: () => buildSeoHead({
     title: "Pose et rénovation de parquet à Bouloc | Maury Laurent",
-    description: "Pose de parquet, rénovation de parquet ancien, revêtements de sols et carrelage à Bouloc, Fronton et au nord de Toulouse.",
+    description: "Pose de parquet, rénovation de parquet ancien et revêtements de sols à Bouloc, Fronton et au nord de Toulouse.",
     path: "/sols-parquets",
     ogType: "article",
     breadcrumbLabel: "Sols et parquets",
-    schema: serviceSchema("Pose et rénovation de sols et parquets", "Pose de parquet, rénovation de parquet ancien, revêtements de sols et carrelage à Bouloc, Fronton et au nord de Toulouse.", "/sols-parquets"),
+    schema: serviceSchema("Pose et rénovation de sols et parquets", "Pose de parquet, rénovation de parquet ancien et revêtements de sols à Bouloc, Fronton et au nord de Toulouse.", "/sols-parquets"),
   }),
   component: Page,
 });
@@ -33,10 +33,6 @@ const prestations = [
     text: "Sols souples, ragréage et préparation des supports pour un résultat plan et durable.",
   },
   {
-    title: "Carrelage",
-    text: "Pose de carrelage au sol, calepinage étudié, joints réguliers et raccords soignés avec les autres revêtements.",
-  },
-  {
     title: "Finitions et raccords",
     text: "Plinthes, seuils, barres de jonction et reprises de peinture après pose : le sol s'intègre à l'ensemble de la pièce.",
   },
@@ -48,7 +44,7 @@ function Page() {
       <PageHero
         eyebrow="Savoir-faire"
         title="Sols & revêtements"
-        intro="Le sol structure une pièce autant que ses murs. Nous posons et rénovons parquets, carrelages et revêtements en soignant la préparation du support, condition d'un résultat durable."
+        intro="Le sol structure une pièce autant que ses murs. Nous posons et rénovons parquets et revêtements de sols en soignant la préparation du support, condition d'un résultat durable."
         image={img}
         imageAlt="Parquet en chêne massif rénové posé en point de Hongrie dans une pièce lumineuse"
       />

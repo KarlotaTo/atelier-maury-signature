@@ -6,11 +6,11 @@ import { buildSeoHead, serviceSchema } from "@/lib/seo";
 export const Route = createFileRoute("/renovation-interieure")({
   head: () => buildSeoHead({
     title: "Rénovation intérieure à Bouloc | Maury Laurent",
-    description: "Rénovation intérieure, aménagement, cuisine, salle de bains, faïence, placo et isolation à Bouloc et au nord de Toulouse.",
+    description: "Rénovation intérieure, aménagement, cuisine, salle de bains, placo et isolation à Bouloc et au nord de Toulouse.",
     path: "/renovation-interieure",
     ogType: "article",
     breadcrumbLabel: "Rénovation intérieure",
-    schema: serviceSchema("Rénovation intérieure", "Rénovation intérieure, aménagement, cuisine, salle de bains, faïence, placo et isolation à Bouloc et au nord de Toulouse.", "/renovation-interieure"),
+    schema: serviceSchema("Rénovation intérieure", "Rénovation intérieure, aménagement, cuisine, salle de bains, placo et isolation à Bouloc et au nord de Toulouse.", "/renovation-interieure"),
   }),
   component: Page,
 });
@@ -38,7 +38,7 @@ const prestations = [
   },
   {
     title: "Cuisine et salle de bains",
-    text: "Rénovation des pièces d'eau : reprise des supports, étanchéité, faïence, carrelage et finitions adaptées à l'humidité.",
+    text: "Rénovation des pièces d'eau : reprise des supports, préparation, peinture et finitions adaptées à l'humidité.",
   },
 ];
 
