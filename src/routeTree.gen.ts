@@ -10,10 +10,12 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CharteUtilisationRouteImport } from './routes/charte-utilisation'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as EntrepriseRouteImport } from './routes/entreprise'
 import { Route as EntretienBatiRouteImport } from './routes/entretien-bati'
 import { Route as FacadesExterieurRouteImport } from './routes/facades-exterieur'
+import { Route as MentionsLegalesRouteImport } from './routes/mentions-legales'
 import { Route as MursRevetementsRouteImport } from './routes/murs-revetements'
 import { Route as PeintureDecorationRouteImport } from './routes/peinture-decoration'
 import { Route as RealisationsRouteImport } from './routes/realisations'
@@ -27,6 +29,11 @@ import { Route as RealisationsSlugRouteImport } from './routes/realisations.$slu
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CharteUtilisationRoute = CharteUtilisationRouteImport.update({
+  id: '/charte-utilisation',
+  path: '/charte-utilisation',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -47,6 +54,11 @@ const EntretienBatiRoute = EntretienBatiRouteImport.update({
 const FacadesExterieurRoute = FacadesExterieurRouteImport.update({
   id: '/facades-exterieur',
   path: '/facades-exterieur',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MentionsLegalesRoute = MentionsLegalesRouteImport.update({
+  id: '/mentions-legales',
+  path: '/mentions-legales',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MursRevetementsRoute = MursRevetementsRouteImport.update({
@@ -97,10 +109,12 @@ const RealisationsSlugRoute = RealisationsSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/charte-utilisation': typeof CharteUtilisationRoute
   '/contact': typeof ContactRoute
   '/entreprise': typeof EntrepriseRoute
   '/entretien-bati': typeof EntretienBatiRoute
   '/facades-exterieur': typeof FacadesExterieurRoute
+  '/mentions-legales': typeof MentionsLegalesRoute
   '/murs-revetements': typeof MursRevetementsRoute
   '/peinture-decoration': typeof PeintureDecorationRoute
   '/realisations': typeof RealisationsRouteWithChildren
@@ -113,10 +127,12 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/charte-utilisation': typeof CharteUtilisationRoute
   '/contact': typeof ContactRoute
   '/entreprise': typeof EntrepriseRoute
   '/entretien-bati': typeof EntretienBatiRoute
   '/facades-exterieur': typeof FacadesExterieurRoute
+  '/mentions-legales': typeof MentionsLegalesRoute
   '/murs-revetements': typeof MursRevetementsRoute
   '/peinture-decoration': typeof PeintureDecorationRoute
   '/renovation-interieure': typeof RenovationInterieureRoute
@@ -129,10 +145,12 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/charte-utilisation': typeof CharteUtilisationRoute
   '/contact': typeof ContactRoute
   '/entreprise': typeof EntrepriseRoute
   '/entretien-bati': typeof EntretienBatiRoute
   '/facades-exterieur': typeof FacadesExterieurRoute
+  '/mentions-legales': typeof MentionsLegalesRoute
   '/murs-revetements': typeof MursRevetementsRoute
   '/peinture-decoration': typeof PeintureDecorationRoute
   '/realisations': typeof RealisationsRouteWithChildren
@@ -147,10 +165,12 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/charte-utilisation'
     | '/contact'
     | '/entreprise'
     | '/entretien-bati'
     | '/facades-exterieur'
+    | '/mentions-legales'
     | '/murs-revetements'
     | '/peinture-decoration'
     | '/realisations'
@@ -163,10 +183,12 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/charte-utilisation'
     | '/contact'
     | '/entreprise'
     | '/entretien-bati'
     | '/facades-exterieur'
+    | '/mentions-legales'
     | '/murs-revetements'
     | '/peinture-decoration'
     | '/renovation-interieure'
@@ -178,10 +200,12 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/charte-utilisation'
     | '/contact'
     | '/entreprise'
     | '/entretien-bati'
     | '/facades-exterieur'
+    | '/mentions-legales'
     | '/murs-revetements'
     | '/peinture-decoration'
     | '/realisations'
@@ -195,10 +219,12 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CharteUtilisationRoute: typeof CharteUtilisationRoute
   ContactRoute: typeof ContactRoute
   EntrepriseRoute: typeof EntrepriseRoute
   EntretienBatiRoute: typeof EntretienBatiRoute
   FacadesExterieurRoute: typeof FacadesExterieurRoute
+  MentionsLegalesRoute: typeof MentionsLegalesRoute
   MursRevetementsRoute: typeof MursRevetementsRoute
   PeintureDecorationRoute: typeof PeintureDecorationRoute
   RealisationsRoute: typeof RealisationsRouteWithChildren
@@ -215,6 +241,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/charte-utilisation': {
+      id: '/charte-utilisation'
+      path: '/charte-utilisation'
+      fullPath: '/charte-utilisation'
+      preLoaderRoute: typeof CharteUtilisationRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -243,6 +276,13 @@ declare module '@tanstack/react-router' {
       path: '/facades-exterieur'
       fullPath: '/facades-exterieur'
       preLoaderRoute: typeof FacadesExterieurRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mentions-legales': {
+      id: '/mentions-legales'
+      path: '/mentions-legales'
+      fullPath: '/mentions-legales'
+      preLoaderRoute: typeof MentionsLegalesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/murs-revetements': {
@@ -327,10 +367,12 @@ const RealisationsRouteWithChildren = RealisationsRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CharteUtilisationRoute: CharteUtilisationRoute,
   ContactRoute: ContactRoute,
   EntrepriseRoute: EntrepriseRoute,
   EntretienBatiRoute: EntretienBatiRoute,
   FacadesExterieurRoute: FacadesExterieurRoute,
+  MentionsLegalesRoute: MentionsLegalesRoute,
   MursRevetementsRoute: MursRevetementsRoute,
   PeintureDecorationRoute: PeintureDecorationRoute,
   RealisationsRoute: RealisationsRouteWithChildren,
