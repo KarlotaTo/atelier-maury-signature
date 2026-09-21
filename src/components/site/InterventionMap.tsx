@@ -89,6 +89,12 @@ export function InterventionMap() {
             <path d="M244 500 C228 429 219 300 216 142 C214 98 207 70 200 48" />
             <path d="M244 500 C196 427 127 301 68 164" />
           </g>
+          <path
+            d="M420 540 C 360 515, 290 505, 220 500 C 170 495, 130 470, 80 430 C 30 390, -20 350, -60 300"
+            className="fill-none stroke-blue-400/55"
+            strokeWidth="5"
+            strokeLinecap="round"
+          />
 
           {mobilePlaces.map((place) => {
             const active = activePlace === place.name;
@@ -149,12 +155,11 @@ export function InterventionMap() {
             );
           })}
 
-          <g transform="translate(234 151)" aria-hidden="true">
-            <rect width="106" height="22" rx="2" className="fill-primary" />
-            <text x="53" y="11" textAnchor="middle" dominantBaseline="middle" className="fill-primary-foreground text-[9px] uppercase tracking-[0.1em]">
+          <foreignObject x="140" y="104" width="160" height="28" aria-hidden="true">
+            <div className="flex h-full items-center justify-center rounded-sm bg-primary px-3 text-center text-[10px] font-medium uppercase tracking-[0.04em] text-primary-foreground">
               Siège de l'entreprise
-            </text>
-          </g>
+            </div>
+          </foreignObject>
         </svg>
 
         <svg
@@ -190,6 +195,12 @@ export function InterventionMap() {
             <path d="M532 634 C483 555 446 464 428 226 C420 169 399 119 382 82" />
             <path d="M532 634 C452 578 315 491 174 246" />
           </g>
+          <path
+            d="M820 720 C 720 680, 600 660, 500 640 C 440 625, 380 560, 320 480 C 260 400, 180 340, -60 240"
+            className="fill-none stroke-blue-400/50"
+            strokeWidth="10"
+            strokeLinecap="round"
+          />
 
           <text x="674" y="665" textAnchor="end" className="fill-muted-foreground text-[13px] uppercase tracking-[0.18em]">
             Nord toulousain
@@ -259,12 +270,11 @@ export function InterventionMap() {
             );
           })}
 
-          <g transform="translate(456 239)" aria-hidden="true">
-            <rect width="128" height="25" rx="2" className="fill-primary" />
-            <text x="64" y="13" textAnchor="middle" dominantBaseline="middle" className="fill-primary-foreground text-[11px] uppercase tracking-[0.12em]">
+          <foreignObject x="348" y="188" width="160" height="30" aria-hidden="true">
+            <div className="flex h-full items-center justify-center rounded-sm bg-primary px-3 text-center text-[10px] font-medium uppercase tracking-[0.04em] text-primary-foreground">
               Siège de l'entreprise
-            </text>
-          </g>
+            </div>
+          </foreignObject>
         </svg>
       </div>
     </div>
