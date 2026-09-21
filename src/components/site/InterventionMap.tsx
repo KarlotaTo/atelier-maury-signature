@@ -31,10 +31,10 @@ const places: readonly MapPlace[] = [
 const mobilePlaces: readonly MapPlace[] = [
   { name: "Fronton", x: 200, y: 48, preferred: true, labelX: 216, labelY: 43, anchor: "start" },
   { name: "Bouloc", x: 216, y: 142, preferred: true, base: true, labelX: 234, labelY: 137, anchor: "start" },
-  { name: "Grenade", x: 68, y: 164, preferred: true, labelX: 52, labelY: 158, anchor: "end" },
+  { name: "Grenade", x: 68, y: 164, preferred: true, labelX: 82, labelY: 158, anchor: "start" },
   { name: "Castelginest", x: 268, y: 294, preferred: true, labelX: 286, labelY: 287, anchor: "start" },
   { name: "Aucamville", x: 244, y: 348, preferred: true, labelX: 226, labelY: 374, anchor: "end" },
-  { name: "L'Union", x: 334, y: 366, preferred: true, labelX: 350, labelY: 359, anchor: "start" },
+  { name: "L'Union", x: 334, y: 366, preferred: true, labelX: 374, labelY: 359, anchor: "end" },
   { name: "Blagnac", x: 164, y: 412, preferred: true, labelX: 146, labelY: 405, anchor: "end" },
   { name: "Toulouse", x: 244, y: 500, preferred: false, labelX: 262, labelY: 512, anchor: "start" },
 ] as const;
