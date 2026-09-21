@@ -19,7 +19,7 @@ const places: readonly MapPlace[] = [
   { name: "Aucamville", x: 496, y: 498, preferred: true, labelX: 474, labelY: 532, anchor: "end" },
   { name: "L'Union", x: 634, y: 518, preferred: true, labelX: 660, labelY: 510, anchor: "start" },
   { name: "Blagnac", x: 376, y: 566, preferred: true, labelX: 350, labelY: 558, anchor: "end" },
-  { name: "Toulouse", x: 532, y: 634, preferred: false, city: true, labelX: 558, labelY: 646, anchor: "start" },
+  { name: "Toulouse", x: 532, y: 634, preferred: false, labelX: 558, labelY: 646, anchor: "start" },
   { name: "Fenouillet", x: 388, y: 460, preferred: false, labelX: 360, labelY: 452, anchor: "end" },
   { name: "Bruguières", x: 446, y: 370, preferred: false, labelX: 472, labelY: 363, anchor: "start" },
   { name: "Saint-Jory", x: 336, y: 326, preferred: false, labelX: 310, labelY: 318, anchor: "end" },
