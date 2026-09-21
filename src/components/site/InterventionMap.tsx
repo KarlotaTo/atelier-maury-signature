@@ -11,7 +11,7 @@ type MapPlace = {
   anchor: "start" | "end";
 };
 
-const places = [
+const places: readonly MapPlace[] = [
   { name: "Fronton", x: 382, y: 82, preferred: true, labelX: 405, labelY: 72, anchor: "start" },
   { name: "Bouloc", x: 428, y: 226, preferred: true, base: true, labelX: 456, labelY: 218, anchor: "start" },
   { name: "Grenade", x: 174, y: 246, preferred: true, labelX: 148, labelY: 235, anchor: "end" },
@@ -26,9 +26,9 @@ const places = [
   { name: "Castelnau-d'Estrétefonds", x: 302, y: 216, preferred: false, labelX: 278, labelY: 205, anchor: "end" },
   { name: "Villeneuve-lès-Bouloc", x: 482, y: 270, preferred: false, labelX: 510, labelY: 283, anchor: "start" },
   { name: "Gratentour", x: 504, y: 376, preferred: false, labelX: 530, labelY: 391, anchor: "start" },
-] as const satisfies readonly MapPlace[];
+] as const;
 
-type PlaceName = (typeof places)[number]["name"];
+type PlaceName = string;
 
 export function InterventionMap() {
   const [activePlace, setActivePlace] = useState<PlaceName | null>(null);
