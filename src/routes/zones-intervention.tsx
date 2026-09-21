@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { MapPin } from "lucide-react";
+import { InterventionMap } from "@/components/site/InterventionMap";
 import { Section, Eyebrow, SectionTitle, Lead, PageHero, FinalCta } from "@/components/site/ui";
 import { communes, site } from "@/data/site";
 import { buildSeoHead, BUSINESS_ID } from "@/lib/seo";
@@ -52,6 +53,7 @@ function Page() {
             </article>
           ))}
         </div>
+        <InterventionMap />
       </Section>
 
       <Section tone="sand">
