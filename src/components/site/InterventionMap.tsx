@@ -1,48 +1,213 @@
 import { useState } from "react";
 
+// Projection linéaire conforme (équirectangulaire corrigée à 43,7° N)
+// 1° de longitude ≈ 80,4 km — 1° de latitude ≈ 111 km
+const LON_0 = 1.24;
+const LAT_0 = 43.88;
+const SX = 1352; // px par degré de longitude
+const SY = 1866; // px par degré de latitude (ratio 111/80,4)
+const OX = 130;
+const OY = 70;
+
+const px = (lon: number) => OX + (lon - LON_0) * SX;
+const py = (lat: number) => OY + (LAT_0 - lat) * SY;
+
 type MapPlace = {
   name: string;
-  x: number;
-  y: number;
+  lat: number;
+  lon: number;
   preferred: boolean;
   base?: boolean;
   labelX: number;
   labelY: number;
   anchor: "start" | "end";
+  onMobile?: boolean;
 };
 
 const places: readonly MapPlace[] = [
-  { name: "Fronton", x: 382, y: 82, preferred: true, labelX: 405, labelY: 72, anchor: "start" },
-  { name: "Bouloc", x: 428, y: 226, preferred: true, base: true, labelX: 456, labelY: 218, anchor: "start" },
-  { name: "Grenade", x: 174, y: 246, preferred: true, labelX: 148, labelY: 235, anchor: "end" },
-  { name: "Castelginest", x: 506, y: 436, preferred: true, labelX: 534, labelY: 430, anchor: "start" },
-  { name: "Aucamville", x: 496, y: 498, preferred: true, labelX: 474, labelY: 532, anchor: "end" },
-  { name: "L'Union", x: 634, y: 518, preferred: true, labelX: 660, labelY: 510, anchor: "start" },
-  { name: "Blagnac", x: 376, y: 566, preferred: true, labelX: 350, labelY: 558, anchor: "end" },
-  { name: "Toulouse", x: 532, y: 634, preferred: false, labelX: 558, labelY: 646, anchor: "start" },
-  { name: "Fenouillet", x: 388, y: 460, preferred: false, labelX: 360, labelY: 452, anchor: "end" },
-  { name: "Bruguières", x: 446, y: 370, preferred: false, labelX: 472, labelY: 363, anchor: "start" },
-  { name: "Saint-Jory", x: 336, y: 326, preferred: false, labelX: 310, labelY: 318, anchor: "end" },
-  { name: "Castelnau-d'Estrétefonds", x: 302, y: 216, preferred: false, labelX: 278, labelY: 205, anchor: "end" },
-  { name: "Villeneuve-lès-Bouloc", x: 482, y: 270, preferred: false, labelX: 510, labelY: 283, anchor: "start" },
-  { name: "Gratentour", x: 504, y: 376, preferred: false, labelX: 530, labelY: 391, anchor: "start" },
+  { name: "Fronton", lat: 43.84, lon: 1.373, preferred: true, labelX: 340, labelY: 140, anchor: "start", onMobile: true },
+  { name: "Bouloc", lat: 43.78, lon: 1.393, preferred: true, base: true, labelX: 372, labelY: 252, anchor: "start", onMobile: true },
+  { name: "Grenade", lat: 43.773, lon: 1.294, preferred: true, labelX: 186, labelY: 272, anchor: "end", onMobile: true },
+  { name: "Castelnau-d'Estrétefonds", lat: 43.77, lon: 1.348, preferred: false, labelX: 262, labelY: 228, anchor: "end" },
+  { name: "Villeneuve-lès-Bouloc", lat: 43.755, lon: 1.383, preferred: false, labelX: 352, labelY: 312, anchor: "start" },
+  { name: "Saint-Jory", lat: 43.743, lon: 1.363, preferred: false, labelX: 276, labelY: 336, anchor: "end" },
+  { name: "Bruguières", lat: 43.72, lon: 1.398, preferred: false, labelX: 366, labelY: 366, anchor: "start" },
+  { name: "Gratentour", lat: 43.715, lon: 1.415, preferred: false, labelX: 392, labelY: 400, anchor: "start" },
+  { name: "Fenouillet", lat: 43.69, lon: 1.388, preferred: false, labelX: 308, labelY: 424, anchor: "end" },
+  { name: "Castelginest", lat: 43.677, lon: 1.412, preferred: true, labelX: 390, labelY: 446, anchor: "start", onMobile: true },
+  { name: "Aucamville", lat: 43.663, lon: 1.418, preferred: true, labelX: 348, labelY: 486, anchor: "end", onMobile: true },
+  { name: "L'Union", lat: 43.652, lon: 1.49, preferred: true, labelX: 492, labelY: 492, anchor: "start", onMobile: true },
+  { name: "Blagnac", lat: 43.635, lon: 1.394, preferred: true, labelX: 312, labelY: 532, anchor: "end", onMobile: true },
+  { name: "Toulouse", lat: 43.604, lon: 1.444, preferred: false, labelX: 430, labelY: 594, anchor: "start", onMobile: true },
 ] as const;
 
-const mobilePlaces: readonly MapPlace[] = [
-  { name: "Fronton", x: 200, y: 48, preferred: true, labelX: 216, labelY: 43, anchor: "start" },
-  { name: "Bouloc", x: 216, y: 142, preferred: true, base: true, labelX: 234, labelY: 137, anchor: "start" },
-  { name: "Grenade", x: 68, y: 164, preferred: true, labelX: 82, labelY: 158, anchor: "start" },
-  { name: "Castelginest", x: 268, y: 294, preferred: true, labelX: 286, labelY: 287, anchor: "start" },
-  { name: "Aucamville", x: 244, y: 348, preferred: true, labelX: 226, labelY: 374, anchor: "end" },
-  { name: "L'Union", x: 334, y: 366, preferred: true, labelX: 374, labelY: 359, anchor: "end" },
-  { name: "Blagnac", x: 164, y: 412, preferred: true, labelX: 146, labelY: 405, anchor: "end" },
-  { name: "Toulouse", x: 244, y: 500, preferred: false, labelX: 262, labelY: 512, anchor: "start" },
-] as const;
+// Cours réel de la Garonne (amont au nord-ouest vers Toulouse)
+const garonne: ReadonlyArray<[number, number]> = [
+  [43.895, 1.225],
+  [43.86, 1.245],
+  [43.82, 1.272],
+  [43.785, 1.297],
+  [43.755, 1.322],
+  [43.73, 1.345],
+  [43.70, 1.365],
+  [43.665, 1.384],
+  [43.635, 1.396],
+  [43.61, 1.428],
+  [43.585, 1.452],
+];
 
-type PlaceName = string;
+const garonnePath = garonne
+  .map(([lat, lon], i) => `${i === 0 ? "M" : "L"}${px(lon).toFixed(1)} ${py(lat).toFixed(1)}`)
+  .join(" ");
+
+// Axe RN20 / A62 (Toulouse – Bouloc – Fronton), tracé indicatif
+const axis: ReadonlyArray<[number, number]> = [
+  [43.604, 1.444],
+  [43.663, 1.418],
+  [43.72, 1.398],
+  [43.755, 1.383],
+  [43.78, 1.393],
+  [43.84, 1.373],
+];
+
+const axisPath = axis
+  .map(([lat, lon], i) => `${i === 0 ? "M" : "L"}${px(lon).toFixed(1)} ${py(lat).toFixed(1)}`)
+  .join(" ");
+
+const boulocX = px(1.393);
+const boulocY = py(43.78);
+const KM = SY / 111; // px par km
+
+function MapCanvas({
+  mobile,
+  activePlace,
+  setActivePlace,
+}: {
+  mobile: boolean;
+  activePlace: string | null;
+  setActivePlace: React.Dispatch<React.SetStateAction<string | null>>;
+}) {
+  const visible = mobile ? places.filter((p) => p.onMobile) : places;
+  const idBase = mobile ? "intervention-map-mobile" : "intervention-map";
+  const labelFont = mobile ? 20 : 15;
+  const labelHeight = mobile ? 38 : 30;
+  const charWidth = mobile ? 10 : 7.4;
+
+  return (
+    <svg
+      viewBox="0 0 620 700"
+      role="img"
+      aria-labelledby={`${idBase}-title ${idBase}-description`}
+      className={mobile ? "block h-auto w-full sm:hidden" : "hidden h-auto w-full sm:block"}
+    >
+      <title id={`${idBase}-title`}>Carte des zones d'intervention autour de Bouloc</title>
+      <desc id={`${idBase}-description`}>
+        Bouloc, siège de l'entreprise, et les principales communes desservies au nord de Toulouse, positionnées selon
+        leurs coordonnées réelles.
+      </desc>
+
+      <rect x="8" y="8" width="604" height="684" rx="3" className="fill-background stroke-line" strokeWidth="2" />
+
+      <circle
+        cx={boulocX}
+        cy={boulocY}
+        r={15 * KM}
+        className="fill-accent/5 stroke-accent/35"
+        strokeWidth="2"
+        strokeDasharray="7 8"
+      />
+
+      <path d={axisPath} className="fill-none stroke-primary/12" strokeWidth={mobile ? 14 : 11} strokeLinecap="round" strokeLinejoin="round" />
+      <path d={garonnePath} className="fill-none stroke-blue-400/60" strokeWidth={mobile ? 9 : 7} strokeLinecap="round" strokeLinejoin="round" />
+
+      {!mobile && (
+        <text x="596" y="672" textAnchor="end" className="fill-muted-foreground text-[13px] uppercase tracking-[0.18em]">
+          Nord toulousain
+        </text>
+      )}
+
+      {visible.map((place) => {
+        const active = activePlace === place.name;
+        const cx = px(place.lon);
+        const cy = py(place.lat);
+        const labelWidth = Math.max(mobile ? 96 : 74, place.name.length * charWidth + 22);
+        const labelX = place.anchor === "end" ? place.labelX - labelWidth : place.labelX;
+        const labelY = place.labelY - labelHeight / 2;
+
+        return (
+          <g
+            key={place.name}
+            role="button"
+            tabIndex={0}
+            aria-label={`${place.name}${place.base ? ", siège de l'entreprise" : place.preferred ? ", zone de prédilection" : ", repère géographique"}`}
+            className="cursor-pointer outline-none"
+            onMouseEnter={() => setActivePlace(place.name)}
+            onMouseLeave={() => setActivePlace(null)}
+            onFocus={() => setActivePlace(place.name)}
+            onBlur={() => setActivePlace(null)}
+            onClick={() => setActivePlace((current) => (current === place.name ? null : place.name))}
+            onKeyDown={(event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                setActivePlace((current) => (current === place.name ? null : place.name));
+              }
+            }}
+          >
+            {place.base && <circle cx={cx} cy={cy} r="18" className="fill-accent/10 stroke-accent/30" strokeWidth="2" />}
+            <circle
+              cx={cx}
+              cy={cy}
+              r={active ? 9 : place.base ? 8 : place.preferred ? 6 : 4}
+              className={place.preferred ? "fill-accent stroke-background" : "fill-background stroke-primary"}
+              strokeWidth={place.preferred ? 3 : 2}
+            />
+            <line
+              x1={cx + (place.anchor === "end" ? -8 : 8)}
+              y1={cy}
+              x2={place.anchor === "end" ? place.labelX + 5 : place.labelX - 5}
+              y2={place.labelY}
+              className={active ? "stroke-accent" : "stroke-line"}
+              strokeWidth={active ? 2 : 1}
+            />
+            <rect
+              x={labelX}
+              y={labelY}
+              width={labelWidth}
+              height={labelHeight}
+              rx="2"
+              className={active ? "fill-primary stroke-primary" : place.preferred ? "fill-background stroke-accent/35" : "fill-sand stroke-line"}
+            />
+            <text
+              x={place.anchor === "end" ? place.labelX - 11 : place.labelX + 11}
+              y={place.labelY + 1}
+              textAnchor={place.anchor}
+              dominantBaseline="middle"
+              style={{ fontSize: `${labelFont}px` }}
+              className={active ? "fill-primary-foreground font-medium" : place.preferred ? "fill-foreground font-medium" : "fill-muted-foreground"}
+            >
+              {place.name}
+            </text>
+          </g>
+        );
+      })}
+
+      <foreignObject
+        x={boulocX - 80}
+        y={boulocY - (mobile ? 74 : 62)}
+        width="160"
+        height={mobile ? 34 : 30}
+        aria-hidden="true"
+      >
+        <div className="flex h-full items-center justify-center rounded-sm bg-primary px-3 text-center text-[10px] font-medium uppercase tracking-[0.04em] text-primary-foreground">
+          Siège de l'entreprise
+        </div>
+      </foreignObject>
+    </svg>
+  );
+}
 
 export function InterventionMap() {
-  const [activePlace, setActivePlace] = useState<PlaceName | null>(null);
+  const [activePlace, setActivePlace] = useState<string | null>(null);
 
   return (
     <div className="mt-10 overflow-hidden border border-line bg-sand sm:mt-12">
@@ -57,225 +222,9 @@ export function InterventionMap() {
         </div>
       </div>
 
-      <div className="relative mx-auto w-full max-w-5xl p-2 sm:p-6 lg:p-8">
-        <svg
-          viewBox="0 0 400 540"
-          role="img"
-          aria-labelledby="intervention-map-mobile-title intervention-map-mobile-description"
-          className="block h-auto w-full sm:hidden"
-        >
-          <title id="intervention-map-mobile-title">Carte des principales zones d'intervention autour de Bouloc</title>
-          <desc id="intervention-map-mobile-description">
-            Bouloc, siège de l'entreprise, et les sept communes de prédilection au nord de Toulouse.
-          </desc>
-
-          <path
-            d="M34 439 C27 341 57 219 118 121 C171 35 253 20 326 84 C384 135 386 251 357 346 C326 448 267 518 183 522 C112 525 60 494 34 439Z"
-            className="fill-background stroke-line"
-            strokeWidth="2"
-          />
-          <path
-            d="M62 401 C76 307 121 206 183 139 C226 93 293 96 330 153 C366 209 351 300 316 365 C279 434 217 465 151 449 C104 438 75 420 62 401Z"
-            className="fill-accent/5 stroke-accent/35"
-            strokeWidth="2"
-            strokeDasharray="6 7"
-          />
-          <g className="fill-none stroke-line" strokeWidth="1.5" strokeLinecap="round">
-            <path d="M35 478 C102 426 156 352 190 276 C216 218 222 134 200 48" />
-            <path d="M42 185 C143 214 245 278 374 383" />
-            <path d="M45 485 C156 428 255 402 368 344" />
-          </g>
-          <g className="fill-none stroke-primary/10" strokeWidth="9" strokeLinecap="round">
-            <path d="M244 500 C228 429 219 300 216 142 C214 98 207 70 200 48" />
-            <path d="M244 500 C196 427 127 301 68 164" />
-          </g>
-          <path
-            d="M420 540 C 360 515, 290 505, 220 500 C 170 495, 130 470, 80 430 C 30 390, -20 350, -60 300"
-            className="fill-none stroke-blue-400/55"
-            strokeWidth="5"
-            strokeLinecap="round"
-          />
-
-          {mobilePlaces.map((place) => {
-            const active = activePlace === place.name;
-            const labelWidth = Math.max(62, place.name.length * 6.8 + 18);
-            const labelX = place.anchor === "end" ? place.labelX - labelWidth : place.labelX;
-            const labelY = place.labelY - 17;
-
-            return (
-              <g
-                key={place.name}
-                role="button"
-                tabIndex={0}
-                aria-label={`${place.name}${place.base ? ", siège de l'entreprise" : place.preferred ? ", zone de prédilection" : ", repère géographique"}`}
-                className="cursor-pointer outline-none"
-                onFocus={() => setActivePlace(place.name)}
-                onBlur={() => setActivePlace(null)}
-                onClick={() => setActivePlace((current) => current === place.name ? null : place.name)}
-                onKeyDown={(event) => {
-                  if (event.key === "Enter" || event.key === " ") {
-                    event.preventDefault();
-                    setActivePlace((current) => current === place.name ? null : place.name);
-                  }
-                }}
-              >
-                {place.base && <circle cx={place.x} cy={place.y} r="16" className="fill-accent/10 stroke-accent/30" strokeWidth="2" />}
-                <circle
-                  cx={place.x}
-                  cy={place.y}
-                  r={active ? 8 : place.base ? 7 : place.preferred ? 5 : 4}
-                  className={place.preferred ? "fill-accent stroke-background" : "fill-background stroke-primary"}
-                  strokeWidth={place.preferred ? 3 : 2}
-                />
-                <line
-                  x1={place.x + (place.anchor === "end" ? -7 : 7)}
-                  y1={place.y}
-                  x2={place.anchor === "end" ? place.labelX + 4 : place.labelX - 4}
-                  y2={place.labelY - 5}
-                  className={active ? "stroke-accent" : "stroke-line"}
-                />
-                <rect
-                  x={labelX}
-                  y={labelY}
-                  width={labelWidth}
-                  height="27"
-                  rx="2"
-                  className={active ? "fill-primary stroke-primary" : place.preferred ? "fill-background stroke-accent/35" : "fill-sand stroke-line"}
-                />
-                <text
-                  x={place.anchor === "end" ? place.labelX - 9 : place.labelX + 9}
-                  y={place.labelY}
-                  textAnchor={place.anchor}
-                  dominantBaseline="middle"
-                  className={active ? "fill-primary-foreground text-[13px] font-medium" : place.preferred ? "fill-foreground text-[13px] font-medium" : "fill-muted-foreground text-[12px]"}
-                >
-                  {place.name}
-                </text>
-              </g>
-            );
-          })}
-
-          <foreignObject x="140" y="104" width="160" height="28" aria-hidden="true">
-            <div className="flex h-full items-center justify-center rounded-sm bg-primary px-3 text-center text-[10px] font-medium uppercase tracking-[0.04em] text-primary-foreground">
-              Siège de l'entreprise
-            </div>
-          </foreignObject>
-        </svg>
-
-        <svg
-          viewBox="0 0 800 700"
-          role="img"
-          aria-labelledby="intervention-map-title intervention-map-description"
-          className="hidden h-auto w-full sm:block"
-        >
-          <title id="intervention-map-title">Carte des zones d'intervention autour de Bouloc</title>
-          <desc id="intervention-map-description">
-            Bouloc, siège de l'entreprise, et les principales communes desservies au nord de Toulouse.
-          </desc>
-
-          <path
-            d="M102 555 C95 438 134 298 247 179 C336 87 448 45 566 102 C683 159 733 288 708 414 C684 540 602 645 477 672 C340 701 189 658 102 555Z"
-            className="fill-background stroke-line"
-            strokeWidth="2"
-          />
-          <path
-            d="M161 520 C185 415 240 303 335 216 C411 147 514 126 594 183 C669 237 682 344 646 438 C602 550 491 612 376 607 C280 603 205 574 161 520Z"
-            className="fill-accent/5 stroke-accent/35"
-            strokeWidth="2"
-            strokeDasharray="7 8"
-          />
-
-          <g className="fill-none stroke-line" strokeWidth="2" strokeLinecap="round">
-            <path d="M89 631 C197 576 284 501 350 414 C407 338 446 239 470 73" />
-            <path d="M121 283 C264 314 408 364 726 557" />
-            <path d="M166 654 C329 583 471 549 710 490" />
-            <path d="M260 97 C302 238 350 386 532 634" />
-          </g>
-          <g className="fill-none stroke-primary/10" strokeWidth="12" strokeLinecap="round">
-            <path d="M532 634 C483 555 446 464 428 226 C420 169 399 119 382 82" />
-            <path d="M532 634 C452 578 315 491 174 246" />
-          </g>
-          <path
-            d="M820 720 C 720 680, 600 660, 500 640 C 440 625, 380 560, 320 480 C 260 400, 180 340, -60 240"
-            className="fill-none stroke-blue-400/50"
-            strokeWidth="10"
-            strokeLinecap="round"
-          />
-
-          <text x="674" y="665" textAnchor="end" className="fill-muted-foreground text-[13px] uppercase tracking-[0.18em]">
-            Nord toulousain
-          </text>
-
-          {places.map((place) => {
-            const active = activePlace === place.name;
-            const labelWidth = Math.max(74, place.name.length * 7.4 + 22);
-            const labelX = place.anchor === "end" ? place.labelX - labelWidth : place.labelX;
-            const labelY = place.labelY - 19;
-
-            return (
-              <g
-                key={place.name}
-                role="button"
-                tabIndex={0}
-                aria-label={`${place.name}${place.base ? ", siège de l'entreprise" : place.preferred ? ", zone de prédilection" : ", repère géographique"}`}
-                className="cursor-pointer outline-none"
-                onMouseEnter={() => setActivePlace(place.name)}
-                onMouseLeave={() => setActivePlace(null)}
-                onFocus={() => setActivePlace(place.name)}
-                onBlur={() => setActivePlace(null)}
-                onClick={() => setActivePlace((current) => current === place.name ? null : place.name)}
-                onKeyDown={(event) => {
-                  if (event.key === "Enter" || event.key === " ") {
-                    event.preventDefault();
-                    setActivePlace((current) => current === place.name ? null : place.name);
-                  }
-                }}
-              >
-                {place.base && (
-                  <circle cx={place.x} cy={place.y} r="18" className="fill-accent/10 stroke-accent/30" strokeWidth="2" />
-                )}
-                <circle
-                  cx={place.x}
-                  cy={place.y}
-                  r={active ? 9 : place.base ? 8 : place.preferred ? 6 : 4}
-                  className={place.preferred ? "fill-accent stroke-background" : "fill-background stroke-primary"}
-                  strokeWidth={place.preferred ? 3 : 2}
-                />
-                <line
-                  x1={place.x + (place.anchor === "end" ? -8 : 8)}
-                  y1={place.y}
-                  x2={place.anchor === "end" ? place.labelX + 5 : place.labelX - 5}
-                  y2={place.labelY - 6}
-                  className={active ? "stroke-accent" : "stroke-line"}
-                  strokeWidth={active ? 2 : 1}
-                />
-                <rect
-                  x={labelX}
-                  y={labelY}
-                  width={labelWidth}
-                  height="30"
-                  rx="2"
-                  className={active ? "fill-primary stroke-primary" : place.preferred ? "fill-background stroke-accent/35" : "fill-sand stroke-line"}
-                />
-                <text
-                  x={place.anchor === "end" ? place.labelX - 11 : place.labelX + 11}
-                  y={place.labelY + 1}
-                  textAnchor={place.anchor}
-                  dominantBaseline="middle"
-                  className={active ? "fill-primary-foreground text-[15px] font-medium" : place.preferred ? "fill-foreground text-[15px] font-medium" : "fill-muted-foreground text-[13px]"}
-                >
-                  {place.name}
-                </text>
-              </g>
-            );
-          })}
-
-          <foreignObject x="348" y="188" width="160" height="30" aria-hidden="true">
-            <div className="flex h-full items-center justify-center rounded-sm bg-primary px-3 text-center text-[10px] font-medium uppercase tracking-[0.04em] text-primary-foreground">
-              Siège de l'entreprise
-            </div>
-          </foreignObject>
-        </svg>
+      <div className="relative mx-auto w-full max-w-4xl p-2 sm:p-6 lg:p-8">
+        <MapCanvas mobile activePlace={activePlace} setActivePlace={setActivePlace} />
+        <MapCanvas mobile={false} activePlace={activePlace} setActivePlace={setActivePlace} />
       </div>
     </div>
   );
