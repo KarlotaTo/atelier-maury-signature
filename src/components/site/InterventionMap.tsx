@@ -111,7 +111,7 @@ function MapCanvas({
       <circle
         cx={boulocX}
         cy={boulocY}
-        r={15 * KM}
+        r={19 * KM}
         className="fill-accent/5 stroke-accent/35"
         strokeWidth="2"
         strokeDasharray="7 8"
