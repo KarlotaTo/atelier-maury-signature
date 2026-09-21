@@ -88,7 +88,15 @@ export function Footer() {
             © {new Date().getFullYear()} {site.name} — Peinture, décoration et rénovation à{" "}
             {site.city}.
           </p>
-          <p>Mentions légales</p>
+          <div className="flex flex-wrap gap-3">
+            <Link to="/mentions-legales" className="hover:text-white">
+              Mentions légales
+            </Link>
+            <span aria-hidden="true">·</span>
+            <Link to="/charte-utilisation" className="hover:text-white">
+              Charte d'utilisation
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

@@ -13,6 +13,8 @@ const paths = [
   "/entretien-bati",
   ...nav.map((n) => n.to),
   "/contact",
+  "/mentions-legales",
+  "/charte-utilisation",
   ...realisations.map((r) => `/realisations/${r.slug}`),
 ].filter((path, index, all) => all.indexOf(path) === index);
 
