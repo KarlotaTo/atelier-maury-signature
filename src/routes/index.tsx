@@ -25,27 +25,6 @@ export const Route = createFileRoute("/")({
         localBusinessSchema,
         {
           "@context": "https://schema.org",
-          "@type": ["GeneralContractor", "HousePainter"],
-          name: "Maury Laurent",
-          description:
-            "Artisan de la rénovation à Bouloc depuis 1994 : rénovation clé en main ou travaux ciblés, peinture et décoration, sols, placo, isolation, façades. Quatre générations d'artisans.",
-          url: "https://maury-laurent.lnkio.fr/",
-          telephone: "+33603068750",
-          email: "maury.laurent60@gmail.com",
-          foundingDate: "1994",
-          address: {
-            "@type": "PostalAddress",
-            streetAddress: "14 impasse de la Seube",
-            postalCode: "31620",
-            addressLocality: "Bouloc",
-            addressRegion: "Haute-Garonne",
-            addressCountry: "FR",
-          },
-          openingHours: "Mo-Fr 09:00-17:00",
-          areaServed: ["Bouloc", "Fronton", "Castelginest", "Aucamville", "L'Union", "Grenade", "Blagnac"],
-        },
-        {
-          "@context": "https://schema.org",
           "@type": "WebSite",
           name: site.name,
           url: SITE_URL,
