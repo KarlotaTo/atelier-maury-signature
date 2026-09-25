@@ -65,6 +65,34 @@ function Page() {
         intro="Rénover une maison, c'est un peu la réécrire : garder ce qui a de l'âme, corriger ce qui gêne, inventer ce qui manque. Rénovation clé en main ou chantier ciblé, de la pièce à la maison entière : nous menons tout de A à Z, à Bouloc, L'Union, Blagnac et dans tout le nord de Toulouse."
         image={img}
         imageAlt="Intérieur en cours de rénovation, cloisons neuves et sols protégés"
+        extra={
+          <div className="mt-12 border-t border-line pt-8">
+            <p className="eyebrow">Sur le chantier</p>
+            <ul className="mt-6 space-y-5">
+              <li className="grid gap-1 sm:grid-cols-[14rem_1fr] sm:gap-6">
+                <span className="text-[15px] font-medium text-ink">Un seul interlocuteur</span>
+                <span className="text-[15px] leading-relaxed text-muted-foreground">
+                  Du premier relevé à la dernière finition, c'est la même famille qui pilote et qui
+                  travaille. Pas de sous-traitance qui s'enchaîne sans se parler.
+                </span>
+              </li>
+              <li className="grid gap-1 sm:grid-cols-[14rem_1fr] sm:gap-6">
+                <span className="text-[15px] font-medium text-ink">Un planning annoncé</span>
+                <span className="text-[15px] leading-relaxed text-muted-foreground">
+                  Les étapes sont posées avant de commencer : ce qui se passe, dans quel ordre, et
+                  quand. Vous savez où en est le chantier, semaine après semaine.
+                </span>
+              </li>
+              <li className="grid gap-1 sm:grid-cols-[14rem_1fr] sm:gap-6">
+                <span className="text-[15px] font-medium text-ink">La maison, respectée</span>
+                <span className="text-[15px] leading-relaxed text-muted-foreground">
+                  Protections posées, accès balisés, chantier rangé chaque soir. Même en gros
+                  travaux, la maison reste vivable.
+                </span>
+              </li>
+            </ul>
+          </div>
+        }
       />
 
       <Section tone="dark">

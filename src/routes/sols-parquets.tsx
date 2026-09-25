@@ -61,6 +61,34 @@ function Page() {
         intro="On regarde les murs, mais on vit sur le sol. Parquet massif cloué, point de Hongrie, remplacement ou rénovation d'un parquet ancien : nous posons des sols qui durent des générations, à Bouloc, Castelginest, Blagnac et dans tout le nord de Toulouse."
         image={img}
         imageAlt="Parquet en chêne massif rénové posé en point de Hongrie dans une pièce lumineuse"
+        extra={
+          <div className="mt-12 border-t border-line pt-8">
+            <p className="eyebrow">Sur le chantier</p>
+            <ul className="mt-6 space-y-5">
+              <li className="grid gap-1 sm:grid-cols-[14rem_1fr] sm:gap-6">
+                <span className="text-[15px] font-medium text-ink">Le bois, choisi avec vous</span>
+                <span className="text-[15px] leading-relaxed text-muted-foreground">
+                  Essence, largeur de lame, sens de pose : on regarde les échantillons chez vous,
+                  sous votre lumière, avant de commander quoi que ce soit.
+                </span>
+              </li>
+              <li className="grid gap-1 sm:grid-cols-[14rem_1fr] sm:gap-6">
+                <span className="text-[15px] font-medium text-ink">La pose, dans les règles</span>
+                <span className="text-[15px] leading-relaxed text-muted-foreground">
+                  Support contrôlé, planéité vérifiée, bois laissé à température de la pièce avant
+                  la première lame. C'est ce qui fait durer un parquet.
+                </span>
+              </li>
+              <li className="grid gap-1 sm:grid-cols-[14rem_1fr] sm:gap-6">
+                <span className="text-[15px] font-medium text-ink">La maison, respectée</span>
+                <span className="text-[15px] leading-relaxed text-muted-foreground">
+                  Découpes faites dehors quand c'est possible, poussière aspirée au fil du chantier,
+                  pièces rendues propres chaque soir.
+                </span>
+              </li>
+            </ul>
+          </div>
+        }
       />
 
       <Section>

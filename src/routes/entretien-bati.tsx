@@ -57,6 +57,34 @@ function Page() {
         intro="Une maison ne se dégrade jamais d'un coup. Elle prévient, discrètement : une clôture qui verdit, un portail qui s'écaille, une terrasse qui glisse après la pluie. Nous savons lire ces signaux et intervenir tant que c'est encore simple, à Bouloc, Castelginest, Aucamville et alentour."
         image={img}
         imageAlt="Maison de campagne avec toiture en tuiles entretenue et clôture en bois dans un jardin soigné"
+        extra={
+          <div className="mt-12 border-t border-line pt-8">
+            <p className="eyebrow">Sur le chantier</p>
+            <ul className="mt-6 space-y-5">
+              <li className="grid gap-1 sm:grid-cols-[14rem_1fr] sm:gap-6">
+                <span className="text-[15px] font-medium text-ink">Le petit signe, pris au sérieux</span>
+                <span className="text-[15px] leading-relaxed text-muted-foreground">
+                  Mousse sur la toiture, clôture qui bouge, boiserie qui grise : on intervient tant
+                  que c'est simple, avant que ça ne devienne un gros travaux.
+                </span>
+              </li>
+              <li className="grid gap-1 sm:grid-cols-[14rem_1fr] sm:gap-6">
+                <span className="text-[15px] font-medium text-ink">Le bon geste, au bon moment</span>
+                <span className="text-[15px] leading-relaxed text-muted-foreground">
+                  Nettoyage doux plutôt que haute pression quand le support l'exige, traitement
+                  adapté au matériau. L'entretien prolonge, il ne doit pas abîmer.
+                </span>
+              </li>
+              <li className="grid gap-1 sm:grid-cols-[14rem_1fr] sm:gap-6">
+                <span className="text-[15px] font-medium text-ink">Le jardin, respecté</span>
+                <span className="text-[15px] leading-relaxed text-muted-foreground">
+                  Plantations protégées, déchets évacués, terrain rendu propre. On repart sans
+                  laisser de trace, sauf celle du travail fait.
+                </span>
+              </li>
+            </ul>
+          </div>
+        }
       />
 
       <Section>
