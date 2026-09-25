@@ -57,6 +57,34 @@ function Page() {
         intro="Personne n'admire un enduit de lissage, personne ne photographie une bande de placo. Pourtant, c'est grâce à eux qu'un mur paraît parfait. Enduits, placo, isolation : nous travaillons ce que vous ne verrez jamais, à Bouloc, Aucamville, Castelginest et dans tout le nord de Toulouse."
         image={img}
         imageAlt="Murs fraîchement enduits et lissés dans une pièce lumineuse en cours de rénovation"
+        extra={
+          <div className="mt-12 border-t border-line pt-8">
+            <p className="eyebrow">Sur le chantier</p>
+            <ul className="mt-6 space-y-5">
+              <li className="grid gap-1 sm:grid-cols-[14rem_1fr] sm:gap-6">
+                <span className="text-[15px] font-medium text-ink">Le support, d'abord écouté</span>
+                <span className="text-[15px] leading-relaxed text-muted-foreground">
+                  Fissures, humidité, ancien enduit : on diagnostique le mur avant de le couvrir.
+                  Un beau revêtement sur un support malade ne dure pas.
+                </span>
+              </li>
+              <li className="grid gap-1 sm:grid-cols-[14rem_1fr] sm:gap-6">
+                <span className="text-[15px] font-medium text-ink">La finition, à la main</span>
+                <span className="text-[15px] leading-relaxed text-muted-foreground">
+                  Enduits talochés, placo monté et jointé dans les règles, angles soignés. Le
+                  résultat se juge au ras du mur, à la lumière rasante.
+                </span>
+              </li>
+              <li className="grid gap-1 sm:grid-cols-[14rem_1fr] sm:gap-6">
+                <span className="text-[15px] font-medium text-ink">La maison, respectée</span>
+                <span className="text-[15px] leading-relaxed text-muted-foreground">
+                  Sols et meubles protégés chaque matin, poussière maîtrisée, chantier rangé le
+                  soir. Vous vivez dedans, on le sait.
+                </span>
+              </li>
+            </ul>
+          </div>
+        }
       />
 
       <Section>
