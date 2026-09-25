@@ -22,7 +22,7 @@ export const Route = createFileRoute("/realisations/$slug")({
     }
     const path = `/realisations/${loaderData.slug}`;
     return buildSeoHead({
-      title: `${loaderData.title} à ${loaderData.city} | Maury Laurent`,
+      title: loaderData.seoTitle,
       description: loaderData.summary,
       path,
       ogType: "article",
@@ -31,7 +31,7 @@ export const Route = createFileRoute("/realisations/$slug")({
         "@context": "https://schema.org",
         "@type": "CreativeWork",
         name: loaderData.title,
-        description: loaderData.description,
+        description: loaderData.summary,
         url: absoluteUrl(path),
         genre: loaderData.type,
         creator: { "@id": BUSINESS_ID },
@@ -87,7 +87,7 @@ function Page() {
           Toutes les réalisations
         </Link>
         <p className="eyebrow mt-10">{r.type}</p>
-        <h1 className="mt-5 max-w-3xl text-4xl leading-[1.06] lg:text-6xl">{r.title}</h1>
+        <h1 className="mt-5 max-w-3xl text-4xl leading-[1.06] lg:text-6xl">{r.title}<span className="sr-only"> à {r.city}</span></h1>
         <p className="mt-4 text-sm uppercase tracking-[0.18em] text-muted-foreground">
           {r.city}
         </p>
@@ -99,7 +99,7 @@ function Page() {
           <div className="mt-16">
             <Eyebrow>Avant / Après</Eyebrow>
             <h2 className="mt-5 max-w-2xl text-3xl leading-tight lg:text-4xl">
-              Découvrez la transformation du projet.
+              La transformation, avant et après
             </h2>
             <div className="mt-8 grid gap-8">
               {beforeAfterItems.map((item, index) => (
