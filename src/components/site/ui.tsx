@@ -81,12 +81,14 @@ export function PageHero({
   intro,
   image,
   imageAlt,
+  extra,
 }: {
   eyebrow: string;
   title: ReactNode;
   intro: string;
   image?: string;
   imageAlt?: string;
+  extra?: ReactNode;
 }) {
   return (
     <section className="border-b border-line bg-background">
@@ -98,6 +100,7 @@ export function PageHero({
           <div className="mt-10">
             <CtaPair />
           </div>
+          {extra}
         </div>
         {image && (
           <div className="lg:col-span-5">
