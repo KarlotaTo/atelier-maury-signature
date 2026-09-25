@@ -20,16 +20,18 @@ export function absoluteUrl(path: string) {
 
 export const localBusinessSchema: Schema = {
   "@context": "https://schema.org",
-  "@type": ["HomeAndConstructionBusiness", "HousePainter"],
+  "@type": ["HomeAndConstructionBusiness", "GeneralContractor", "HousePainter"],
   "@id": BUSINESS_ID,
   name: site.name,
   url: SITE_URL,
-  telephone: site.phone,
+  telephone: "+33603068750",
   email: site.email,
-  description: `${site.baseline}, entreprise familiale installée à ${site.city} depuis ${site.since}.`,
+  description:
+    "Artisan de la rénovation à Bouloc depuis 1994 : rénovation clé en main ou travaux ciblés, peinture et décoration, sols, placo, isolation, façades. Quatre générations d'artisans.",
   foundingDate: String(site.since),
   address: {
     "@type": "PostalAddress",
+    streetAddress: "14 impasse de la Seube",
     addressLocality: site.city,
     addressRegion: "Haute-Garonne",
     postalCode: "31620",
