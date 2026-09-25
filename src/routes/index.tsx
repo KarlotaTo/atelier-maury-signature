@@ -17,18 +17,18 @@ import { buildSeoHead, localBusinessSchema, BUSINESS_ID, SITE_URL } from "@/lib/
 export const Route = createFileRoute("/")({
   head: () =>
     buildSeoHead({
-      title: "Peintre à Bouloc depuis 1994 | Maury Laurent, artisan",
+      title: "Artisan rénovation et peinture à Bouloc | Maury Laurent",
       description:
-        "Artisan peintre et rénovation à Bouloc depuis 1994. Quatre générations de savoir-faire à Fronton, Blagnac, L'Union, Grenade et au nord de Toulouse.",
+        "Rénovation clé en main ou travaux ciblés : peinture, sols, placo, façades. Artisan à Bouloc depuis 1994, à Fronton, Blagnac, L'Union et alentour.",
       path: "/",
       schema: [
         localBusinessSchema,
         {
           "@context": "https://schema.org",
-          "@type": "HousePainter",
+          "@type": ["GeneralContractor", "HousePainter"],
           name: "Maury Laurent",
           description:
-            "Entreprise familiale de peinture, décoration et rénovation à Bouloc depuis 1994. Quatre générations d'artisans.",
+            "Artisan de la rénovation à Bouloc depuis 1994 : rénovation clé en main ou travaux ciblés, peinture et décoration, sols, placo, isolation, façades. Quatre générations d'artisans.",
           url: "https://maury-laurent.lnkio.fr/",
           telephone: "+33603068750",
           email: "maury.laurent60@gmail.com",
@@ -120,9 +120,9 @@ function Home() {
         <div className="mx-auto max-w-[1400px] px-5 pt-10 lg:px-10 lg:pt-16">
           <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
             <div className="fade-up lg:col-span-6">
-              <Eyebrow>Peintre à Bouloc · Haute-Garonne · depuis {site.since}</Eyebrow>
+              <Eyebrow>Artisan rénovation · Bouloc · depuis {site.since}</Eyebrow>
               <h1 className="mt-6 text-[3.25rem] leading-[0.98] tracking-tight lg:text-[5.5rem]">
-                <span className="sr-only">Peintre à Bouloc : </span>
+                <span className="sr-only">Artisan rénovation à Bouloc : </span>
                 L'art de rénover,
                 <br />
                 <span className="italic text-accent">transmis</span> depuis
@@ -132,9 +132,9 @@ function Home() {
             </div>
             <div className="lg:col-span-6 lg:pb-3">
               <p className="max-w-xl text-[17px] leading-relaxed text-muted-foreground">
-                Il y a des maisons qu'on repeint et d'autres qu'on écoute. Laurent Maury et son fils
-                prennent le temps de lire un mur avant d'y poser une couleur. Peinture, décoration,
-                sols, façades : un seul interlocuteur, à Bouloc et dans tout le nord de Toulouse.
+                Il y a des maisons qu'on repeint et d'autres qu'on réinvente. Rénovation clé en main
+                ou chantier ciblé : Laurent Maury et son fils mènent votre projet de A à Z, avec un
+                seul interlocuteur, à Bouloc et dans tout le nord de Toulouse.
               </p>
               <div className="mt-8">
                 <CtaPair />
@@ -165,18 +165,19 @@ function Home() {
           <div className="lg:col-span-5">
             <Eyebrow>Notre approche</Eyebrow>
             <SectionTitle>
-              Qu'est-ce qui distingue un mur bien peint d'un mur <em>juste</em> peint ?
+              Qu'est-ce qui distingue une rénovation réussie d'une rénovation <em>juste</em> terminée ?
             </SectionTitle>
           </div>
           <div className="lg:col-span-6 lg:col-start-7">
             <Lead>
-              À midi, rien. C'est en fin de journée, sous la lumière rasante, que tout se révèle :
-              reprises mal fondues, rebouchage pressé, enduit qui ondule. Chez nous, la peinture
-              n'est que la dernière étape. <strong>Tout se joue avant.</strong>
+              Le jour de la livraison, rien. C'est des mois plus tard que tout se révèle : une
+              fissure qui revient, une peinture qui farine, un raccord qui bouge. Chez nous, la
+              finition n'est que la dernière étape. <strong>Tout se joue avant</strong> : le support,
+              la préparation, l'ordre des travaux.
             </Lead>
             <p className="mt-6 max-w-2xl text-[17px] leading-relaxed text-muted-foreground">
-              Cette exigence vaut pour une chambre à rafraîchir comme pour une maison entière. Et la
-              personne qui vous reçoit est celle qui réalise les travaux.
+              Que vous nous confiiez une pièce ou une maison entière, la personne qui vous reçoit est
+              celle qui réalise les travaux.
             </p>
           </div>
         </div>
@@ -213,14 +214,14 @@ function Home() {
           <div className="lg:col-span-6">
             <p className="eyebrow text-primary-foreground/60">Rénovation globale</p>
             <h2 className="mt-5 text-4xl leading-[1.06] lg:text-6xl">
-              Une rénovation de A à Z,
+              Clé en main ou chantier ciblé,
               <br />
               un seul numéro à retenir
             </h2>
             <p className="mt-7 max-w-xl text-[17px] leading-relaxed text-primary-foreground/70">
-              Peinture, placo, isolation, sols : Laurent et son fils mènent votre projet de bout en
-              bout, <strong>sans faire appel à un autre prestataire</strong>. Pas d'artisans qui
-              s'attendent les uns les autres, pas de devis impossibles à comparer.
+              Une maison entière ou une seule pièce : Laurent et son fils mènent votre chantier de A
+              à Z, <strong>sans faire appel à un autre prestataire</strong>. Peinture, placo,
+              isolation, sols : tout est pensé, planifié et réalisé par la même équipe.
             </p>
             <ul className="mt-10 space-y-4 border-t border-white/15 pt-8 text-[15px] text-primary-foreground/80">
               {[
