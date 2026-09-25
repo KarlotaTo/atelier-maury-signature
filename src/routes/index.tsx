@@ -9,7 +9,7 @@ import mursImg from "@/assets/murs-enduits.jpg";
 import facadeImg from "@/assets/facade.jpg";
 import entretienImg from "@/assets/entretien-bati.jpg";
 import { Section, Eyebrow, SectionTitle, Lead, CtaPair, FinalCta } from "@/components/site/ui";
-import { site, communes, engagements, avis, hasPhone, telHref } from "@/data/site";
+import { site, communes, avis, hasPhone, telHref } from "@/data/site";
 import { realisations } from "@/data/realisations";
 import { buildSeoHead, localBusinessSchema, BUSINESS_ID, SITE_URL } from "@/lib/seo";
 
@@ -17,12 +17,33 @@ import { buildSeoHead, localBusinessSchema, BUSINESS_ID, SITE_URL } from "@/lib/
 export const Route = createFileRoute("/")({
   head: () =>
     buildSeoHead({
-      title: "Peintre et rénovation à Bouloc (31) | Maury Laurent",
+      title: "Peintre à Bouloc depuis 1994 | Maury Laurent, artisan",
       description:
-        "Entreprise familiale de peinture, décoration et rénovation à Bouloc depuis 1994 : intérieur, sols, murs, façades et entretien du bâti. Devis détaillé.",
+        "Artisan peintre et rénovation à Bouloc depuis 1994. Quatre générations de savoir-faire à Fronton, Blagnac, L'Union, Grenade et au nord de Toulouse.",
       path: "/",
       schema: [
         localBusinessSchema,
+        {
+          "@context": "https://schema.org",
+          "@type": "HousePainter",
+          name: "Maury Laurent",
+          description:
+            "Entreprise familiale de peinture, décoration et rénovation à Bouloc depuis 1994. Quatre générations d'artisans.",
+          url: "https://maury-laurent.lnkio.fr/",
+          telephone: "+33603068750",
+          email: "maury.laurent60@gmail.com",
+          foundingDate: "1994",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "14 impasse de la Seube",
+            postalCode: "31620",
+            addressLocality: "Bouloc",
+            addressRegion: "Haute-Garonne",
+            addressCountry: "FR",
+          },
+          openingHours: "Mo-Fr 09:00-17:00",
+          areaServed: ["Bouloc", "Fronton", "Castelginest", "Aucamville", "L'Union", "Grenade", "Blagnac"],
+        },
         {
           "@context": "https://schema.org",
           "@type": "WebSite",
@@ -41,46 +62,55 @@ const expertises = [
   {
     to: "/peinture-decoration",
     label: "Peinture & décoration",
-    text: "Peinture, effets, textures, chaux, teintes.",
+    text: "Peintures à effet, textures, chaux, home staging.",
     img: peintureImg,
     alt: "Application d'un enduit à la chaux au spalter sur un mur intérieur",
   },
   {
     to: "/sols-parquets",
     label: "Sols & parquets",
-    text: "Parquet, parquet massif, revêtements de sols.",
+    text: "Parquet massif cloué, point de Hongrie, rénovation.",
     img: parquetImg,
     alt: "Parquet en chêne massif rénové posé en point de Hongrie",
   },
   {
     to: "/murs-revetements",
     label: "Murs & revêtements",
-    text: "Enduits, murs, placo, isolation.",
+    text: "Enduits, placo, isolation.",
     img: mursImg,
     alt: "Mur intérieur enduit et poncé avant mise en peinture",
   },
   {
     to: "/renovation-interieure",
     label: "Rénovation intérieure",
-    text: "Aménagement, cuisines, salles de bains, cloisons.",
+    text: "De la pièce à la maison, clé en main.",
     img: renovationImg,
     alt: "Chantier de rénovation intérieure avec sols protégés et cloisons neuves",
   },
   {
     to: "/facades-exterieur",
     label: "Façades & extérieur",
-    text: "Ravalement, fissures, peinture extérieure.",
+    text: "Ravalement, fissures, peinture de façade.",
     img: facadeImg,
     alt: "Façade de maison en cours de ravalement",
   },
   {
     to: "/entretien-bati",
     label: "Entretien & bâti",
-    text: "Toiture, démoussage, clôtures.",
+    text: "Clôtures, boiseries, entretien extérieur.",
     img: entretienImg,
     alt: "Entretien extérieur d'une maison : toiture et clôture",
   },
 ] as const;
+
+const homeEngagements = [
+  { title: "Un interlocuteur unique", text: "Laurent suit chaque chantier, de la première visite à la réception. Un seul contact, une seule responsabilité." },
+  { title: "La préparation avant tout", text: "Un mur détapissé reçoit toujours un enduit. Une finition n'est belle que si le fond est juste." },
+  { title: "Chantier propre", text: "Protections chaque matin, rangement chaque soir. Vous retrouvez votre maison comme avant, en plus belle." },
+  { title: "Devis gratuit, sans rajout", text: "Chiffré ligne par ligne, pièce par pièce. Ce qui est écrit est ce qui sera facturé." },
+  { title: "Respect des délais", text: "Rendez-vous honorés, planning tenu. En cas d'aléa, vous êtes prévenu le jour même." },
+  { title: "Suivi après travaux", text: "Nous savons revenir en cas de souci. Travaux couverts par la garantie décennale." },
+];
 
 function Home() {
   return (
@@ -90,8 +120,9 @@ function Home() {
         <div className="mx-auto max-w-[1400px] px-5 pt-10 lg:px-10 lg:pt-16">
           <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
             <div className="fade-up lg:col-span-6">
-              <Eyebrow>Bouloc · Haute-Garonne · depuis {site.since}</Eyebrow>
+              <Eyebrow>Peintre à Bouloc · Haute-Garonne · depuis {site.since}</Eyebrow>
               <h1 className="mt-6 text-[3.25rem] leading-[0.98] tracking-tight lg:text-[5.5rem]">
+                <span className="sr-only">Peintre à Bouloc : </span>
                 L'art de rénover,
                 <br />
                 <span className="italic text-accent">transmis</span> depuis
@@ -101,9 +132,9 @@ function Home() {
             </div>
             <div className="lg:col-span-6 lg:pb-3">
               <p className="max-w-xl text-[17px] leading-relaxed text-muted-foreground">
-                Entreprise familiale de peinture, décoration et rénovation. Laurent Maury et son
-                fils accompagnent des projets intérieurs complets, de l'étude des couleurs à la
-                réception du chantier, avec un seul interlocuteur du début à la fin.
+                Il y a des maisons qu'on repeint et d'autres qu'on écoute. Laurent Maury et son fils
+                prennent le temps de lire un mur avant d'y poser une couleur. Peinture, décoration,
+                sols, façades : un seul interlocuteur, à Bouloc et dans tout le nord de Toulouse.
               </p>
               <div className="mt-8">
                 <CtaPair />
@@ -134,19 +165,18 @@ function Home() {
           <div className="lg:col-span-5">
             <Eyebrow>Notre approche</Eyebrow>
             <SectionTitle>
-              Un travail de finition, pas un simple coup de peinture
+              Qu'est-ce qui distingue un mur bien peint d'un mur <em>juste</em> peint ?
             </SectionTitle>
           </div>
           <div className="lg:col-span-6 lg:col-start-7">
             <Lead>
-              La qualité d'un intérieur tient à ce qui ne se voit pas : la préparation des supports,
-              le choix des produits, la précision des raccords. Nous prenons le temps nécessaire à
-              chaque étape, sur des chantiers menés par une équipe restreinte et stable.
+              À midi, rien. C'est en fin de journée, sous la lumière rasante, que tout se révèle :
+              reprises mal fondues, rebouchage pressé, enduit qui ondule. Chez nous, la peinture
+              n'est que la dernière étape. <strong>Tout se joue avant.</strong>
             </Lead>
             <p className="mt-6 max-w-2xl text-[17px] leading-relaxed text-muted-foreground">
-              Cette exigence s'applique aussi bien à une pièce à rafraîchir qu'à la rénovation
-              complète d'une maison. Vous échangez avec la personne qui réalise et suit les
-              travaux.
+              Cette exigence vaut pour une chambre à rafraîchir comme pour une maison entière. Et la
+              personne qui vous reçoit est celle qui réalise les travaux.
             </p>
           </div>
         </div>
@@ -155,7 +185,7 @@ function Home() {
       {/* EXPERTISES */}
       <Section tone="sand">
         <Eyebrow>Savoir-faire</Eyebrow>
-        <SectionTitle>Six expertises, un même niveau d'exigence</SectionTitle>
+        <SectionTitle>Six expertises, une même obsession du détail</SectionTitle>
         <div className="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
           {expertises.map((e) => (
             <Link key={e.to} to={e.to} className="group block">
@@ -185,20 +215,20 @@ function Home() {
             <h2 className="mt-5 text-4xl leading-[1.06] lg:text-6xl">
               Une rénovation de A à Z,
               <br />
-              un seul interlocuteur
+              un seul numéro à retenir
             </h2>
             <p className="mt-7 max-w-xl text-[17px] leading-relaxed text-primary-foreground/70">
-              Peinture, cloisons, sols, coordination des corps de métier complémentaires :
-              votre projet avance sans que vous ayez à multiplier les contacts, ni à arbitrer entre
-              des intervenants qui ne se parlent pas.
+              Peinture, placo, isolation, sols : Laurent et son fils mènent votre projet de bout en
+              bout, <strong>sans faire appel à un autre prestataire</strong>. Pas d'artisans qui
+              s'attendent les uns les autres, pas de devis impossibles à comparer.
             </p>
             <ul className="mt-10 space-y-4 border-t border-white/15 pt-8 text-[15px] text-primary-foreground/80">
               {[
-                "Visite sur place et compréhension du projet",
-                "Devis détaillé poste par poste",
-                "Planning annoncé avant démarrage",
-                "Suivi de chantier par un référent unique",
-                "Réception des travaux et points de reprise",
+                "Visite et métrage chez vous",
+                "Devis gratuit, poste par poste",
+                "Planning annoncé, puis tenu",
+                "Un référent unique sur le chantier",
+                "Réception ensemble, pièce par pièce",
               ].map((s, i) => (
                 <li key={s} className="flex gap-5">
                   <span className="text-[oklch(0.72_0.12_25)] tabular-nums">
@@ -235,7 +265,7 @@ function Home() {
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
             <Eyebrow>Réalisations</Eyebrow>
-            <SectionTitle>Chantiers sélectionnés</SectionTitle>
+            <SectionTitle>Trois maisons, trois histoires</SectionTitle>
           </div>
           <Link
             to="/realisations"
@@ -273,17 +303,16 @@ function Home() {
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <Eyebrow>L'entreprise</Eyebrow>
-            <SectionTitle>Une histoire de famille</SectionTitle>
+            <SectionTitle>Chez les Maury, on a toujours été artisan</SectionTitle>
           </div>
           <div className="lg:col-span-6 lg:col-start-7">
             <Lead>
-              L'entreprise a été créée en 1994 par Laurent Maury, quatrième génération d'artisans.
-              Le métier s'y transmet par la pratique : les gestes, l'exigence de finition et la
-              relation directe avec les clients.
+              Un arrière-grand-père contremaître, un père et un oncle dans le métier. Finaliste d'un
+              concours national d'apprentis en 1990, Laurent crée son entreprise à Bouloc en 1994.
             </Lead>
             <p className="mt-6 max-w-2xl text-[17px] leading-relaxed text-muted-foreground">
-              Aujourd'hui, Laurent travaille avec son fils. Deux regards, deux générations, une
-              même manière de mener un chantier.
+              Aujourd'hui, il travaille avec son fils : deux générations,{" "}
+              <strong>une même exigence</strong>.
             </p>
             <Link
               to="/entreprise"
@@ -300,7 +329,7 @@ function Home() {
         <Eyebrow>Engagements</Eyebrow>
         <SectionTitle>Ce sur quoi vous pouvez compter</SectionTitle>
         <div className="mt-14 grid gap-px border border-line bg-line md:grid-cols-3">
-          {engagements.map((e) => (
+          {homeEngagements.map((e) => (
             <article key={e.title} className="bg-background p-8 lg:p-10">
               <h3 className="rule-accent text-2xl">{e.title}</h3>
               <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">{e.text}</p>
@@ -356,6 +385,10 @@ function Home() {
           <div className="lg:col-span-5">
             <Eyebrow>Zones d'intervention</Eyebrow>
             <SectionTitle>Autour de Bouloc, au nord de Toulouse</SectionTitle>
+            <Lead className="mt-6">
+              Un secteur volontairement resserré, pour être vraiment présents : du vignoble de
+              Fronton à la bastide de Grenade, jusqu'aux bords de Garonne à Blagnac.
+            </Lead>
             <Link
               to="/zones-intervention"
               className="link-underline mt-8 inline-block text-sm uppercase tracking-[0.18em] text-ink"
@@ -386,7 +419,10 @@ function Home() {
         </div>
       </Section>
 
-      <FinalCta />
+      <FinalCta
+        title="Parlons de votre maison"
+        text="Une visite chez vous, un échange sur vos envies, puis un devis gratuit, détaillé poste par poste."
+      />
     </>
   );
 }
