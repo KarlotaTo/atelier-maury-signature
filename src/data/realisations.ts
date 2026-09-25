@@ -28,6 +28,7 @@ export type Realisation = {
   city: string;
   type: string;
   year?: string;
+  seoTitle: string;
   summary: string;
   description: string;
   prestations: string[];
@@ -42,10 +43,9 @@ export const realisations: Realisation[] = [
     title: "Rénovation complète d'une maison familiale",
     city: "Bouloc",
     type: "Rénovation intérieure",
-    summary:
-      "Reprise complète des pièces de vie : préparation des supports, peinture, parquet et finitions.",
-    description:
-      "Rénovation des pièces de vie d'une maison familiale : reprise des supports, cloisonnement, peinture des murs et plafonds, pose d'un parquet et finitions soignées. Le mur d'accent en bleu profond structure le séjour et dialogue avec les poutres d'origine.",
+    seoTitle: "Rénovation d'une maison familiale à Bouloc | Maury Laurent",
+    summary: "Avant/après : rénovation complète des pièces de vie d'une maison à Bouloc. Cloisons, peinture, parquet et un mur bleu profond qui sublime les poutres.",
+    description: "Comment moderniser une maison sans lui faire perdre sa mémoire ? Dans cette maison familiale de Bouloc, les pièces de vie ont été entièrement reprises : préparation des supports, nouveaux cloisonnements, peinture des murs et plafonds, pose d'un parquet et finitions soignées. Plutôt qu'un blanc qui aurait isolé les poutres d'origine, nous avons choisi un mur d'accent bleu profond : sa froideur fait ressortir la chaleur du bois et donne au séjour un vrai centre de gravité.",
     prestations: [
       "Préparation des supports",
       "Cloisons et plafonds",
@@ -72,10 +72,9 @@ export const realisations: Realisation[] = [
     title: "Peinture décorative et enduits à la chaux",
     city: "Fronton",
     type: "Peinture & décoration",
-    summary:
-      "Enduit à la chaux travaillé à la main dans une chambre : texture nuagée et teintes chaudes.",
-    description:
-      "Réalisation d'un enduit à la chaux dans une chambre : préparation du support, application en plusieurs passes et travail de la texture pour un rendu nuagé aux teintes chaudes. Les finitions sont reprises au détail près autour des menuiseries et des appliques.",
+    seoTitle: "Enduit à la chaux à Fronton | Maury Laurent",
+    summary: "Réalisation à Fronton : un enduit à la chaux travaillé à la main dans une chambre. Texture nuagée, teintes chaudes et finitions au détail près.",
+    description: "À quoi ressemble un mur qui respire ? Dans cette chambre à Fronton, nous avons posé un enduit à la chaux en plusieurs passes, après une préparation soignée du support, puis travaillé la texture à la main pour un rendu nuagé aux teintes chaudes, comme la lumière du soir sur les vignes. Matière vivante, la chaux change avec les heures. Les finitions ont été reprises au détail près autour des menuiseries et des appliques.",
     prestations: ["Conseil couleurs", "Enduits à la chaux", "Effets et textures", "Finitions"],
     images: [
       {
@@ -89,10 +88,9 @@ export const realisations: Realisation[] = [
     title: "Ravalement de façade",
     city: "Grenade",
     type: "Façades & extérieur",
-    summary:
-      "Ravalement d'une façade en pierre : traitement des fissures, enduit de finition et reprise des entourages.",
-    description:
-      "Ravalement complet d'une façade de maison de village : diagnostic des supports, traitement des fissures, nettoyage, application d'un système de finition ton pierre et reprise des entourages en pierre apparente. Les volets ont été repeints dans la foulée.",
+    seoTitle: "Ravalement de façade à Grenade (31) | Maury Laurent",
+    summary: "Avant/après : ravalement d'une maison de village à Grenade. Fissures traitées, finition ton pierre, encadrements en pierre et volets repeints.",
+    description: "Comment rendre sa dignité à une façade sans lui retirer son âge ? Sur cette maison de village de Grenade, bastide du XIIIᵉ siècle, tout a commencé par le diagnostic des supports et de l'origine des fissures. Ont suivi le traitement des fissures, le nettoyage, une finition ton pierre accordée au bâti voisin et la reprise des encadrements en pierre apparente. Les volets ont été repeints dans la foulée : la maison n'a pas l'air neuve, elle a l'air entretenue.",
     prestations: [
       "Diagnostic des supports",
       "Traitement des fissures",
@@ -110,7 +108,7 @@ export const realisations: Realisation[] = [
     images: [
       {
         src: realFacade,
-        alt: "Façade de maison de village ravalée, enduit crème et entourages en pierre",
+        alt: "Façade de maison de village ravalée, enduit crème et entourages en pierre",
       },
     ],
   },

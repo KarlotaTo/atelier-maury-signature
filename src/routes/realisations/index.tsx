@@ -6,15 +6,16 @@ import { buildSeoHead, absoluteUrl, BUSINESS_ID } from "@/lib/seo";
 export const Route = createFileRoute("/realisations/")({
   head: () =>
     buildSeoHead({
-      title: "Réalisations de peinture et rénovation à Bouloc | Maury Laurent",
+      title: "Nos réalisations de rénovation à Bouloc | Maury Laurent",
       description:
-        "Chantiers de peinture, décoration et rénovation menés à Bouloc, Fronton et Grenade : contexte, prestations réalisées et résultat obtenu.",
+        "Avant/après de nos chantiers à Bouloc, Fronton et Grenade : rénovation de maison, enduits à la chaux, ravalement de façade.",
       path: "/realisations",
       breadcrumbLabel: "Réalisations",
       schema: {
         "@context": "https://schema.org",
         "@type": "CollectionPage",
         name: "Réalisations",
+        description: "Avant/après de nos chantiers à Bouloc, Fronton et Grenade : rénovation de maison, enduits à la chaux, ravalement de façade.",
         url: absoluteUrl("/realisations"),
         about: { "@id": BUSINESS_ID },
         mainEntity: {
@@ -38,12 +39,12 @@ function Page() {
       <PageHero
         eyebrow="Portfolio"
         title="Réalisations"
-        intro="Une sélection de chantiers menés autour de Bouloc. Chaque fiche détaille le contexte, les prestations réalisées et le résultat obtenu."
+        intro="Un beau résultat ne dit rien du chemin parcouru. Voici une sélection de chantiers menés autour de Bouloc, de la rénovation complète d'une maison à un mur travaillé à la chaux : pour chacun, le contexte, les choix faits et le résultat obtenu."
       />
 
       <Section>
         <Eyebrow>Chantiers</Eyebrow>
-        <SectionTitle>Travaux sélectionnés</SectionTitle>
+        <SectionTitle>Trois maisons, trois histoires</SectionTitle>
         <div className="mt-14 grid gap-px border border-line bg-line md:grid-cols-3">
           {realisations.map((r) => (
             <Link
@@ -68,7 +69,7 @@ function Page() {
 
       <FinalCta
         title="Votre projet pourrait être le prochain"
-        text="Parlez-nous de votre maison ou de votre appartement : nous vous proposons une visite et un devis détaillé."
+        text="Parlez-nous de votre maison ou de votre appartement, qu'il s'agisse d'une pièce ou d'une rénovation complète : nous venons voir et vous remettons un devis gratuit et détaillé."
       />
     </>
   );
