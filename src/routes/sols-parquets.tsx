@@ -6,7 +6,7 @@ import { buildSeoHead } from "@/lib/seo";
 export const Route = createFileRoute("/sols-parquets")({
   head: () => buildSeoHead({
     title: "Parquet massif et pose de sols à Bouloc | Maury Laurent",
-    description: "Carrelage remplacé par un parquet massif cloué, point de Hongrie, rénovation de parquet à Bouloc, Castelginest et Blagnac. Devis gratuit.",
+    description: "Parquet massif cloué, point de Hongrie, remplacement et rénovation de parquet à Bouloc, Castelginest et Blagnac. Devis gratuit.",
     path: "/sols-parquets",
     ogType: "article",
     breadcrumbLabel: "Sols et parquets",
@@ -16,7 +16,7 @@ export const Route = createFileRoute("/sols-parquets")({
       serviceType: "Pose et rénovation de parquet et revêtements de sols",
       name: "Sols & parquets",
       description:
-        "Remplacement de carrelage par un parquet massif cloué, pose de parquet massif en lames droites, point de Hongrie ou bâtons rompus, remplacement et rénovation de parquet ancien, revêtements de sols.",
+        "Remplacement d'anciens sols par un parquet massif cloué, pose de parquet massif en lames droites, point de Hongrie ou bâtons rompus, remplacement et rénovation de parquet ancien, revêtements de sols.",
       provider: { "@id": "https://maury-laurent.lnkio.fr/#entreprise" },
       areaServed: ["Bouloc", "Fronton", "Castelginest", "Aucamville", "L'Union", "Grenade", "Blagnac"],
     },
@@ -26,8 +26,8 @@ export const Route = createFileRoute("/sols-parquets")({
 
 const prestations = [
   {
-    title: "Du carrelage au parquet massif",
-    text: "Nous déposons le carrelage existant, reprenons le support et posons un parquet massif cloué, la pose traditionnelle par excellence. La pièce se réchauffe, l'acoustique s'adoucit, la maison gagne en caractère.",
+    title: "Remplacer un ancien sol",
+    text: "Nous déposons l'ancien revêtement, reprenons le support et posons un parquet massif cloué, la pose traditionnelle par excellence. La pièce se réchauffe, l'acoustique s'adoucit, la maison gagne en caractère.",
   },
   {
     title: "Parquet massif cloué",
@@ -58,14 +58,14 @@ function Page() {
             Sols & revêtements
           </>
         }
-        intro="On regarde les murs, mais on vit sur le sol. Remplacement de carrelage par un parquet massif cloué, point de Hongrie, rénovation de parquet ancien : nous posons des sols qui durent des générations, à Bouloc, Castelginest, Blagnac et dans tout le nord de Toulouse."
+        intro="On regarde les murs, mais on vit sur le sol. Parquet massif cloué, point de Hongrie, remplacement ou rénovation d'un parquet ancien : nous posons des sols qui durent des générations, à Bouloc, Castelginest, Blagnac et dans tout le nord de Toulouse."
         image={img}
         imageAlt="Parquet en chêne massif rénové posé en point de Hongrie dans une pièce lumineuse"
       />
 
       <Section>
         <Eyebrow>Prestations</Eyebrow>
-        <SectionTitle>Du carrelage au chêne massif, nos savoir-faire</SectionTitle>
+        <SectionTitle>Du sol fatigué au chêne massif, nos savoir-faire</SectionTitle>
         <div className="mt-14">
           <PrestationList items={prestations} />
         </div>
@@ -75,12 +75,12 @@ function Page() {
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <Eyebrow>Bon à savoir</Eyebrow>
-            <SectionTitle>Et si on enlevait enfin ce carrelage ?</SectionTitle>
+            <SectionTitle>Et si on changeait enfin ce vieux sol ?</SectionTitle>
           </div>
           <div className="lg:col-span-6 lg:col-start-7">
             <Lead>
-              Beaucoup de maisons du nord toulousain ont gardé le carrelage beige des années 1980
-              et 1990 : froid sous le pied, sonore sous les pas. Le remplacer par un parquet massif
+              Beaucoup de maisons du nord toulousain ont gardé le sol de leur construction : froid
+              sous le pied, sonore sous les pas, daté au premier regard. Le remplacer par un parquet massif
               cloué change tout. La pièce se réchauffe, le son s'adoucit, la maison gagne une âme.
             </Lead>
             <p className="mt-6 max-w-2xl text-[17px] leading-relaxed text-muted-foreground">
@@ -94,7 +94,7 @@ function Page() {
 
       <FinalCta
         title="Un sol qui mérite mieux ?"
-        text="Indiquez-nous la surface, le sol actuel et celui dont vous rêvez : chêne clair, point de Hongrie, carrelage à remplacer… Nous venons voir, prenons le métrage et vous remettons un devis gratuit et détaillé."
+        text="Indiquez-nous la surface, le sol actuel et celui dont vous rêvez : chêne clair, point de Hongrie, vieux sol à remplacer… Nous venons voir, prenons le métrage et vous remettons un devis gratuit et détaillé."
       />
     </>
   );
