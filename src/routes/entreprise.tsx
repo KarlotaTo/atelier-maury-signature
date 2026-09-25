@@ -35,7 +35,7 @@ function Page() {
       <PageHero
         eyebrow="L'entreprise"
         title={<><span className="sr-only">Artisan de la rénovation à Bouloc depuis 1994 : </span>Une histoire de famille, un métier de main</>}
-        intro="Chez les Maury, on a toujours été artisan. Un arrière-grand-père contremaître, un père et un oncle dans le métier : Laurent a grandi au milieu des chantiers. En 1994, il crée son entreprise de rénovation à Bouloc. Aujourd'hui, c'est à son fils qu'il transmet ses gestes."
+        intro="Dans la famille Maury, le métier se transmet de génération en génération. Un arrière-grand-père contremaître, un père et un oncle artisans : Laurent a grandi au milieu des chantiers. En 1994, il fonde à son tour son entreprise de rénovation à Bouloc. Aujourd'hui, c'est à son fils qu'il transmet ses gestes."
         image={atelierImg}
         imageAlt="Outils d'artisan peintre : brosses, couteaux et nuancier sur un établi"
       />
@@ -48,7 +48,7 @@ function Page() {
           </div>
           <div className="lg:col-span-6 lg:col-start-7">
             <Lead>
-              Pas des outils : ils s'usent. Pas des clients : ils se méritent. On hérite d'un regard, celui qui repère un défaut avant qu'il n'apparaisse, et d'une façon de se tenir : arriver à l'heure, dire la vérité sur un devis, rendre une maison propre. Finaliste d'un concours national d'apprentis en 1990, Laurent en a fait sa règle.
+              Ni des outils, qui s'usent, ni des clients, qui se méritent. Laurent a hérité d'un regard, celui qui repère un défaut avant qu'il n'apparaisse, et d'une façon de se tenir : arriver à l'heure, dire la vérité sur un devis, rendre une maison propre. Finaliste d'un concours national d'apprentis en 1990, il en a fait sa règle.
             </Lead>
             <p className="mt-6 max-w-2xl text-[17px] leading-relaxed text-muted-foreground">
               Aujourd'hui, il travaille avec son fils. Une équipe volontairement à taille humaine, capable de mener une rénovation de A à Z sans faire appel à un autre prestataire. La personne qui vous reçoit est celle qui réalise les travaux.

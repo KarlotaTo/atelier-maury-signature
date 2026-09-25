@@ -72,13 +72,13 @@ function Page() {
           <div className="lg:col-span-6">
             <p className="eyebrow text-primary-foreground/60">Le principe</p>
             <h2 className="mt-5 text-4xl leading-[1.06] lg:text-6xl">
-              Combien d'artisans faut-il pour rénover une maison ? Chez nous, une seule famille.
+              Combien d'artisans faut-il pour rénover une maison ? Ici, une seule famille.
             </h2>
           </div>
           <div className="lg:col-span-6">
             <p className="text-[17px] leading-relaxed text-primary-foreground/70">
               Plaquiste, peintre, parqueteur, plombier… Une rénovation mobilise souvent cinq ou six
-              métiers qui s'attendent les uns les autres. Chez nous, pas de relances ni de « c'est
+              métiers qui s'attendent les uns les autres. Avec Maury Laurent, pas de relances ni de « c'est
               la faute de celui d'avant » : Laurent et son fils réalisent eux-mêmes votre
               rénovation, sans faire appel à un autre prestataire. Un seul contact, une seule
               responsabilité, du premier café dans votre cuisine jusqu'à la remise des clés.
@@ -118,7 +118,7 @@ function Page() {
 
       <FinalCta
         title="Votre maison a une seconde vie à écrire ?"
-        text="Décrivez-nous les lieux tels qu'ils sont et tels que vous les rêvez, ou simplement la pièce qui vous gêne. Laurent vous rappelle pour organiser une visite et vous remettre un devis gratuit et détaillé."
+        text="Décrivez les lieux tels qu'ils sont et tels que vous les rêvez, ou simplement la pièce qui vous gêne. Laurent vous rappelle pour organiser une visite et vous remettre un devis gratuit et détaillé."
       />
     </>
   );
