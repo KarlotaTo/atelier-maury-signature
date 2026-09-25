@@ -83,7 +83,7 @@ export function PageHero({
   imageAlt,
 }: {
   eyebrow: string;
-  title: string;
+  title: ReactNode;
   intro: string;
   image?: string;
   imageAlt?: string;
