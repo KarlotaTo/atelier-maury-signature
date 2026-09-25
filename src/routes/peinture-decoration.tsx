@@ -17,13 +17,7 @@ export const Route = createFileRoute("/peinture-decoration")({
       name: "Peinture & décoration",
       description:
         "Peinture intérieure, peintures à effet, textures et mouvement, enduits à la chaux, conseil couleurs et home staging, en rénovation comme dans le neuf.",
-      provider: {
-        "@type": ["GeneralContractor", "HousePainter"],
-        name: "Maury Laurent",
-        url: "https://maury-laurent.lnkio.fr/",
-        telephone: "+33603068750",
-        address: { "@type": "PostalAddress", streetAddress: "14 impasse de la Seube", postalCode: "31620", addressLocality: "Bouloc", addressCountry: "FR" },
-      },
+      provider: { "@id": "https://maury-laurent.lnkio.fr/#entreprise" },
       areaServed: ["Bouloc", "Fronton", "Castelginest", "Aucamville", "L'Union", "Grenade", "Blagnac"],
     },
   }),
