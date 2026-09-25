@@ -65,6 +65,34 @@ function Page() {
         intro="Le cœur de notre métier. Une couleur ne se choisit pas sur un nuancier : elle se choisit sur votre mur, sous votre lumière. Peinture intérieure, effets, textures, chaux, home staging : nous travaillons la teinte comme une matière, en rénovation comme dans le neuf, à Bouloc, Fronton et dans tout le nord de Toulouse."
         image={img}
         imageAlt="Artisan appliquant un enduit à la chaux au spalter sur un mur intérieur"
+        extra={
+          <div className="mt-12 border-t border-line pt-8">
+            <p className="eyebrow">Sur le chantier</p>
+            <ul className="mt-6 space-y-5">
+              <li className="grid gap-1 sm:grid-cols-[14rem_1fr] sm:gap-6">
+                <span className="text-[15px] font-medium text-ink">La teinte, testée sur place</span>
+                <span className="text-[15px] leading-relaxed text-muted-foreground">
+                  Un échantillon posé sur votre mur, regardé le matin puis le soir. On ne valide
+                  qu'une fois la lumière acceptée.
+                </span>
+              </li>
+              <li className="grid gap-1 sm:grid-cols-[14rem_1fr] sm:gap-6">
+                <span className="text-[15px] font-medium text-ink">La matière, choisie pour durer</span>
+                <span className="text-[15px] leading-relaxed text-muted-foreground">
+                  Peintures de fabrication française, enduits à la chaux, finitions travaillées à la
+                  main. Le support est préparé avant la première couche.
+                </span>
+              </li>
+              <li className="grid gap-1 sm:grid-cols-[14rem_1fr] sm:gap-6">
+                <span className="text-[15px] font-medium text-ink">La maison, respectée</span>
+                <span className="text-[15px] leading-relaxed text-muted-foreground">
+                  Habité ou vide, les protections sont posées chaque matin et retirées le soir. On
+                  laisse le chantier propre, jour après jour.
+                </span>
+              </li>
+            </ul>
+          </div>
+        }
       />
 
       <Section>
