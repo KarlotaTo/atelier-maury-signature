@@ -43,8 +43,8 @@ export const realisations: Realisation[] = [
     title: "Rénovation complète d'une maison familiale",
     city: "Bouloc",
     type: "Rénovation intérieure",
-    seoTitle: "Rénovation d"une maison familiale à Bouloc | Maury Laurent",
-    summary: "Avant/après : rénovation complète des pièces de vie d"une maison à Bouloc. Cloisons, peinture, parquet et un mur bleu profond qui sublime les poutres.",
+    seoTitle: "Rénovation d'une maison familiale à Bouloc | Maury Laurent",
+    summary: "Avant/après : rénovation complète des pièces de vie d'une maison à Bouloc. Cloisons, peinture, parquet et un mur bleu profond qui sublime les poutres.",
     description: "Comment moderniser une maison sans lui faire perdre sa mémoire ? Dans cette maison familiale de Bouloc, les pièces de vie ont été entièrement reprises : préparation des supports, nouveaux cloisonnements, peinture des murs et plafonds, pose d'un parquet et finitions soignées. Plutôt qu'un blanc qui aurait isolé les poutres d'origine, nous avons choisi un mur d'accent bleu profond : sa froideur fait ressortir la chaleur du bois et donne au séjour un vrai centre de gravité.",
     prestations: [
       "Préparation des supports",
@@ -73,7 +73,7 @@ export const realisations: Realisation[] = [
     city: "Fronton",
     type: "Peinture & décoration",
     seoTitle: "Enduit à la chaux à Fronton | Maury Laurent",
-    summary: 'Réalisation à Fronton : un enduit à la chaux travaillé à la main dans une chambre. Texture nuagée, teintes chaudes et finitions au détail près.',
+    summary: "Réalisation à Fronton : un enduit à la chaux travaillé à la main dans une chambre. Texture nuagée, teintes chaudes et finitions au détail près.",
     description: "À quoi ressemble un mur qui respire ? Dans cette chambre à Fronton, nous avons posé un enduit à la chaux en plusieurs passes, après une préparation soignée du support, puis travaillé la texture à la main pour un rendu nuagé aux teintes chaudes, comme la lumière du soir sur les vignes. Matière vivante, la chaux change avec les heures. Les finitions ont été reprises au détail près autour des menuiseries et des appliques.",
     prestations: ["Conseil couleurs", "Enduits à la chaux", "Effets et textures", "Finitions"],
     images: [
