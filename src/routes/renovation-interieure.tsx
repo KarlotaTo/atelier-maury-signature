@@ -1,16 +1,25 @@
 import { createFileRoute } from "@tanstack/react-router";
 import img from "@/assets/renovation.jpg";
 import { Section, Eyebrow, SectionTitle, Lead, PageHero, PrestationList, FinalCta } from "@/components/site/ui";
-import { buildSeoHead, serviceSchema } from "@/lib/seo";
+import { buildSeoHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/renovation-interieure")({
   head: () => buildSeoHead({
-    title: "Rénovation intérieure à Bouloc | Maury Laurent",
-    description: "Rénovation intérieure, aménagement, cuisine, salle de bains, placo et isolation à Bouloc et au nord de Toulouse.",
+    title: "Rénovation clé en main à Bouloc, L'Union | Maury Laurent",
+    description: "Rénovation de maison clé en main ou travaux ciblés à Bouloc, L'Union et Blagnac : un seul artisan de A à Z, devis gratuit sans rajout.",
     path: "/renovation-interieure",
     ogType: "article",
     breadcrumbLabel: "Rénovation intérieure",
-    schema: serviceSchema("Rénovation intérieure", "Rénovation intérieure, aménagement, cuisine, salle de bains, placo et isolation à Bouloc et au nord de Toulouse.", "/renovation-interieure"),
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      serviceType: "Rénovation intérieure clé en main",
+      name: "Rénovation intérieure",
+      description:
+        "Rénovation de maison ou d'appartement de A à Z, clé en main ou par travaux ciblés : dépose, préparation des supports, placo, isolation, sols, faïence, peinture et finitions, sans sous-traitance.",
+      provider: { "@id": "https://maury-laurent.lnkio.fr/#entreprise" },
+      areaServed: ["Bouloc", "Fronton", "Castelginest", "Aucamville", "L'Union", "Grenade", "Blagnac"],
+    },
   }),
   component: Page,
 });
@@ -18,27 +27,27 @@ export const Route = createFileRoute("/renovation-interieure")({
 const prestations = [
   {
     title: "Rénovation globale",
-    text: "Reprise complète d'un logement ou d'un étage : dépose, reprise des supports, cloisonnement, sols, finitions. Un planning unique pour l'ensemble des lots.",
+    text: "Reprise complète d'une maison, d'un appartement ou d'un étage : dépose, supports, cloisons, sols, peintures, finitions. Un planning unique et une vision d'ensemble qui évite les incohérences.",
   },
   {
     title: "Préparation des supports",
-    text: "Décollage de papiers peints, décapage, traitement de l'humidité de surface, ratissage et enduits de lissage avant finition.",
+    text: "Décollage des papiers peints, décapage, traitement de l'humidité, ratissage. Un mur détapissé reçoit toujours un enduit : c'est ce qui transforme un mur fatigué en toile vierge.",
   },
   {
     title: "Placo et cloisons",
-    text: "Création ou modification de cloisons, doublages, faux plafonds, bandes et finition prête à peindre.",
+    text: "Créer une chambre, ouvrir une cuisine, dessiner un dressing, baisser un plafond. Nous redistribuons les volumes pour qu'ils collent enfin à votre façon de vivre.",
   },
   {
     title: "Isolation intérieure",
-    text: "Isolation thermique et acoustique par l'intérieur, en doublage sur ossature, avec traitement des points singuliers.",
+    text: "Isolation thermique et acoustique par doublage, avec un traitement soigné des points singuliers, là où se logent les ponts thermiques. Plus de confort l'hiver comme l'été.",
   },
   {
     title: "Aménagement intérieur",
-    text: "Redistribution des volumes, rangements intégrés, habillages et menuiseries d'agencement.",
+    text: "Rangements intégrés, niches, habillages, menuiseries d'agencement : les détails qui font passer une maison de « bien » à « faite pour nous ».",
   },
   {
     title: "Cuisine et salle de bains",
-    text: "Rénovation des pièces d'eau : reprise des supports, préparation, peinture et finitions adaptées à l'humidité.",
+    text: "Supports adaptés, faïence, peintures résistantes à l'humidité, finitions qui supportent la vapeur. Des pièces d'eau rénovées pour rester belles au quotidien.",
   },
 ];
 
@@ -47,8 +56,13 @@ function Page() {
     <>
       <PageHero
         eyebrow="Savoir-faire"
-        title="Rénovation intérieure"
-        intro="De la pièce à reprendre à la maison entière, nous menons des rénovations complètes en gardant la maîtrise des finitions — parce que c'est là que se juge le résultat."
+        title={
+          <>
+            <span className="sr-only">Rénovation clé en main à Bouloc : </span>
+            Rénovation intérieure
+          </>
+        }
+        intro="Rénover une maison, c'est un peu la réécrire : garder ce qui a de l'âme, corriger ce qui gêne, inventer ce qui manque. Rénovation clé en main ou chantier ciblé, de la pièce à la maison entière : nous menons tout de A à Z, à Bouloc, L'Union, Blagnac et dans tout le nord de Toulouse."
         image={img}
         imageAlt="Intérieur en cours de rénovation, cloisons neuves et sols protégés"
       />
@@ -58,15 +72,16 @@ function Page() {
           <div className="lg:col-span-6">
             <p className="eyebrow text-primary-foreground/60">Le principe</p>
             <h2 className="mt-5 text-4xl leading-[1.06] lg:text-6xl">
-              Un seul interlocuteur pour votre projet de rénovation
+              Combien d'artisans faut-il pour rénover une maison ? Chez nous, une seule famille.
             </h2>
           </div>
           <div className="lg:col-span-6">
             <p className="text-[17px] leading-relaxed text-primary-foreground/70">
-              Vous n'avez pas à coordonner les intervenants, à relancer les uns pour débloquer les
-              autres, ni à arbitrer entre des devis qui ne se recoupent pas. Laurent organise le
-              chantier, planifie les corps de métier complémentaires et reste votre contact du
-              premier échange à la réception des travaux.
+              Plaquiste, peintre, parqueteur, plombier… Une rénovation mobilise souvent cinq ou six
+              métiers qui s'attendent les uns les autres. Chez nous, pas de relances ni de « c'est
+              la faute de celui d'avant » : Laurent et son fils réalisent eux-mêmes votre
+              rénovation, sans faire appel à un autre prestataire. Un seul contact, une seule
+              responsabilité, du premier café dans votre cuisine jusqu'à la remise des clés.
             </p>
           </div>
         </div>
@@ -74,7 +89,7 @@ function Page() {
 
       <Section>
         <Eyebrow>Prestations</Eyebrow>
-        <SectionTitle>Ce que nous réalisons</SectionTitle>
+        <SectionTitle>Ce que nous transformons</SectionTitle>
         <div className="mt-14">
           <PrestationList items={prestations} />
         </div>
@@ -84,25 +99,26 @@ function Page() {
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <Eyebrow>Déroulé</Eyebrow>
-            <SectionTitle>Comment se passe un chantier</SectionTitle>
+            <SectionTitle>Comment se passe une rénovation avec nous ?</SectionTitle>
           </div>
           <div className="lg:col-span-6 lg:col-start-7">
             <Lead>
-              Une visite sur place permet de mesurer, comprendre l'existant et identifier les
-              contraintes. Le devis reprend ensuite chaque poste séparément, avec les surfaces, les
-              produits et les finitions retenues.
+              Tout commence par une visite chez vous : nous mesurons, observons l'existant et surtout
+              nous vous écoutons. Le devis, gratuit, détaille chaque poste pièce par pièce, et il
+              est tenu : aucun rajout une fois signé.
             </Lead>
             <p className="mt-6 max-w-2xl text-[17px] leading-relaxed text-muted-foreground">
-              Le planning est annoncé avant le démarrage. Pendant les travaux, un point régulier est
-              fait sur l'avancement et les éventuels ajustements, toujours validés avant exécution.
+              Le planning est annoncé avant le démarrage, puis respecté. La maison peut rester
+              habitable, le chantier étant organisé par zones. À la fin, nous faisons ensemble le
+              tour de chaque pièce, et nous restons joignables ensuite.
             </p>
           </div>
         </div>
       </Section>
 
       <FinalCta
-        title="Un projet de rénovation à étudier ?"
-        text="Expliquez-nous l'état actuel des lieux et ce que vous souhaitez obtenir. Nous vous rappelons pour organiser une visite."
+        title="Votre maison a une seconde vie à écrire ?"
+        text="Décrivez-nous les lieux tels qu'ils sont et tels que vous les rêvez, ou simplement la pièce qui vous gêne. Laurent vous rappelle pour organiser une visite et vous remettre un devis gratuit et détaillé."
       />
     </>
   );
