@@ -13,8 +13,9 @@ export function Footer() {
             </p>
           </div>
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-primary-foreground/70">
-            Entreprise familiale de peinture, décoration et rénovation installée à {site.city}{" "}
-            depuis {site.since}. Quatre générations d'artisans.
+            Peintre à {site.city} depuis {site.since} : peinture, décoration, parquets et façades à
+            Fronton, Castelginest, Aucamville, L'Union, Grenade et Blagnac. Quatre générations
+            d'artisans.
           </p>
         </div>
 
