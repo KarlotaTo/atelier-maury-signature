@@ -245,7 +245,7 @@ function Home() {
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
             <Eyebrow>Réalisations</Eyebrow>
-            <SectionTitle>Trois maisons, trois histoires</SectionTitle>
+            <SectionTitle>Des réalisations qui parlent d'elles-mêmes</SectionTitle>
           </div>
           <Link
             to="/realisations"
