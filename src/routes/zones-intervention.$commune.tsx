@@ -124,7 +124,7 @@ function ZonePage() {
           <div className="lg:col-span-5">
             <img
               src={heroImages[zone.slug]}
-              alt={isBouloc ? "Salon lumineux rénové par Laurent Maury dans une maison de Bouloc" : `Travaux de ${zone.eyebrow.split(" · ")[0].toLowerCase()} par Laurent Maury`}
+              alt={isBouloc ? "Salon lumineux rénové par Laurent Maury dans une maison de Bouloc" : `Travaux de ${(zone.eyebrow.split(" · ")[0] ?? "").toLowerCase()} par Laurent Maury`}
               fetchPriority="high"
               className="aspect-[4/5] h-full w-full object-cover"
             />
