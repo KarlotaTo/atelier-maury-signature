@@ -26,6 +26,7 @@ import { Route as ZonesInterventionRouteImport } from './routes/zones-interventi
 import { Route as RealisationsIndexRouteImport } from './routes/realisations/index'
 import { Route as RealisationsSlugRouteImport } from './routes/realisations.$slug'
 import { Route as RealisationsRenovationPeintureInterieureBoulocRouteImport } from './routes/realisations.renovation-peinture-interieure-bouloc'
+import { Route as RealisationsRenovationVerandaBalmaRouteImport } from './routes/realisations.renovation-veranda-balma'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -113,6 +114,12 @@ const RealisationsRenovationPeintureInterieureBoulocRoute =
     path: '/renovation-peinture-interieure-bouloc',
     getParentRoute: () => RealisationsRoute,
   } as any)
+const RealisationsRenovationVerandaBalmaRoute =
+  RealisationsRenovationVerandaBalmaRouteImport.update({
+    id: '/renovation-veranda-balma',
+    path: '/renovation-veranda-balma',
+    getParentRoute: () => RealisationsRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -131,6 +138,7 @@ export interface FileRoutesByFullPath {
   '/zones-intervention': typeof ZonesInterventionRoute
   '/realisations/$slug': typeof RealisationsSlugRoute
   '/realisations/renovation-peinture-interieure-bouloc': typeof RealisationsRenovationPeintureInterieureBoulocRoute
+  '/realisations/renovation-veranda-balma': typeof RealisationsRenovationVerandaBalmaRoute
   '/realisations/': typeof RealisationsIndexRoute
 }
 export interface FileRoutesByTo {
@@ -149,6 +157,7 @@ export interface FileRoutesByTo {
   '/zones-intervention': typeof ZonesInterventionRoute
   '/realisations/$slug': typeof RealisationsSlugRoute
   '/realisations/renovation-peinture-interieure-bouloc': typeof RealisationsRenovationPeintureInterieureBoulocRoute
+  '/realisations/renovation-veranda-balma': typeof RealisationsRenovationVerandaBalmaRoute
   '/realisations': typeof RealisationsIndexRoute
 }
 export interface FileRoutesById {
@@ -169,6 +178,7 @@ export interface FileRoutesById {
   '/zones-intervention': typeof ZonesInterventionRoute
   '/realisations/$slug': typeof RealisationsSlugRoute
   '/realisations/renovation-peinture-interieure-bouloc': typeof RealisationsRenovationPeintureInterieureBoulocRoute
+  '/realisations/renovation-veranda-balma': typeof RealisationsRenovationVerandaBalmaRoute
   '/realisations/': typeof RealisationsIndexRoute
 }
 export interface FileRouteTypes {
@@ -190,6 +200,7 @@ export interface FileRouteTypes {
     | '/zones-intervention'
     | '/realisations/$slug'
     | '/realisations/renovation-peinture-interieure-bouloc'
+    | '/realisations/renovation-veranda-balma'
     | '/realisations/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -208,6 +219,7 @@ export interface FileRouteTypes {
     | '/zones-intervention'
     | '/realisations/$slug'
     | '/realisations/renovation-peinture-interieure-bouloc'
+    | '/realisations/renovation-veranda-balma'
     | '/realisations'
   id:
     | '__root__'
@@ -227,6 +239,7 @@ export interface FileRouteTypes {
     | '/zones-intervention'
     | '/realisations/$slug'
     | '/realisations/renovation-peinture-interieure-bouloc'
+    | '/realisations/renovation-veranda-balma'
     | '/realisations/'
   fileRoutesById: FileRoutesById
 }
@@ -368,12 +381,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RealisationsRenovationPeintureInterieureBoulocRouteImport
       parentRoute: typeof RealisationsRoute
     }
+    '/realisations/renovation-veranda-balma': {
+      id: '/realisations/renovation-veranda-balma'
+      path: '/renovation-veranda-balma'
+      fullPath: '/realisations/renovation-veranda-balma'
+      preLoaderRoute: typeof RealisationsRenovationVerandaBalmaRouteImport
+      parentRoute: typeof RealisationsRoute
+    }
   }
 }
 
 interface RealisationsRouteChildren {
   RealisationsSlugRoute: typeof RealisationsSlugRoute
   RealisationsRenovationPeintureInterieureBoulocRoute: typeof RealisationsRenovationPeintureInterieureBoulocRoute
+  RealisationsRenovationVerandaBalmaRoute: typeof RealisationsRenovationVerandaBalmaRoute
   RealisationsIndexRoute: typeof RealisationsIndexRoute
 }
 
@@ -381,6 +402,8 @@ const RealisationsRouteChildren: RealisationsRouteChildren = {
   RealisationsSlugRoute: RealisationsSlugRoute,
   RealisationsRenovationPeintureInterieureBoulocRoute:
     RealisationsRenovationPeintureInterieureBoulocRoute,
+  RealisationsRenovationVerandaBalmaRoute:
+    RealisationsRenovationVerandaBalmaRoute,
   RealisationsIndexRoute: RealisationsIndexRoute,
 }
 
