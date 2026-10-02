@@ -148,7 +148,7 @@ function RenovationBoulocPage() {
               className="mt-14"
               beforeImage={murGraphiqueChantier.url}
               afterImage={murGraphiqueFini.url}
-              beforeLabel="Pendant les travaux"
+              beforeLabel="Chantier"
               afterLabel="Après"
               beforeAlt="Mur graphique noir en cours de réalisation, mobilier protégé dans le salon"
               afterAlt="Mur graphique noir dans un salon repeint en blanc à Bouloc"
@@ -192,8 +192,8 @@ function RenovationBoulocPage() {
               className="mt-14"
               beforeImage={chambreSolPrepare.url}
               afterImage={chambreParquet.url}
-              beforeLabel="Sol en préparation"
-              afterLabel="Parquet posé"
+              beforeLabel="Préparation"
+              afterLabel="Parquet"
               beforeAlt="Préparation et isolation du sol avant la pose du parquet, mur vert matcha"
               afterAlt="Chambre rénovée avec parquet naturel flottant à Bouloc"
             />
