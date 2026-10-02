@@ -12,6 +12,7 @@ import beforeSalon from "@/assets/before-salon.jpg";
 import afterSalon from "@/assets/after-salon.jpg";
 import beforeFacade from "@/assets/before-facade.jpg";
 import afterFacade from "@/assets/after-facade.jpg";
+import renovationBoulocHero from "@/assets/realisations/renovation-bouloc-mur-graphique-detail.jpeg.asset.json";
 
 export type RealisationBeforeAfter = {
   beforeImage: string;
@@ -38,6 +39,24 @@ export type Realisation = {
 };
 
 export const realisations: Realisation[] = [
+  {
+    slug: "renovation-peinture-interieure-bouloc",
+    title: "Rénovation et peinture intérieure d’une maison",
+    city: "Bouloc",
+    type: "Rénovation intérieure",
+    seoTitle: "Rénovation et peinture intérieure à Bouloc | Maury Laurent",
+    summary:
+      "Rénovation intérieure à Bouloc : mise en peinture du salon, nouvelles couleurs et pose d’un parquet naturel dans la chambre.",
+    description:
+      "Une rénovation intérieure pensée pièce par pièce pour redonner de la lumière à cette maison de Bouloc.",
+    prestations: ["Peinture intérieure", "Mise en couleur", "Pose de parquet", "Papier peint"],
+    images: [
+      {
+        src: renovationBoulocHero.url,
+        alt: "Mur graphique noir dans un salon rénové à Bouloc",
+      },
+    ],
+  },
   {
     slug: "renovation-maison-familiale",
     title: "Rénovation complète d'une maison familiale",
