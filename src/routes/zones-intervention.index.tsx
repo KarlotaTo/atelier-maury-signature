@@ -1,8 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { MapPin } from "lucide-react";
 import { InterventionMap } from "@/components/site/InterventionMap";
 import { Section, Eyebrow, SectionTitle, Lead, PageHero, FinalCta } from "@/components/site/ui";
 import { communes, site } from "@/data/site";
+import { zones } from "@/data/zones";
 import { buildSeoHead, BUSINESS_ID } from "@/lib/seo";
 
 export const Route = createFileRoute("/zones-intervention/")({
@@ -37,20 +38,28 @@ function Page() {
         <SectionTitle>Où nous travaillons</SectionTitle>
         <div className="mt-14 grid gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
           {communes.map((c) => (
-            <article
+            <Link
               key={c.slug}
-              className="group flex items-center gap-5 bg-background p-7 transition-colors hover:bg-sand lg:last:col-span-3"
+              to="/zones-intervention/$commune"
+              params={{ commune: c.slug }}
+              className="group flex flex-col gap-4 bg-background p-7 transition-colors hover:bg-sand lg:last:col-span-3"
             >
-              <span className="flex size-12 shrink-0 items-center justify-center border border-line text-accent transition-colors group-hover:border-accent group-hover:bg-accent group-hover:text-primary-foreground">
-                <MapPin className="size-5" strokeWidth={1.5} />
-              </span>
-              <h3 className="text-2xl">{c.name}</h3>
-              {c.main && (
-                <span className="ml-auto text-[11px] uppercase tracking-[0.18em] text-accent">
-                  Siège de l'entreprise
+              <div className="flex items-center gap-5">
+                <span className="flex size-12 shrink-0 items-center justify-center border border-line text-accent transition-colors group-hover:border-accent group-hover:bg-accent group-hover:text-primary-foreground">
+                  <MapPin className="size-5" strokeWidth={1.5} />
                 </span>
-              )}
-            </article>
+                <h3 className="text-2xl">{c.name}</h3>
+                {c.main && (
+                  <span className="ml-auto text-[11px] uppercase tracking-[0.18em] text-accent">
+                    Siège de l'entreprise
+                  </span>
+                )}
+              </div>
+              <p className="text-[15px] leading-relaxed text-muted-foreground">
+                {zones.find((z) => z.slug === c.slug)?.hubText}
+              </p>
+              <span className="text-[11px] uppercase tracking-[0.18em] text-accent">Voir la page {c.name} →</span>
+            </Link>
           ))}
         </div>
         <InterventionMap />

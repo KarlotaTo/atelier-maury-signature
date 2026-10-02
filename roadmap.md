@@ -12,3 +12,4 @@
 
 - [x] Supprimer toutes les mentions de carrelage et faïence (prestation non réalisée)
 - [x] Ajouter le reportage de rénovation et peinture intérieure à Bouloc avec les photos réelles du chantier
+- [x] Pages SEO locales /zones-intervention/<commune> (7) + hub

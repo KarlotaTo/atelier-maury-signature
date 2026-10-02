@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { nav } from "@/data/site";
+import { zones } from "@/data/zones";
 import { realisations } from "@/data/realisations";
 import { SITE_URL } from "@/lib/seo";
 
@@ -12,6 +13,7 @@ const paths = [
   "/facades-exterieur",
   "/entretien-bati",
   ...nav.map((n) => n.to),
+  ...zones.map((z) => `/zones-intervention/${z.slug}`),
   "/contact",
   "/mentions-legales",
   "/charte-utilisation",
