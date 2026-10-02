@@ -27,6 +27,7 @@ import { Route as RealisationsSlugRouteImport } from './routes/realisations.$slu
 import { Route as RealisationsRenovationPeintureInterieureBoulocRouteImport } from './routes/realisations.renovation-peinture-interieure-bouloc'
 import { Route as RealisationsRenovationVerandaBalmaRouteImport } from './routes/realisations.renovation-veranda-balma'
 import { Route as ZonesInterventionIndexRouteImport } from './routes/zones-intervention.index'
+import { Route as ZonesInterventionCommuneRouteImport } from './routes/zones-intervention.$commune'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -120,6 +121,12 @@ const ZonesInterventionIndexRoute = ZonesInterventionIndexRouteImport.update({
   path: '/zones-intervention/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ZonesInterventionCommuneRoute =
+  ZonesInterventionCommuneRouteImport.update({
+    id: '/zones-intervention/$commune',
+    path: '/zones-intervention/$commune',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -138,6 +145,7 @@ export interface FileRoutesByFullPath {
   '/realisations/$slug': typeof RealisationsSlugRoute
   '/realisations/renovation-peinture-interieure-bouloc': typeof RealisationsRenovationPeintureInterieureBoulocRoute
   '/realisations/renovation-veranda-balma': typeof RealisationsRenovationVerandaBalmaRoute
+  '/zones-intervention/$commune': typeof ZonesInterventionCommuneRoute
   '/realisations/': typeof RealisationsIndexRoute
   '/zones-intervention/': typeof ZonesInterventionIndexRoute
 }
@@ -157,6 +165,7 @@ export interface FileRoutesByTo {
   '/realisations/$slug': typeof RealisationsSlugRoute
   '/realisations/renovation-peinture-interieure-bouloc': typeof RealisationsRenovationPeintureInterieureBoulocRoute
   '/realisations/renovation-veranda-balma': typeof RealisationsRenovationVerandaBalmaRoute
+  '/zones-intervention/$commune': typeof ZonesInterventionCommuneRoute
   '/realisations': typeof RealisationsIndexRoute
   '/zones-intervention': typeof ZonesInterventionIndexRoute
 }
@@ -178,6 +187,7 @@ export interface FileRoutesById {
   '/realisations/$slug': typeof RealisationsSlugRoute
   '/realisations/renovation-peinture-interieure-bouloc': typeof RealisationsRenovationPeintureInterieureBoulocRoute
   '/realisations/renovation-veranda-balma': typeof RealisationsRenovationVerandaBalmaRoute
+  '/zones-intervention/$commune': typeof ZonesInterventionCommuneRoute
   '/realisations/': typeof RealisationsIndexRoute
   '/zones-intervention/': typeof ZonesInterventionIndexRoute
 }
@@ -200,6 +210,7 @@ export interface FileRouteTypes {
     | '/realisations/$slug'
     | '/realisations/renovation-peinture-interieure-bouloc'
     | '/realisations/renovation-veranda-balma'
+    | '/zones-intervention/$commune'
     | '/realisations/'
     | '/zones-intervention/'
   fileRoutesByTo: FileRoutesByTo
@@ -219,6 +230,7 @@ export interface FileRouteTypes {
     | '/realisations/$slug'
     | '/realisations/renovation-peinture-interieure-bouloc'
     | '/realisations/renovation-veranda-balma'
+    | '/zones-intervention/$commune'
     | '/realisations'
     | '/zones-intervention'
   id:
@@ -239,6 +251,7 @@ export interface FileRouteTypes {
     | '/realisations/$slug'
     | '/realisations/renovation-peinture-interieure-bouloc'
     | '/realisations/renovation-veranda-balma'
+    | '/zones-intervention/$commune'
     | '/realisations/'
     | '/zones-intervention/'
   fileRoutesById: FileRoutesById
@@ -257,6 +270,7 @@ export interface RootRouteChildren {
   RenovationInterieureRoute: typeof RenovationInterieureRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SolsParquetsRoute: typeof SolsParquetsRoute
+  ZonesInterventionCommuneRoute: typeof ZonesInterventionCommuneRoute
   ZonesInterventionIndexRoute: typeof ZonesInterventionIndexRoute
 }
 
@@ -388,6 +402,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ZonesInterventionIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/zones-intervention/$commune': {
+      id: '/zones-intervention/$commune'
+      path: '/zones-intervention/$commune'
+      fullPath: '/zones-intervention/$commune'
+      preLoaderRoute: typeof ZonesInterventionCommuneRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -425,6 +446,7 @@ const rootRouteChildren: RootRouteChildren = {
   RenovationInterieureRoute: RenovationInterieureRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SolsParquetsRoute: SolsParquetsRoute,
+  ZonesInterventionCommuneRoute: ZonesInterventionCommuneRoute,
   ZonesInterventionIndexRoute: ZonesInterventionIndexRoute,
 }
 export const routeTree = rootRouteImport
