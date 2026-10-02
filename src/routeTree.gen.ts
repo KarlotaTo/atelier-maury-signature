@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as CharteUtilisationRouteImport } from './routes/charte-utilisation'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as EntrepriseRouteImport } from './routes/entreprise'
@@ -32,6 +33,11 @@ import { Route as ZonesInterventionCommuneRouteImport } from './routes/zones-int
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CharteUtilisationRoute = CharteUtilisationRouteImport.update({
@@ -130,6 +136,7 @@ const ZonesInterventionCommuneRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
   '/charte-utilisation': typeof CharteUtilisationRoute
   '/contact': typeof ContactRoute
   '/entreprise': typeof EntrepriseRoute
@@ -151,6 +158,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
   '/charte-utilisation': typeof CharteUtilisationRoute
   '/contact': typeof ContactRoute
   '/entreprise': typeof EntrepriseRoute
@@ -172,6 +180,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
   '/charte-utilisation': typeof CharteUtilisationRoute
   '/contact': typeof ContactRoute
   '/entreprise': typeof EntrepriseRoute
@@ -195,6 +204,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/admin'
     | '/charte-utilisation'
     | '/contact'
     | '/entreprise'
@@ -216,6 +226,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/admin'
     | '/charte-utilisation'
     | '/contact'
     | '/entreprise'
@@ -236,6 +247,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/admin'
     | '/charte-utilisation'
     | '/contact'
     | '/entreprise'
@@ -258,6 +270,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRoute
   CharteUtilisationRoute: typeof CharteUtilisationRoute
   ContactRoute: typeof ContactRoute
   EntrepriseRoute: typeof EntrepriseRoute
@@ -281,6 +294,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/charte-utilisation': {
@@ -434,6 +454,7 @@ const RealisationsRouteWithChildren = RealisationsRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRoute,
   CharteUtilisationRoute: CharteUtilisationRoute,
   ContactRoute: ContactRoute,
   EntrepriseRoute: EntrepriseRoute,
