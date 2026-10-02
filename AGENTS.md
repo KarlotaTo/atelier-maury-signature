@@ -10,3 +10,4 @@
 <!-- LOVABLE:END -->
 
 - Keep bespoke project-report pages as dedicated static routes while retaining shared portfolio metadata in `src/data/realisations.ts`, so editorial layouts can evolve without complicating generic project pages.
+- Local SEO pages are one dynamic route fed by `src/data/zones.ts`, so commune copy stays data-driven and the hub/sitemap stay in sync.
