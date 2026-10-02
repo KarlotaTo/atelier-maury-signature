@@ -14,7 +14,7 @@ import { absoluteUrl, buildSeoHead, BUSINESS_ID } from "@/lib/seo";
 const path = "/realisations/renovation-peinture-interieure-bouloc";
 const title = "Rénovation et peinture intérieure d’une maison à Bouloc";
 const description =
-  "Découvrez la rénovation et la peinture intérieure d’une maison à Bouloc : salon lumineux, mur graphique et chambre rénovée avec parquet naturel.";
+  "Découvrez la rénovation et la peinture intérieure d’une maison à Bouloc : salon lumineux, mur graphique, entrée rose poudré et chambre rénovée avec parquet naturel.";
 
 export const Route = createFileRoute("/realisations/renovation-peinture-interieure-bouloc")({
   head: () =>
@@ -32,7 +32,7 @@ export const Route = createFileRoute("/realisations/renovation-peinture-interieu
         url: absoluteUrl(path),
         genre: "Rénovation intérieure",
         creator: { "@id": BUSINESS_ID },
-        about: ["Peinture intérieure", "Mise en couleur", "Pose de parquet", "Papier peint"],
+        about: ["Peinture intérieure", "Mise en couleur", "Pose de parquet"],
         contentLocation: {
           "@type": "Place",
           name: "Bouloc",
@@ -50,7 +50,7 @@ export const Route = createFileRoute("/realisations/renovation-peinture-interieu
 const facts = [
   ["Lieu", "Bouloc"],
   ["Type de projet", "Rénovation intérieure"],
-  ["Prestations", "Peinture intérieure · Mise en couleur · Pose de parquet · Papier peint"],
+  ["Prestations", "Peinture intérieure · Mise en couleur · Pose de parquet"],
 ];
 
 function TextSection({
@@ -128,19 +128,18 @@ function RenovationBoulocPage() {
           <div className="mx-auto max-w-[1400px] px-5 py-20 lg:px-10 lg:py-28">
             <TextSection eyebrow="Le salon" title="Un salon plus lumineux avec une touche graphique">
               <p>
-                Dans le salon, l'objectif principal était de gagner en luminosité. Les murs ont donc
-                été repeints essentiellement en blanc.
+                Dans le salon, l’objectif était avant tout de gagner en luminosité. Les murs ont été
+                repeints essentiellement en blanc, avec une touche graphique originale sur le mur
+                situé derrière la télévision.
               </p>
               <p>
-                Pour apporter une touche d'originalité, le mur situé derrière la télévision a été
-                travaillé avec une forme graphique noire : un rectangle qui se termine en pointe.
-                Cette teinte sombre rappelle certains meubles de la pièce et crée un contraste
-                élégant avec les murs blancs.
+                Un rectangle noir se terminant en pointe vient créer un contraste avec le blanc et
+                rappeler certains meubles plus sombres présents dans la pièce.
               </p>
               <p>
-                La hauteur importante du salon représentait le principal défi technique. Après la
+                La hauteur importante du salon constituait le principal défi technique. Après la
                 mise en protection du sol et des meubles, un échafaudage a été installé afin de
-                permettre les travaux en hauteur dans de bonnes conditions.
+                réaliser les travaux en hauteur.
               </p>
             </TextSection>
 
@@ -167,18 +166,14 @@ function RenovationBoulocPage() {
 
         <section className="bg-sand text-ink">
           <div className="mx-auto max-w-[1400px] px-5 py-20 lg:px-10 lg:py-28">
-            <TextSection eyebrow="Entrée & couloir" title="Une entrée et un couloir modernisés">
+            <TextSection eyebrow="Entrée & couloir" title="Une entrée et un couloir plus doux et lumineux">
               <p>
-                L'entrée et le couloir présentaient une décoration devenue vieillissante, notamment
-                avec leurs anciennes teintes grises.
+                L’entrée et le couloir, auparavant dans des tonalités grises et vieillissantes, ont
+                été modernisés avec une nouvelle mise en couleur.
               </p>
               <p>
-                Pour transformer ces espaces sans les assombrir, le plafond a été repeint en blanc
-                tandis que les murs ont reçu une teinte pastel rose poudré.
-              </p>
-              <p>
-                Cette association apporte davantage de douceur et de lumière à ces espaces de
-                circulation.
+                Le plafond a été repeint en blanc tandis que les murs ont reçu une teinte pastel rose
+                poudré, apportant davantage de douceur et de luminosité à cet espace.
               </p>
             </TextSection>
           </div>
@@ -186,19 +181,18 @@ function RenovationBoulocPage() {
 
         <section className="bg-background text-ink">
           <div className="mx-auto max-w-[1400px] px-5 py-20 lg:px-10 lg:py-28">
-            <TextSection eyebrow="La chambre" title="Une chambre lumineuse avec une touche de vert matcha">
+            <TextSection eyebrow="La chambre d’Isabelle" title="Une chambre lumineuse avec une touche de vert matcha">
               <p>
-                La chambre d'Isabelle était auparavant peinte en orange. Pour apporter davantage de
-                clarté et créer une atmosphère plus apaisante, trois murs ont été repeints en blanc pur.
+                La chambre d’Isabelle était auparavant peinte en orange. Pour maximiser la luminosité,
+                trois murs ont été repeints en blanc pur.
               </p>
               <p>
-                Le quatrième mur, situé derrière la tête de lit, a été réalisé dans une teinte vert
-                matcha. Cette couleur apporte une touche naturelle et chaleureuse tout en structurant
-                visuellement la chambre.
+                Le mur situé derrière la tête de lit a quant à lui été réalisé dans une teinte vert
+                matcha, apportant une touche naturelle et chaleureuse à la pièce.
               </p>
               <p>
-                Le sol a également été rénové : après préparation et isolation, un parquet naturel
-                flottant a été posé pour compléter la transformation.
+                Le sol a également été rénové avec la pose d’un parquet naturel flottant après
+                préparation et isolation.
               </p>
             </TextSection>
 
@@ -233,24 +227,6 @@ function RenovationBoulocPage() {
           </div>
         </section>
 
-        <section className="bg-sand text-ink">
-          <div className="mx-auto max-w-[1400px] px-5 py-20 lg:px-10 lg:py-28">
-            <TextSection eyebrow="La véranda" title="Une véranda transformée avec un papier peint végétal">
-              <p>
-                Un second chantier a également été réalisé dans la maison, cette fois dans la véranda.
-              </p>
-              <p>
-                L'ancien papier peint a été retiré afin de préparer les surfaces pour la pose d'un
-                nouveau papier peint végétal.
-              </p>
-              <p>
-                Ce choix apporte une ambiance naturelle à cette pièce lumineuse et crée un lien visuel
-                avec l'extérieur.
-              </p>
-            </TextSection>
-          </div>
-        </section>
-
         <section className="bg-background text-ink">
           <div className="mx-auto max-w-[1400px] px-5 py-20 lg:px-10 lg:py-28">
             <p className="eyebrow">Galerie</p>
@@ -280,7 +256,7 @@ function RenovationBoulocPage() {
           <div className="mx-auto grid max-w-[1400px] gap-8 px-5 py-16 lg:grid-cols-12 lg:items-center lg:px-10 lg:py-20">
             <div className="lg:col-span-8">
               <p className="eyebrow">À Bouloc et alentour</p>
-              <h2 className="mt-5 text-4xl leading-[1.08] lg:text-5xl">Un projet de peinture intérieure à Bouloc ?</h2>
+              <h2 className="mt-5 text-4xl leading-[1.08] lg:text-5xl">Une rénovation pensée pièce par pièce</h2>
               <p className="mt-6 max-w-3xl text-[17px] leading-relaxed text-muted-foreground">
                 Cette rénovation illustre l'importance d'adapter les couleurs, les matériaux et les
                 techniques aux caractéristiques de chaque pièce. Laurent Maury accompagne les
