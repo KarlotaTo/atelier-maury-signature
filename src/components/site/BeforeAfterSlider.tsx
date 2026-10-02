@@ -12,6 +12,7 @@ export type BeforeAfterSliderProps = {
   beforeAlt?: string | undefined;
   afterAlt?: string | undefined;
   className?: string | undefined;
+  frameClassName?: string | undefined;
 };
 
 export function BeforeAfterSlider({
@@ -22,6 +23,7 @@ export function BeforeAfterSlider({
   beforeAlt,
   afterAlt,
   className,
+  frameClassName,
 }: BeforeAfterSliderProps) {
   const frameRef = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState(50);
@@ -42,7 +44,7 @@ export function BeforeAfterSlider({
     if (rect.width === 0) return;
 
     const next = ((clientX - rect.left) / rect.width) * 100;
-    setPosition(clamp(next, 4, 96));
+    setPosition(clamp(next, 0, 100));
   };
 
   const startDrag = (event: PointerEvent<HTMLDivElement>) => {
@@ -72,14 +74,14 @@ export function BeforeAfterSlider({
       event.preventDefault();
       setHasInteracted(true);
       setShowHint(false);
-      setPosition((current) => clamp(current - step, 4, 96));
+      setPosition((current) => clamp(current - step, 0, 100));
     }
 
     if (event.key === "ArrowRight") {
       event.preventDefault();
       setHasInteracted(true);
       setShowHint(false);
-      setPosition((current) => clamp(current + step, 4, 96));
+      setPosition((current) => clamp(current + step, 0, 100));
     }
 
     if (event.key === "Home") {
@@ -108,7 +110,7 @@ export function BeforeAfterSlider({
     >
       <div
         ref={frameRef}
-        className="group relative aspect-[4/3] w-full cursor-ew-resize touch-none select-none overflow-hidden bg-sand sm:aspect-[16/10] lg:aspect-[16/9]"
+        className={cn("group relative w-full cursor-ew-resize touch-none select-none overflow-hidden bg-sand", frameClassName ?? "aspect-[4/3] sm:aspect-[16/10] lg:aspect-[16/9]")}
         onPointerDown={startDrag}
         onPointerMove={moveDrag}
         onPointerUp={stopDrag}
