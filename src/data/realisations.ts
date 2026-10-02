@@ -49,7 +49,7 @@ export const realisations: Realisation[] = [
       "Rénovation intérieure à Bouloc : mise en peinture du salon, nouvelles couleurs et pose d’un parquet naturel dans la chambre.",
     description:
       "Une rénovation intérieure pensée pièce par pièce pour redonner de la lumière à cette maison de Bouloc.",
-    prestations: ["Peinture intérieure", "Mise en couleur", "Pose de parquet", "Papier peint"],
+    prestations: ["Peinture intérieure", "Mise en couleur", "Pose de parquet"],
     images: [
       {
         src: renovationBoulocHero.url,
