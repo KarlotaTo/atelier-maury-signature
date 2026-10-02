@@ -32,7 +32,7 @@ export const Route = createFileRoute("/realisations/renovation-peinture-interieu
         url: absoluteUrl(path),
         genre: "Rénovation intérieure",
         creator: { "@id": BUSINESS_ID },
-        about: ["Peinture intérieure", "Mise en couleur", "Pose de parquet",
+        about: ["Peinture intérieure", "Mise en couleur", "Pose de parquet"],
         contentLocation: {
           "@type": "Place",
           name: "Bouloc",
