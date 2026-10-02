@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { BeforeAfterSlider } from "@/components/site/BeforeAfterSlider";
 import { ProjectGallery } from "@/components/site/ProjectGallery";
 import { Button } from "@/components/ui/button";
 import salonHero from "@/assets/realisations/renovation-bouloc-salon-lumineux.jpeg.asset.json";
@@ -143,24 +144,15 @@ function RenovationBoulocPage() {
               </p>
             </TextSection>
 
-            <div className="mt-14 grid gap-5 lg:grid-cols-12">
-              <img
-                src={salonEchafaudage.url}
-                alt="Échafaudage installé pour les travaux de peinture en hauteur dans le salon"
-                width={1200}
-                height={1600}
-                loading="lazy"
-                className="aspect-[4/5] w-full object-cover lg:col-span-5"
-              />
-              <img
-                src={murGraphiqueChantier.url}
-                alt="Mur graphique noir en cours de réalisation dans le salon"
-                width={1200}
-                height={1600}
-                loading="lazy"
-                className="aspect-[4/5] w-full object-cover lg:col-span-7"
-              />
-            </div>
+            <BeforeAfterSlider
+              className="mt-14"
+              beforeImage={murGraphiqueChantier.url}
+              afterImage={murGraphiqueFini.url}
+              beforeLabel="Chantier"
+              afterLabel="Après"
+              beforeAlt="Mur graphique noir en cours de réalisation, mobilier protégé dans le salon"
+              afterAlt="Mur graphique noir dans un salon repeint en blanc à Bouloc"
+            />
           </div>
         </section>
 
@@ -196,34 +188,15 @@ function RenovationBoulocPage() {
               </p>
             </TextSection>
 
-            <div className="mt-14 grid gap-5 md:grid-cols-2">
-              <figure>
-                <img
-                  src={chambreSolPrepare.url}
-                  alt="Préparation et isolation du sol avant la pose du parquet dans une chambre"
-                  width={901}
-                  height={1600}
-                  loading="lazy"
-                  className="aspect-[3/4] w-full object-cover"
-                />
-                <figcaption className="mt-3 text-xs uppercase tracking-[0.16em] text-muted-foreground">
-                  Préparation et isolation du sol
-                </figcaption>
-              </figure>
-              <figure>
-                <img
-                  src={chambreParquet.url}
-                  alt="Pose de parquet naturel dans une chambre à Bouloc"
-                  width={1170}
-                  height={1546}
-                  loading="lazy"
-                  className="aspect-[3/4] w-full object-cover"
-                />
-                <figcaption className="mt-3 text-xs uppercase tracking-[0.16em] text-muted-foreground">
-                  Parquet naturel après la pose
-                </figcaption>
-              </figure>
-            </div>
+            <BeforeAfterSlider
+              className="mt-14"
+              beforeImage={chambreSolPrepare.url}
+              afterImage={chambreParquet.url}
+              beforeLabel="Préparation"
+              afterLabel="Parquet"
+              beforeAlt="Préparation et isolation du sol avant la pose du parquet, mur vert matcha"
+              afterAlt="Chambre rénovée avec parquet naturel flottant à Bouloc"
+            />
           </div>
         </section>
 
@@ -235,10 +208,10 @@ function RenovationBoulocPage() {
               <ProjectGallery
                 images={[
                   {
-                    src: murGraphiqueFini.url,
-                    alt: "Mur graphique noir terminé dans le salon rénové",
-                    width: 1600,
-                    height: 1200,
+                    src: salonEchafaudage.url,
+                    alt: "Échafaudage installé pour les travaux de peinture en hauteur dans le salon",
+                    width: 1200,
+                    height: 1600,
                   },
                   {
                     src: murGraphiqueDetail.url,
