@@ -12,6 +12,7 @@ import beforeSalon from "@/assets/before-salon.jpg";
 import afterSalon from "@/assets/after-salon.jpg";
 import beforeFacade from "@/assets/before-facade.jpg";
 import afterFacade from "@/assets/after-facade.jpg";
+import verandaBalmaHero from "@/assets/realisations/veranda-balma-hero.jpeg.asset.json";
 import renovationBoulocHero from "@/assets/realisations/renovation-bouloc-mur-graphique-detail.jpeg.asset.json";
 
 export type RealisationBeforeAfter = {
@@ -39,6 +40,24 @@ export type Realisation = {
 };
 
 export const realisations: Realisation[] = [
+  {
+    slug: "renovation-veranda-balma",
+    title: "Rénovation intérieure d’une véranda",
+    city: "Balma",
+    type: "Papier peint",
+    seoTitle: "Rénovation véranda à Balma | Laurent Maury",
+    summary:
+      "Retrait de l’ancien papier peint, préparation des surfaces et pose d’un papier peint végétal dans une véranda à Balma.",
+    description:
+      "Une véranda renouvelée par un nouveau décor végétal, après retrait de l’ancien papier peint.",
+    prestations: ["Retrait de papier peint", "Préparation des surfaces", "Pose de papier peint"],
+    images: [
+      {
+        src: verandaBalmaHero.url,
+        alt: "Véranda rénovée avec papier peint végétal à Balma",
+      },
+    ],
+  },
   {
     slug: "renovation-peinture-interieure-bouloc",
     title: "Rénovation et peinture intérieure d’une maison",
