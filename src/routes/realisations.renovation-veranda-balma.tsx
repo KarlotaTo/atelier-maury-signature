@@ -95,7 +95,7 @@ function VerandaBalmaPage() {
       <section className="border-y border-line bg-sand text-ink">
         <div className="mx-auto grid max-w-[1400px] gap-px bg-line px-5 sm:grid-cols-3 lg:px-10">
           {facts.map(([label, value]) => (
-            <div key={label} className="bg-sand py-7 sm:px-6 sm:first:pl-0 sm:last:pr-0">
+            <div key={label} className="bg-sand px-5 py-7 sm:px-8">
               <p className="text-[10px] uppercase tracking-[0.18em] text-accent">{label}</p>
               <p className="mt-2 text-sm leading-relaxed text-ink-soft">{value}</p>
             </div>
