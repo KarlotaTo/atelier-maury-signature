@@ -4,6 +4,7 @@ import { Check, Clock } from "lucide-react";
 import { Section, Eyebrow, SectionTitle, Lead, PageHero } from "@/components/site/ui";
 import { site, communes, hasPhone, telHref, isOpen } from "@/data/site";
 import { buildSeoHead, BUSINESS_ID } from "@/lib/seo";
+import content from "@/content/pages/contact.json";
 
 function OpenBadge({ className = "" }: { className?: string }) {
   const [open, setOpen] = useState<boolean | null>(null);
@@ -32,8 +33,8 @@ export const Route = createFileRoute("/contact")({
   validateSearch: (search: Record<string, unknown>): { intent?: string } =>
     typeof search["intent"] === "string" ? { intent: search["intent"] } : {},
   head: () => buildSeoHead({
-    title: "Contact et devis peinture à Bouloc | Maury Laurent",
-    description: "Contactez Maury Laurent pour un devis détaillé en peinture, décoration ou rénovation à Bouloc et au nord de Toulouse. Du lundi au vendredi, 9h–17h.",
+    title: content.seo.title,
+    description: content.seo.description,
     path: "/contact",
     breadcrumbLabel: "Contact et devis",
     schema: {
@@ -65,9 +66,9 @@ function Page() {
   return (
     <>
       <PageHero
-        eyebrow="Contact"
-        title="Parlons de votre projet"
-        intro="Décrivez les travaux envisagés en quelques lignes : nous vous répondons pour organiser une visite sur place, suivie d'un devis détaillé poste par poste."
+        eyebrow={content.hero.eyebrow}
+        title={content.hero.title}
+        intro={content.hero.intro}
       />
 
       <Section>
@@ -203,7 +204,7 @@ function Page() {
                 </p>
               </div>
               <p className="mt-4 text-[13px] leading-relaxed text-muted-foreground">
-                Vous pouvez nous contacter par email à toute heure ; nous vous rappelons pendant les heures d'ouverture.
+                {content.horairesNote}
               </p>
             </div>
             <div className="mt-6 border border-line p-8">
@@ -211,9 +212,9 @@ function Page() {
                 Bon à savoir
               </p>
               <ul className="mt-4 space-y-3 text-[15px] text-muted-foreground">
-                <li>Visite sur place avant tout devis</li>
-                <li>Devis détaillé poste par poste</li>
-                <li>Un seul interlocuteur du début à la fin</li>
+                {content.bonASavoir.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
               </ul>
             </div>
           </aside>

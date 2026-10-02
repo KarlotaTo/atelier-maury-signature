@@ -1,0 +1,16 @@
+{
+  "name": "Maury Laurent",
+  "baseline": "Peinture, décoration et rénovation",
+  "city": "Bouloc",
+  "since": 1994,
+  "phone": "06 03 06 87 50",
+  "email": "maury.laurent60@gmail.com",
+  "address": "Bouloc, Haute-Garonne (31)",
+  "hours": {
+    "days": "Du lundi au vendredi",
+    "range": "9h – 17h",
+    "openHour": 9,
+    "closeHour": 17
+  },
+  "footerText": "Artisan de la rénovation à Bouloc depuis 1994 : rénovation clé en main, peinture, sols et façades à Fronton, Castelginest, Aucamville, L'Union, Grenade et Blagnac. Quatre générations d'artisans."
+}

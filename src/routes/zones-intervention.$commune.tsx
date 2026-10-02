@@ -5,12 +5,12 @@ import { Section, Eyebrow, SectionTitle, Lead, FinalCta } from "@/components/sit
 import { engagements } from "@/data/site";
 import { getZone, zones, type ExpertiseKey } from "@/data/zones";
 import { absoluteUrl, buildSeoHead, BUSINESS_ID } from "@/lib/seo";
-import imgPeinture from "@/assets/peinture-decorative.jpg";
-import imgSols from "@/assets/parquet.jpg";
-import imgMurs from "@/assets/murs-enduits.jpg";
-import imgRenovation from "@/assets/renovation.jpg";
-import imgFacades from "@/assets/facade.jpg";
-import imgEntretien from "@/assets/entretien-bati.jpg";
+const imgPeinture = "/images/peinture-decorative.jpg";
+const imgSols = "/images/parquet.jpg";
+const imgMurs = "/images/murs-enduits.jpg";
+const imgRenovation = "/images/renovation.jpg";
+const imgFacades = "/images/facade.jpg";
+const imgEntretien = "/images/entretien-bati.jpg";
 import salonHero from "@/assets/realisations/renovation-bouloc-salon-lumineux.jpeg.asset.json";
 import murChantier from "@/assets/realisations/renovation-bouloc-mur-graphique-chantier.jpeg.asset.json";
 import murFini from "@/assets/realisations/renovation-bouloc-mur-graphique-fini.jpeg.asset.json";

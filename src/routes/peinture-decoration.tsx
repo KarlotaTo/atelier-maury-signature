@@ -1,12 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
-import img from "@/assets/peinture-decorative.jpg";
-import { Section, Eyebrow, SectionTitle, Lead, PageHero, PrestationList, FinalCta } from "@/components/site/ui";
+import { ServicePage, type ServiceContent } from "@/components/site/ServicePage";
+import data from "@/content/pages/peinture-decoration.json";
 import { buildSeoHead } from "@/lib/seo";
+
+const content = data as ServiceContent;
 
 export const Route = createFileRoute("/peinture-decoration")({
   head: () => buildSeoHead({
-    title: "Peintre décorateur à Bouloc et Fronton | Maury Laurent",
-    description: "Peintures à effet, textures, chaux, home staging et conseil couleurs à Bouloc, Fronton et L'Union. Artisan peintre décorateur, devis gratuit.",
+    title: content.seo.title,
+    description: content.seo.description,
     path: "/peinture-decoration",
     ogType: "article",
     breadcrumbLabel: "Peinture intérieure et décoration",
@@ -24,112 +26,6 @@ export const Route = createFileRoute("/peinture-decoration")({
   component: Page,
 });
 
-const prestations = [
-  {
-    title: "Peinture intérieure",
-    text: "Murs, plafonds, boiseries, portes. Mat, velours ou satiné : la finition se choisit selon la pièce et la lumière. Nous travaillons avec des peintures de qualité, de fabrication française, et des peintures bio pour un intérieur plus sain.",
-  },
-  {
-    title: "Peinture décorative",
-    text: "Patines, glacis, camaïeux, murs d'accent : l'art de donner de la profondeur à une surface plane. Un bleu nuit derrière une tête de lit, un soubassement terracotta dans une entrée. Chaque effet est d'abord testé sur place.",
-  },
-  {
-    title: "Effets, textures et mouvement",
-    text: "Peintures à mouvement qui font onduler la lumière, textures qui donnent du relief sous la main, effets sablés ou métallisés, béton ciré, stuc. Des rendus travaillés à la main, sur des supports préparés en conséquence.",
-  },
-  {
-    title: "Enduits à la chaux",
-    text: "Chaux aérienne ou hydraulique, badigeons, stucs. Une matière vivante, qui respire et vieillit avec noblesse. Idéale pour les maisons anciennes en brique du Frontonnais, elle apporte aussi une profondeur rare aux intérieurs contemporains.",
-  },
-  {
-    title: "Conseil couleurs",
-    text: "Orientation des pièces, matériaux existants, circulation entre les espaces : nous analysons, puis nous proposons une palette cohérente, pièce par pièce. Les teintes sont testées sur vos murs, le matin et le soir, avant validation.",
-  },
-  {
-    title: "Home staging",
-    text: "Vendre, louer ou redécouvrir sa maison : quelques teintes bien choisies, un mur d'accent et des finitions reprises suffisent à changer la première impression. Nous sommes force de proposition, de l'idée au résultat, à Blagnac, L'Union ou Castelginest.",
-  },
-];
-
 function Page() {
-  return (
-    <>
-      <PageHero
-        eyebrow="Savoir-faire"
-        title={
-          <>
-            <span className="sr-only">Peintre décorateur à Bouloc : </span>
-            Peinture & décoration
-          </>
-        }
-        intro="Le cœur de notre métier. Une couleur ne se choisit pas sur un nuancier : elle se choisit sur votre mur, sous votre lumière. Peinture intérieure, effets, textures, chaux, home staging : nous travaillons la teinte comme une matière, en rénovation comme dans le neuf, à Bouloc, Fronton et dans tout le nord de Toulouse."
-        image={img}
-        imageAlt="Artisan appliquant un enduit à la chaux au spalter sur un mur intérieur"
-        extra={
-          <div className="mt-12 border-t border-line pt-8">
-            <p className="eyebrow">Sur le chantier</p>
-            <ul className="mt-6 space-y-5">
-              <li className="grid gap-1 sm:grid-cols-[14rem_1fr] sm:gap-6">
-                <span className="text-[15px] font-medium text-ink">La teinte, testée sur place</span>
-                <span className="text-[15px] leading-relaxed text-muted-foreground">
-                  Un échantillon posé sur votre mur, regardé le matin puis le soir. On ne valide
-                  qu'une fois la lumière acceptée.
-                </span>
-              </li>
-              <li className="grid gap-1 sm:grid-cols-[14rem_1fr] sm:gap-6">
-                <span className="text-[15px] font-medium text-ink">La matière, choisie pour durer</span>
-                <span className="text-[15px] leading-relaxed text-muted-foreground">
-                  Peintures de fabrication française, enduits à la chaux, finitions travaillées à la
-                  main. Le support est préparé avant la première couche.
-                </span>
-              </li>
-              <li className="grid gap-1 sm:grid-cols-[14rem_1fr] sm:gap-6">
-                <span className="text-[15px] font-medium text-ink">La maison, respectée</span>
-                <span className="text-[15px] leading-relaxed text-muted-foreground">
-                  Habité ou vide, les protections sont posées chaque matin et retirées le soir. On
-                  laisse le chantier propre, jour après jour.
-                </span>
-              </li>
-            </ul>
-          </div>
-        }
-      />
-
-      <Section>
-        <Eyebrow>Prestations</Eyebrow>
-        <SectionTitle>Six façons de travailler la couleur</SectionTitle>
-        <div className="mt-14">
-          <PrestationList items={prestations} />
-        </div>
-      </Section>
-
-      <Section tone="sand">
-        <div className="grid gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-5">
-            <Eyebrow>Méthode</Eyebrow>
-            <SectionTitle>Pourquoi l'essentiel se joue avant la première couche ?</SectionTitle>
-          </div>
-          <div className="lg:col-span-6 lg:col-start-7">
-            <Lead>
-              Rebouchage, ponçage, dépoussiérage, traitement des fissures, impression adaptée : la
-              plus grande partie d'un chantier de peinture se passe à préparer. Sur un mur
-              détapissé, nous passons systématiquement un enduit, pour un support parfaitement
-              lisse. C'est cette part invisible qui fait qu'une peinture reste belle après dix
-              hivers.
-            </Lead>
-            <p className="mt-6 max-w-2xl text-[17px] leading-relaxed text-muted-foreground">
-              Sur les logements habités, les protections sont posées chaque matin et retirées le
-              soir. Et si votre projet va au-delà de la peinture, nous pouvons le mener de A à Z, en
-              rénovation clé en main.
-            </p>
-          </div>
-        </div>
-      </Section>
-
-      <FinalCta
-        title="Une pièce à réinventer ?"
-        text="Dites-nous quelles pièces vous voulez transformer et l'atmosphère que vous recherchez, même en trois mots. Nous venons voir, prenons les mesures, puis vous remettons un devis gratuit et détaillé."
-      />
-    </>
-  );
+  return <ServicePage content={content} />;
 }

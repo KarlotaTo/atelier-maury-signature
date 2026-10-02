@@ -5,11 +5,12 @@ import { Section, Eyebrow, SectionTitle, Lead, PageHero, FinalCta } from "@/comp
 import { communes, site } from "@/data/site";
 import { zones } from "@/data/zones";
 import { buildSeoHead, BUSINESS_ID } from "@/lib/seo";
+import content from "@/content/pages/zones-intervention.json";
 
 export const Route = createFileRoute("/zones-intervention/")({
   head: () => buildSeoHead({
-    title: "Peintre à Bouloc et au nord de Toulouse | Maury Laurent",
-    description: "Peinture et rénovation à Bouloc, Fronton, Castelginest, Aucamville, L’Union, Grenade et Blagnac. Découvrez nos zones d’intervention.",
+    title: content.seo.title,
+    description: content.seo.description,
     path: "/zones-intervention",
     breadcrumbLabel: "Zones d’intervention",
     schema: {
@@ -28,14 +29,14 @@ function Page() {
   return (
     <>
       <PageHero
-        eyebrow="Secteurs"
-        title="Zones d'intervention"
-        intro={`Basée à ${site.city}, l'entreprise intervient au nord de Toulouse, sur un secteur resserré qui garantit des déplacements rapides et un vrai suivi de chantier.`}
+        eyebrow={content.hero.eyebrow}
+        title={content.hero.title}
+        intro={content.hero.intro}
       />
 
       <Section>
-        <Eyebrow>Communes</Eyebrow>
-        <SectionTitle>Où nous travaillons</SectionTitle>
+        <Eyebrow>{content.communes.eyebrow}</Eyebrow>
+        <SectionTitle>{content.communes.title}</SectionTitle>
         <div className="mt-14 grid gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
           {communes.map((c) => (
             <Link
@@ -68,21 +69,20 @@ function Page() {
       <Section tone="sand">
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
-            <Eyebrow>Au-delà ?</Eyebrow>
-            <SectionTitle>Votre commune n'est pas listée</SectionTitle>
+            <Eyebrow>{content.auDela.eyebrow}</Eyebrow>
+            <SectionTitle>{content.auDela.title}</SectionTitle>
           </div>
           <div className="lg:col-span-6 lg:col-start-7">
             <Lead>
-              Ce périmètre est celui des interventions courantes. Pour un projet situé en dehors —
-              notamment les rénovations complètes — contactez-nous : chaque demande est étudiée.
+              {content.auDela.text}
             </Lead>
           </div>
         </div>
       </Section>
 
       <FinalCta
-        title="Un projet sur l'une de ces communes ?"
-        text="Décrivez votre maison ou votre appartement : nous vous proposons une visite et un devis détaillé."
+        title={content.cta.title}
+        text={content.cta.text}
       />
     </>
   );

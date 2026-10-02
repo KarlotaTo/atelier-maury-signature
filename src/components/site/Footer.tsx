@@ -13,10 +13,7 @@ export function Footer() {
             </p>
           </div>
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-primary-foreground/70">
-            Artisan de la rénovation à {site.city} depuis {site.since} : rénovation clé en main,
-            peinture, sols et façades à
-            Fronton, Castelginest, Aucamville, L'Union, Grenade et Blagnac. Quatre générations
-            d'artisans.
+            {site.footerText}
           </p>
         </div>
 

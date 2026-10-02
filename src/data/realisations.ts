@@ -5,8 +5,6 @@
  * les photos des chantiers réels de l'entreprise.
  */
 
-import verandaBalmaHero from "@/assets/realisations/veranda-balma-hero.jpeg.asset.json";
-import renovationBoulocHero from "@/assets/realisations/renovation-bouloc-mur-graphique-detail.jpeg.asset.json";
 
 export type RealisationBeforeAfter = {
   beforeImage: string;
@@ -18,6 +16,7 @@ export type RealisationBeforeAfter = {
 };
 
 export type Realisation = {
+  order: number;
   slug: string;
   title: string;
   city: string;
@@ -32,43 +31,9 @@ export type Realisation = {
   beforeAfter?: RealisationBeforeAfter[];
 };
 
-export const realisations: Realisation[] = [
-  {
-    slug: "renovation-veranda-balma",
-    title: "Rénovation intérieure d’une véranda",
-    city: "Balma",
-    type: "Papier peint",
-    seoTitle: "Rénovation véranda à Balma | Laurent Maury",
-    summary:
-      "Retrait de l’ancien papier peint, préparation des surfaces et pose d’un papier peint végétal dans une véranda à Balma.",
-    description:
-      "Une véranda renouvelée par un nouveau décor végétal, après retrait de l’ancien papier peint.",
-    prestations: ["Retrait de papier peint", "Préparation des surfaces", "Pose de papier peint"],
-    images: [
-      {
-        src: verandaBalmaHero.url,
-        alt: "Véranda rénovée avec papier peint végétal à Balma",
-      },
-    ],
-  },
-  {
-    slug: "renovation-peinture-interieure-bouloc",
-    title: "Rénovation et peinture intérieure d’une maison",
-    city: "Bouloc",
-    type: "Rénovation intérieure",
-    seoTitle: "Rénovation et peinture intérieure à Bouloc | Maury Laurent",
-    summary:
-      "Rénovation intérieure à Bouloc : mise en peinture du salon, nouvelles couleurs et pose d’un parquet naturel dans la chambre.",
-    description:
-      "Une rénovation intérieure pensée pièce par pièce pour redonner de la lumière à cette maison de Bouloc.",
-    prestations: ["Peinture intérieure", "Mise en couleur", "Pose de parquet"],
-    images: [
-      {
-        src: renovationBoulocHero.url,
-        alt: "Mur graphique noir dans un salon rénové à Bouloc",
-      },
-    ],
-  },
-];
+/** Contenu éditable dans le CMS : un fichier JSON par réalisation dans src/content/realisations. */
+const files = import.meta.glob<Realisation>("../content/realisations/*.json", { eager: true, import: "default" });
+
+export const realisations: Realisation[] = Object.values(files).sort((a, b) => a.order - b.order);
 
 export const getRealisation = (slug: string) => realisations.find((r) => r.slug === slug);
