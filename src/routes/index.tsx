@@ -254,7 +254,7 @@ function Home() {
             Toutes les réalisations
           </Link>
         </div>
-        <div className="mt-14 grid gap-px border border-line bg-line md:grid-cols-3">
+        <div className="mt-14 grid gap-px border border-line bg-line md:grid-cols-2">
           {realisations.map((r) => (
             <Link
               key={r.slug}
