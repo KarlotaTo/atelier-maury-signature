@@ -217,15 +217,6 @@ function Page() {
             frameClassName="aspect-[4/3] sm:aspect-[16/9] lg:aspect-[20/9]"
           />
         </div>
-        <div className="mt-10 max-w-3xl">
-          <Prose>
-            <p>
-              Avant : des plaques de plâtre aux joints encore apparents, de l'isolant visible et un pignon en
-              parpaings brut. Après : des surfaces continues et blanches, une pièce lumineuse prête à recevoir son
-              sol.
-            </p>
-          </Prose>
-        </div>
       </Section>
 
       {/* SOLS, PARQUETS, REVÊTEMENTS — texte + photo */}
