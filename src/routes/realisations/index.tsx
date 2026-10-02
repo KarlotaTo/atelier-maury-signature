@@ -8,7 +8,7 @@ export const Route = createFileRoute("/realisations/")({
     buildSeoHead({
       title: "Nos réalisations de rénovation à Bouloc | Maury Laurent",
       description:
-        "Avant/après de nos chantiers à Bouloc, Fronton et Grenade : rénovation de maison, enduits à la chaux, ravalement de façade.",
+        "Avant/après de nos chantiers à Bouloc et Balma : rénovation et peinture intérieure, pose de papier peint.",
       path: "/realisations",
       breadcrumbLabel: "Réalisations",
       schema: {
