@@ -44,7 +44,7 @@ function Page() {
 
       <Section>
         <Eyebrow>Chantiers</Eyebrow>
-        <SectionTitle>Trois maisons, trois histoires</SectionTitle>
+        <SectionTitle>Quatre maisons, quatre histoires</SectionTitle>
         <div className="mt-14 grid gap-px border border-line bg-line md:grid-cols-3">
           {realisations.map((r) => (
             <Link
