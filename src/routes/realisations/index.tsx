@@ -15,7 +15,7 @@ export const Route = createFileRoute("/realisations/")({
         "@context": "https://schema.org",
         "@type": "CollectionPage",
         name: "Réalisations",
-        description: "Avant/après de nos chantiers à Bouloc, Fronton et Grenade : rénovation de maison, enduits à la chaux, ravalement de façade.",
+        description: "Avant/après de nos chantiers à Bouloc et Balma : rénovation et peinture intérieure, pose de papier peint.",
         url: absoluteUrl("/realisations"),
         about: { "@id": BUSINESS_ID },
         mainEntity: {
@@ -44,7 +44,7 @@ function Page() {
 
       <Section>
         <Eyebrow>Chantiers</Eyebrow>
-        <SectionTitle>Quatre maisons, quatre histoires</SectionTitle>
+        <SectionTitle>Deux chantiers, deux histoires</SectionTitle>
         <div className="mt-14 grid gap-px border border-line bg-line md:grid-cols-3">
           {realisations.map((r) => (
             <Link
