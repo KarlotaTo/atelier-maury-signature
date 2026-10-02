@@ -25,6 +25,7 @@ import { Route as SolsParquetsRouteImport } from './routes/sols-parquets'
 import { Route as ZonesInterventionRouteImport } from './routes/zones-intervention'
 import { Route as RealisationsIndexRouteImport } from './routes/realisations/index'
 import { Route as RealisationsSlugRouteImport } from './routes/realisations.$slug'
+import { Route as RealisationsRenovationPeintureInterieureBoulocRouteImport } from './routes/realisations.renovation-peinture-interieure-bouloc'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -106,6 +107,12 @@ const RealisationsSlugRoute = RealisationsSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => RealisationsRoute,
 } as any)
+const RealisationsRenovationPeintureInterieureBoulocRoute =
+  RealisationsRenovationPeintureInterieureBoulocRouteImport.update({
+    id: '/renovation-peinture-interieure-bouloc',
+    path: '/renovation-peinture-interieure-bouloc',
+    getParentRoute: () => RealisationsRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -123,6 +130,7 @@ export interface FileRoutesByFullPath {
   '/sols-parquets': typeof SolsParquetsRoute
   '/zones-intervention': typeof ZonesInterventionRoute
   '/realisations/$slug': typeof RealisationsSlugRoute
+  '/realisations/renovation-peinture-interieure-bouloc': typeof RealisationsRenovationPeintureInterieureBoulocRoute
   '/realisations/': typeof RealisationsIndexRoute
 }
 export interface FileRoutesByTo {
@@ -140,6 +148,7 @@ export interface FileRoutesByTo {
   '/sols-parquets': typeof SolsParquetsRoute
   '/zones-intervention': typeof ZonesInterventionRoute
   '/realisations/$slug': typeof RealisationsSlugRoute
+  '/realisations/renovation-peinture-interieure-bouloc': typeof RealisationsRenovationPeintureInterieureBoulocRoute
   '/realisations': typeof RealisationsIndexRoute
 }
 export interface FileRoutesById {
@@ -159,6 +168,7 @@ export interface FileRoutesById {
   '/sols-parquets': typeof SolsParquetsRoute
   '/zones-intervention': typeof ZonesInterventionRoute
   '/realisations/$slug': typeof RealisationsSlugRoute
+  '/realisations/renovation-peinture-interieure-bouloc': typeof RealisationsRenovationPeintureInterieureBoulocRoute
   '/realisations/': typeof RealisationsIndexRoute
 }
 export interface FileRouteTypes {
@@ -179,6 +189,7 @@ export interface FileRouteTypes {
     | '/sols-parquets'
     | '/zones-intervention'
     | '/realisations/$slug'
+    | '/realisations/renovation-peinture-interieure-bouloc'
     | '/realisations/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -196,6 +207,7 @@ export interface FileRouteTypes {
     | '/sols-parquets'
     | '/zones-intervention'
     | '/realisations/$slug'
+    | '/realisations/renovation-peinture-interieure-bouloc'
     | '/realisations'
   id:
     | '__root__'
@@ -214,6 +226,7 @@ export interface FileRouteTypes {
     | '/sols-parquets'
     | '/zones-intervention'
     | '/realisations/$slug'
+    | '/realisations/renovation-peinture-interieure-bouloc'
     | '/realisations/'
   fileRoutesById: FileRoutesById
 }
@@ -348,16 +361,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RealisationsSlugRouteImport
       parentRoute: typeof RealisationsRoute
     }
+    '/realisations/renovation-peinture-interieure-bouloc': {
+      id: '/realisations/renovation-peinture-interieure-bouloc'
+      path: '/renovation-peinture-interieure-bouloc'
+      fullPath: '/realisations/renovation-peinture-interieure-bouloc'
+      preLoaderRoute: typeof RealisationsRenovationPeintureInterieureBoulocRouteImport
+      parentRoute: typeof RealisationsRoute
+    }
   }
 }
 
 interface RealisationsRouteChildren {
   RealisationsSlugRoute: typeof RealisationsSlugRoute
+  RealisationsRenovationPeintureInterieureBoulocRoute: typeof RealisationsRenovationPeintureInterieureBoulocRoute
   RealisationsIndexRoute: typeof RealisationsIndexRoute
 }
 
 const RealisationsRouteChildren: RealisationsRouteChildren = {
   RealisationsSlugRoute: RealisationsSlugRoute,
+  RealisationsRenovationPeintureInterieureBoulocRoute:
+    RealisationsRenovationPeintureInterieureBoulocRoute,
   RealisationsIndexRoute: RealisationsIndexRoute,
 }
 
