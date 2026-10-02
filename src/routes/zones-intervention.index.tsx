@@ -5,7 +5,7 @@ import { Section, Eyebrow, SectionTitle, Lead, PageHero, FinalCta } from "@/comp
 import { communes, site } from "@/data/site";
 import { buildSeoHead, BUSINESS_ID } from "@/lib/seo";
 
-export const Route = createFileRoute("/zones-intervention")({
+export const Route = createFileRoute("/zones-intervention/")({
   head: () => buildSeoHead({
     title: "Peintre à Bouloc et au nord de Toulouse | Maury Laurent",
     description: "Peinture et rénovation à Bouloc, Fronton, Castelginest, Aucamville, L’Union, Grenade et Blagnac. Découvrez nos zones d’intervention.",
