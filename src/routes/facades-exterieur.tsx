@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ServicePage, type ServiceContent } from "@/components/site/ServicePage";
 import data from "@/content/pages/facades-exterieur.json";
-import { buildSeoHead } from "@/lib/seo";
+import { buildSeoHead, BUSINESS_ID } from "@/lib/seo";
 
 const content = data as ServiceContent;
 
@@ -19,7 +19,7 @@ export const Route = createFileRoute("/facades-exterieur")({
       name: "Façades & extérieur",
       description:
         "Ravalement de façade, préparation des supports, réparation des fissures, peinture de façade épaisse sans crépi, rénovation des murs extérieurs et mise en peinture des menuiseries extérieures.",
-      provider: { "@id": "https://maury-laurent.lnkio.fr/#entreprise" },
+      provider: { "@id": BUSINESS_ID },
       areaServed: ["Bouloc", "Fronton", "Castelginest", "Aucamville", "L'Union", "Grenade", "Blagnac"],
     },
   }),

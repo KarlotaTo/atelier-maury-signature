@@ -4,13 +4,14 @@
  */
 
 import general from "@/content/general.json";
+import technique from "@/content/technique.json";
 import avisContent from "@/content/avis.json";
 import engagementsContent from "@/content/engagements.json";
 import { zones } from "@/data/zones";
 
 export const site = {
   ...general,
-  url: "https://maury-laurent.lnkio.fr",
+  url: technique.siteUrl,
   hours: {
     ...general.hours,
     /** Jours ouvrés : 1 = lundi, 5 = vendredi */

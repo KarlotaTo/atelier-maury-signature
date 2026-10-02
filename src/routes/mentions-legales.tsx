@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHero, Section } from "@/components/site/ui";
 import { site } from "@/data/site";
-import { buildSeoHead } from "@/lib/seo";
+import { buildSeoHead, absoluteUrl } from "@/lib/seo";
 
 export const Route = createFileRoute("/mentions-legales")({
   head: () =>
@@ -17,7 +17,7 @@ export const Route = createFileRoute("/mentions-legales")({
         name: "Mentions légales",
         description:
           "Mentions légales de MAURY LAURENT, entrepreneur individuel spécialisé dans les travaux de peinture à Bouloc et en Haute-Garonne.",
-        url: "https://maury-laurent.lnkio.fr/mentions-legales",
+        url: absoluteUrl("/mentions-legales"),
       },
     }),
   component: Page,

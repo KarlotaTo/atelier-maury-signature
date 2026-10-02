@@ -38,6 +38,9 @@ export type Zone = {
 /** Contenu éditable dans le CMS : un fichier JSON par commune dans src/content/villes. */
 const files = import.meta.glob<Zone>("../content/villes/*.json", { eager: true, import: "default" });
 
-export const zones: Zone[] = Object.values(files).sort((a, b) => a.order - b.order);
+/** L'adresse de la page (slug) est le nom du fichier : elle ne change pas si le titre est modifié. */
+export const zones: Zone[] = Object.entries(files)
+  .map(([path, entry]) => ({ ...entry, slug: path.split("/").pop()!.replace(/\.json$/, "") }))
+  .sort((a, b) => a.order - b.order);
 
 export const getZone = (slug: string) => zones.find((z) => z.slug === slug);

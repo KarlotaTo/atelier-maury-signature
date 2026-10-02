@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ServicePage, type ServiceContent } from "@/components/site/ServicePage";
 import data from "@/content/pages/sols-parquets.json";
-import { buildSeoHead } from "@/lib/seo";
+import { buildSeoHead, BUSINESS_ID } from "@/lib/seo";
 
 const content = data as ServiceContent;
 
@@ -19,7 +19,7 @@ export const Route = createFileRoute("/sols-parquets")({
       name: "Sols & parquets",
       description:
         "Remplacement d'anciens sols par un parquet massif cloué, pose de parquet massif en lames droites, point de Hongrie ou bâtons rompus, remplacement et rénovation de parquet ancien, revêtements de sols.",
-      provider: { "@id": "https://maury-laurent.lnkio.fr/#entreprise" },
+      provider: { "@id": BUSINESS_ID },
       areaServed: ["Bouloc", "Fronton", "Castelginest", "Aucamville", "L'Union", "Grenade", "Blagnac"],
     },
   }),

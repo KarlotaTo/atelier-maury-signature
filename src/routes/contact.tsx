@@ -3,7 +3,7 @@ import { useState, useEffect, type FormEvent } from "react";
 import { Check, Clock } from "lucide-react";
 import { Section, Eyebrow, SectionTitle, Lead, PageHero } from "@/components/site/ui";
 import { site, communes, hasPhone, telHref, isOpen } from "@/data/site";
-import { buildSeoHead, BUSINESS_ID } from "@/lib/seo";
+import { buildSeoHead, BUSINESS_ID, absoluteUrl } from "@/lib/seo";
 import content from "@/content/pages/contact.json";
 
 function OpenBadge({ className = "" }: { className?: string }) {
@@ -42,7 +42,7 @@ export const Route = createFileRoute("/contact")({
       "@type": "ContactPage",
       name: "Contact et devis",
       description: "Contactez Maury Laurent pour un devis détaillé en peinture, décoration ou rénovation à Bouloc et au nord de Toulouse. Du lundi au vendredi, 9h–17h.",
-      url: "https://maury-laurent.lnkio.fr/contact",
+      url: absoluteUrl("/contact"),
       about: { "@id": BUSINESS_ID },
     },
   }),

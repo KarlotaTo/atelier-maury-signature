@@ -4,7 +4,7 @@ import { InterventionMap } from "@/components/site/InterventionMap";
 import { Section, Eyebrow, SectionTitle, Lead, PageHero, FinalCta } from "@/components/site/ui";
 import { communes, site } from "@/data/site";
 import { zones } from "@/data/zones";
-import { buildSeoHead, BUSINESS_ID } from "@/lib/seo";
+import { buildSeoHead, BUSINESS_ID, absoluteUrl } from "@/lib/seo";
 import content from "@/content/pages/zones-intervention.json";
 
 export const Route = createFileRoute("/zones-intervention/")({
@@ -18,7 +18,7 @@ export const Route = createFileRoute("/zones-intervention/")({
       "@type": "CollectionPage",
       name: "Zones d’intervention",
       description: "Peinture et rénovation à Bouloc, Fronton, Castelginest, Aucamville, L’Union, Grenade et Blagnac. Découvrez nos zones d’intervention.",
-      url: "https://maury-laurent.lnkio.fr/zones-intervention",
+      url: absoluteUrl("/zones-intervention"),
       about: { "@id": BUSINESS_ID },
     },
   }),

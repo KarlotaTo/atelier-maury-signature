@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Section, Eyebrow, SectionTitle, Lead, PageHero, FinalCta } from "@/components/site/ui";
 import { Rich } from "@/components/site/Rich";
 import content from "@/content/pages/entreprise.json";
-import { buildSeoHead, BUSINESS_ID } from "@/lib/seo";
+import { buildSeoHead, BUSINESS_ID, absoluteUrl } from "@/lib/seo";
 
 export const Route = createFileRoute("/entreprise")({
   head: () => buildSeoHead({
@@ -15,7 +15,7 @@ export const Route = createFileRoute("/entreprise")({
       "@type": "AboutPage",
       name: "L’entreprise",
       description: "Maury Laurent, artisan de la rénovation à Bouloc depuis 1994 : quatre générations d'artisans, une rénovation de A à Z, un seul interlocuteur.",
-      url: "https://maury-laurent.lnkio.fr/entreprise",
+      url: absoluteUrl("/entreprise"),
       about: { "@id": BUSINESS_ID },
     },
   }),

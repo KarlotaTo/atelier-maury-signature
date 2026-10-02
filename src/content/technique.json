@@ -1,0 +1,9 @@
+{
+  "siteUrl": "https://maury-laurent.lnkio.fr",
+  "backOffice": "/admin",
+  "hebergement": "Lovable (rendu serveur, certificat HTTPS automatique)",
+  "indexation": "Autorisée pour tous les moteurs (Google, Bing)",
+  "sitemap": "/sitemap.xml",
+  "donneesStructurees": "Fiche entreprise (HomeAndConstructionBusiness) et fil d'Ariane sur chaque page",
+  "cookies": "Bandeau de consentement actif : refus par défaut des cookies non essentiels"
+}

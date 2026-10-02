@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ServicePage, type ServiceContent } from "@/components/site/ServicePage";
 import data from "@/content/pages/entretien-bati.json";
-import { buildSeoHead } from "@/lib/seo";
+import { buildSeoHead, BUSINESS_ID } from "@/lib/seo";
 
 const content = data as ServiceContent;
 
@@ -19,7 +19,7 @@ export const Route = createFileRoute("/entretien-bati")({
       name: "Entretien & bâti",
       description:
         "Nettoyage, réparation et pose de clôtures, entretien des boiseries et menuiseries extérieures, traitement anti-mousse des surfaces extérieures et des toitures.",
-      provider: { "@id": "https://maury-laurent.lnkio.fr/#entreprise" },
+      provider: { "@id": BUSINESS_ID },
       areaServed: ["Bouloc", "Fronton", "Castelginest", "Aucamville", "L'Union", "Grenade", "Blagnac"],
     },
   }),

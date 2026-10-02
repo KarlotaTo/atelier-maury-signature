@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHero, Section } from "@/components/site/ui";
 import { site } from "@/data/site";
-import { buildSeoHead } from "@/lib/seo";
+import { buildSeoHead, absoluteUrl } from "@/lib/seo";
 
 export const Route = createFileRoute("/charte-utilisation")({
   head: () =>
@@ -17,7 +17,7 @@ export const Route = createFileRoute("/charte-utilisation")({
         name: "Charte d'utilisation du site",
         description:
           "Charte d'utilisation du site internet de MAURY LAURENT, artisan spécialisé dans les travaux de peinture.",
-        url: "https://maury-laurent.lnkio.fr/charte-utilisation",
+        url: absoluteUrl("/charte-utilisation"),
       },
     }),
   component: Page,

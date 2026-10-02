@@ -42,7 +42,7 @@ content:
         fields:
           - { name: eyebrow, label: Surtitre, type: string }
           - { name: title, label: Titre principal, type: text, description: "Un retour à la ligne = un retour à la ligne à l'écran. *mot* = en italique rouge." }
-          - { name: titleSeoPrefix, label: "Début du titre lu par Google (invisible à l'écran)", type: string }
+          - { name: titleSeoPrefix, label: "Début du titre lu par Google (invisible à l'écran)", type: string, readonly: true, description: "Verrouillé par sécurité : modification réservée à l'administrateur du site." }
           - { name: intro, label: Introduction, type: text }
           - { name: image, label: Grande photo, type: image }
           - { name: imageAlt, label: Description de la photo, type: string }
@@ -69,7 +69,7 @@ content:
               - { name: text, label: Texte, type: string }
               - { name: image, label: Photo, type: image }
               - { name: imageAlt, label: Description de la photo, type: string }
-              - { name: link, label: Lien (ne pas modifier), type: string, readonly: true }
+              - { name: link, label: Lien de la carte, type: string, readonly: true, description: "Verrouillé par sécurité : modification réservée à l'administrateur du site." }
       - name: renovationGlobale
         label: Rénovation globale (bloc sombre)
         type: object
@@ -138,7 +138,7 @@ content:
             fields:
               - { name: eyebrow, label: Surtitre, type: string }
               - { name: title, label: Titre principal, type: string }
-              - { name: titleSeoPrefix, label: "Début du titre lu par Google (invisible à l'écran)", type: string }
+              - { name: titleSeoPrefix, label: "Début du titre lu par Google (invisible à l'écran)", type: string, readonly: true, description: "Verrouillé par sécurité : modification réservée à l'administrateur du site." }
               - { name: intro, label: Introduction, type: text }
               - { name: image, label: Photo, type: image }
               - { name: imageAlt, label: Description de la photo (pour Google et l'accessibilité), type: string }
@@ -183,14 +183,15 @@ content:
     type: collection
     path: src/content/realisations
     format: json
-    filename: "{fields.slug}.json"
+    filename: "{primary}.json"
+    operations: { rename: false }
     view:
       primary: title
       fields: [title, city, type]
       sort: [order]
     fields:
       - { name: order, label: Ordre d'affichage, type: number }
-      - { name: slug, label: "Adresse de la page (ex. renovation-salon-fronton)", type: string, required: true }
+      - { name: slug, label: Adresse de la page, type: string, readonly: true, description: "Créée automatiquement à partir du titre lors de l'ajout. Verrouillée par sécurité : la modifier casserait les liens et le référencement." }
       - { name: title, label: Titre, type: string, required: true }
       - { name: city, label: Commune, type: string }
       - { name: type, label: Type de travaux, type: string }
@@ -221,15 +222,16 @@ content:
     type: collection
     path: src/content/villes
     format: json
-    filename: "{fields.slug}.json"
+    filename: "{primary}.json"
+    operations: { rename: false, delete: false }
     view:
       primary: name
       fields: [name, h1]
       sort: [order]
     fields:
       - { name: order, label: Ordre d'affichage, type: number }
-      - { name: main, label: Siège de l'entreprise, type: boolean }
-      - { name: slug, label: "Adresse de la page (ex. saint-jory)", type: string, required: true }
+      - { name: main, label: Siège de l'entreprise, type: boolean, readonly: true, description: "Verrouillé par sécurité : modification réservée à l'administrateur du site." }
+      - { name: slug, label: Adresse de la page, type: string, readonly: true, description: "Créée automatiquement à partir du nom de la commune lors de l'ajout. Verrouillée par sécurité : la modifier casserait les liens et le référencement." }
       - { name: name, label: Nom de la commune, type: string, required: true }
       - { name: seoTitle, label: Titre dans Google, type: string }
       - { name: description, label: Description dans Google, type: text }
@@ -260,7 +262,7 @@ content:
           - { name: text, label: Texte, type: text }
       - { name: showcaseTitle, label: Titre du bloc photos, type: string }
       - { name: showcaseText, label: Texte du bloc photos, type: text }
-      - { name: neighbours, label: "Communes voisines (adresses, ex. fronton)", type: string, list: true }
+      - { name: neighbours, label: Communes voisines (liens), type: string, list: true, readonly: true, description: "Verrouillé par sécurité : modification réservée à l'administrateur du site." }
 
   - name: entreprise
     label: L'entreprise
@@ -275,7 +277,7 @@ content:
         fields:
           - { name: eyebrow, label: Surtitre, type: string }
           - { name: title, label: Titre principal, type: string }
-          - { name: titleSeoPrefix, label: "Début du titre lu par Google (invisible à l'écran)", type: string }
+          - { name: titleSeoPrefix, label: "Début du titre lu par Google (invisible à l'écran)", type: string, readonly: true, description: "Verrouillé par sécurité : modification réservée à l'administrateur du site." }
           - { name: intro, label: Introduction, type: text }
           - { name: image, label: Photo, type: image }
           - { name: imageAlt, label: Description de la photo, type: string }
@@ -365,7 +367,7 @@ content:
         path: src/content/general.json
         format: json
         fields:
-          - { name: name, label: Nom de l'entreprise, type: string }
+          - { name: name, label: Nom de l'entreprise, type: string, readonly: true, description: "Verrouillé par sécurité : modification réservée à l'administrateur du site." }
           - { name: baseline, label: Activité, type: string }
           - { name: city, label: Ville du siège, type: string }
           - { name: since, label: Année de création, type: number }
@@ -396,6 +398,19 @@ content:
               - { name: rating, label: Note sur 5, type: number }
               - { name: date, label: "Date (ex. il y a 3 mois)", type: string }
               - { name: text, label: Avis, type: text }
+      - name: technique
+        label: Paramètres techniques
+        type: file
+        path: src/content/technique.json
+        format: json
+        fields:
+          - { name: siteUrl, label: Domaine du site, type: string, readonly: true, description: "Verrouillé par sécurité : un changement de domaine se prépare avec l'administrateur (redirections, Google Search Console)." }
+          - { name: backOffice, label: Accès au back-office, type: string, readonly: true, description: "Verrouillé par sécurité : modification réservée à l'administrateur du site." }
+          - { name: hebergement, label: Hébergement, type: string, readonly: true, description: "Verrouillé par sécurité : modification réservée à l'administrateur du site." }
+          - { name: indexation, label: Indexation par les moteurs de recherche, type: string, readonly: true, description: "Verrouillé par sécurité : une erreur ici retirerait le site de Google." }
+          - { name: sitemap, label: Plan du site envoyé à Google, type: string, readonly: true, description: "Mis à jour automatiquement à chaque nouvelle page. Verrouillé par sécurité." }
+          - { name: donneesStructurees, label: Données structurées (fiche entreprise pour Google), type: string, readonly: true, description: "Générées automatiquement à partir des coordonnées. Verrouillé par sécurité." }
+          - { name: cookies, label: Cookies et RGPD, type: string, readonly: true, description: "Verrouillé par sécurité : modification réservée à l'administrateur du site." }
       - name: engagements
         label: Engagements (pages villes)
         type: file

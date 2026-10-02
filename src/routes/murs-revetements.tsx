@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ServicePage, type ServiceContent } from "@/components/site/ServicePage";
 import data from "@/content/pages/murs-revetements.json";
-import { buildSeoHead } from "@/lib/seo";
+import { buildSeoHead, BUSINESS_ID } from "@/lib/seo";
 
 const content = data as ServiceContent;
 
@@ -19,7 +19,7 @@ export const Route = createFileRoute("/murs-revetements")({
       name: "Murs & revêtements",
       description:
         "Enduits de rebouchage, de lissage et à la chaux, reprise de murs abîmés et après dégât des eaux, cloisons, doublages et plafonds en placo, isolation thermique et acoustique par l'intérieur.",
-      provider: { "@id": "https://maury-laurent.lnkio.fr/#entreprise" },
+      provider: { "@id": BUSINESS_ID },
       areaServed: ["Bouloc", "Fronton", "Castelginest", "Aucamville", "L'Union", "Grenade", "Blagnac"],
     },
   }),

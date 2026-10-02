@@ -1,6 +1,8 @@
 import { communes, site } from "@/data/site";
+import technique from "@/content/technique.json";
 
-export const SITE_URL = "https://maury-laurent.lnkio.fr";
+/** Domaine du site : un seul réglage, dans src/content/technique.json. */
+export const SITE_URL = technique.siteUrl;
 export const BUSINESS_ID = `${SITE_URL}/#entreprise`;
 
 type Schema = Record<string, unknown>;
@@ -24,7 +26,7 @@ export const localBusinessSchema: Schema = {
   "@id": BUSINESS_ID,
   name: site.name,
   url: SITE_URL,
-  telephone: "+33603068750",
+  telephone: `+33${site.phone.replace(/\s/g, "").replace(/^0/, "")}`,
   email: site.email,
   description:
     "Artisan de la rénovation à Bouloc depuis 1994 : rénovation clé en main ou travaux ciblés, peinture et décoration, sols, placo, isolation, façades. Quatre générations d'artisans.",

@@ -34,6 +34,9 @@ export type Realisation = {
 /** Contenu éditable dans le CMS : un fichier JSON par réalisation dans src/content/realisations. */
 const files = import.meta.glob<Realisation>("../content/realisations/*.json", { eager: true, import: "default" });
 
-export const realisations: Realisation[] = Object.values(files).sort((a, b) => a.order - b.order);
+/** L'adresse de la page (slug) est le nom du fichier : elle ne change pas si le titre est modifié. */
+export const realisations: Realisation[] = Object.entries(files)
+  .map(([path, entry]) => ({ ...entry, slug: path.split("/").pop()!.replace(/\.json$/, "") }))
+  .sort((a, b) => a.order - b.order);
 
 export const getRealisation = (slug: string) => realisations.find((r) => r.slug === slug);

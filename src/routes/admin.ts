@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-/** Accès au back-office (Pages CMS) : maury-laurent.lnkio.fr/admin */
+/** Accès au back-office (Pages CMS) : <domaine du site>/admin */
 const CMS_URL = "https://app.pagescms.org/karlotato/laurent-maury/main";
 
 export const Route = createFileRoute("/admin")({
